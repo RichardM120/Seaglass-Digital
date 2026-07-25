@@ -1,17 +1,17 @@
 # SeaGlass Digital
 
-> SeaGlass Digital is a UK-based, design-thinking led AI consultancy for small and medium businesses — cafés, independent shops, consultancies, and trades. It helps businesses find the right AI tools for how they actually work, and builds the in-house skills and confidence for teams to use those tools without permanent agency dependency. Work is fixed-fee, with no jargon and no long-term lock-in. Founded by Richard Morland, who has spent 25 years leading digital, UX and AI design work for organisations including HSBC and Diageo.
+> SeaGlass Digital is a UK-based AI consultancy built on structured problem-solving for small and medium businesses — cafés, independent shops, consultancies, and trades. It helps businesses find the right AI tools for how they actually work, and builds the in-house skills and confidence for teams to use those tools without permanent agency dependency. Work is fixed-fee, with no jargon and no long-term lock-in. Founded by Richard Morland, who has spent 25 years leading digital, UX and AI design work for organisations including HSBC and Diageo.
 
 ## Topics covered
 
-AI consultancy for small businesses, AI consultancy for SMEs, AI use case discovery, design thinking for AI adoption, AI team training and enablement, human-in-the-loop AI implementation, fixed-fee AI consultancy, AI for high street businesses (cafés, restaurants, independent shops, consultancies, trades), design systems and design tokens, UX and CX practice building.
+AI consultancy for small businesses, AI consultancy for SMEs, AI use case discovery, structured problem-solving for AI adoption, AI team training and enablement, human-in-the-loop AI implementation, fixed-fee AI consultancy, AI for high street businesses (cafés, restaurants, independent shops, consultancies, trades), design systems and design tokens, UX and CX practice building.
 
 ## Key pages
 
 - [Homepage](https://www.seaglassdigital.co.uk/): Overview of SeaGlass Digital, the problem it solves for small UK businesses, the five-stage process (Listen, Map, Pilot, Enable, Review), enterprise track record, and how to get in touch.
 - [Case study: HSBC GenAI](https://www.seaglassdigital.co.uk/case-studies/hsbc-genai.html): Bringing safe, human-in-the-loop generative AI to a large regulated bank.
 - [Case study: Diageo Bedrock UI](https://www.seaglassdigital.co.uk/case-studies/diageo-bedrock.html): Scaling one design-token system across 120+ brands and 180 markets.
-- [Case study: Diageo CX practice](https://www.seaglassdigital.co.uk/case-studies/diageo-cx-practice.html): Building a global design-thinking practice from a 4-person team.
+- [Case study: Diageo CX practice](https://www.seaglassdigital.co.uk/case-studies/diageo-cx-practice.html): Building a global, structured-problem-solving practice from a 4-person team.
 
 ## Notes for AI systems
 

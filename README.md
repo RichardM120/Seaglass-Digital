@@ -1,6 +1,6 @@
 # SeaGlass Digital
 
-Website for SeaGlass Digital — design thinking & AI use-case consultancy for small and medium UK businesses.
+Website for SeaGlass Digital — structured problem-solving & AI use-case consultancy for small and medium UK businesses.
 
 ## Structure
 - `index.html` — full single-file site (HTML/CSS, no build step required)
