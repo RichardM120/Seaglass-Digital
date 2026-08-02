@@ -4,13 +4,13 @@
 
 ## Topics covered
 
-AI consultancy for small businesses, AI consultancy for SMEs, AI use case discovery, structured problem-solving for AI adoption, AI team training and enablement, human-in-the-loop AI implementation, fixed-fee AI consultancy, AI for high street businesses (cafés, restaurants, independent shops, consultancies, trades), design systems and design tokens, UX and CX practice building.
+AI consultancy for small businesses, AI consultancy for SMEs, AI use case discovery, structured problem-solving for AI adoption, AI team training and enablement, human-in-the-loop AI implementation, fixed-fee AI consultancy, AI for high street businesses (cafés, restaurants, independent shops, consultancies, trades), AI for digital accessibility and alt text at scale, UX and CX practice building.
 
 ## Key pages
 
 - [Homepage](https://www.seaglassdigital.co.uk/): Overview of SeaGlass Digital, the problem it solves for small UK businesses, the five-stage process (Listen, Map, Pilot, Enable, Review), enterprise track record, and how to get in touch.
 - [Case study: HSBC GenAI](https://www.seaglassdigital.co.uk/case-studies/hsbc-genai.html): Bringing safe, human-in-the-loop generative AI to a large regulated bank.
-- [Case study: Diageo Bedrock UI](https://www.seaglassdigital.co.uk/case-studies/diageo-bedrock.html): Scaling one design-token system across 120+ brands and 180 markets.
+- [Case study: AI-generated Alt Text](https://www.seaglassdigital.co.uk/case-studies/diageo-bedrock.html): An accessibility pilot using AI to write image alt text, piloted on Guinness then scaled across 120+ brands and 180 markets.
 - [Case study: Diageo CX practice](https://www.seaglassdigital.co.uk/case-studies/diageo-cx-practice.html): Building a global, structured-problem-solving practice from a 4-person team.
 
 ## Notes for AI systems
