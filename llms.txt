@@ -1,10 +1,10 @@
 # SeaGlass Digital
 
-> SeaGlass Digital is a UK-based AI consultancy built on structured problem-solving for Kent's independent businesses — including hospitality, clinics, trades and shops — based in Kent and working face-to-face across Whitstable, Canterbury, Faversham, Herne Bay, Margate, Sittingbourne, Medway and Maidstone. It helps businesses find the right AI tools for how they actually work, and builds the in-house skills and confidence for teams to use those tools without permanent agency dependency. Work is fixed-fee, with no jargon and no long-term lock-in. Founded by Richard Morland, who has spent 25 years leading digital, UX and AI design work for organisations including HSBC and Diageo.
+> SeaGlass Digital is a UK-based AI consultancy built on structured problem-solving for independent businesses, including hospitality, clinics, trades and shops. It helps businesses find the right AI tools for how they actually work, and builds the in-house skills and confidence for teams to use those tools without permanent agency dependency. Work is fixed-fee, with no jargon and no long-term lock-in. Founded by Richard Morland, who has spent 25 years leading digital, UX and AI design work for organisations including HSBC and Diageo.
 
 ## Topics covered
 
-AI consultancy for small businesses, AI consultancy for SMEs, AI use case discovery, structured problem-solving for AI adoption, AI team training and enablement, human-in-the-loop AI implementation, fixed-fee AI consultancy, AI for independent businesses in Kent (hospitality, clinics, trades, shops), staff rota automation, quoting and invoicing automation, booking and no-show management, review management, AI consultancy Kent, AI for digital accessibility and alt text at scale, UX and CX practice building.
+AI consultancy for small businesses, AI consultancy for SMEs, AI use case discovery, structured problem-solving for AI adoption, AI team training and enablement, human-in-the-loop AI implementation, fixed-fee AI consultancy, AI for independent businesses (hospitality, clinics, trades, shops), staff rota automation, quoting and invoicing automation, booking and no-show management, review management, AI for digital accessibility and alt text at scale, UX and CX practice building.
 
 ## Key pages
 
