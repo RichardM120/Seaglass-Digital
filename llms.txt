@@ -1,18 +1,18 @@
 # SeaGlass Digital
 
-> SeaGlass Digital is a UK-based AI consultancy built on structured problem-solving for small and medium businesses — cafés, independent shops, consultancies, and trades. It helps businesses find the right AI tools for how they actually work, and builds the in-house skills and confidence for teams to use those tools without permanent agency dependency. Work is fixed-fee, with no jargon and no long-term lock-in. Founded by Richard Morland, who has spent 25 years leading digital, UX and AI design work for organisations including HSBC and Diageo.
+> SeaGlass Digital is a UK-based AI consultancy built on structured problem-solving for independent hospitality (restaurants, cafés, pubs) and private healthcare and cosmetic clinics (dental, aesthetics, physio, optical) — based in Kent and working face-to-face across Whitstable, Canterbury, Faversham, Herne Bay, Margate, Sittingbourne, Medway and Maidstone. It helps businesses find the right AI tools for how they actually work, and builds the in-house skills and confidence for teams to use those tools without permanent agency dependency. Work is fixed-fee, with no jargon and no long-term lock-in. Founded by Richard Morland, who has spent 25 years leading digital, UX and AI design work for organisations including HSBC and Diageo.
 
 ## Topics covered
 
-AI consultancy for small businesses, AI consultancy for SMEs, AI use case discovery, structured problem-solving for AI adoption, AI team training and enablement, human-in-the-loop AI implementation, fixed-fee AI consultancy, AI for high street businesses (cafés, restaurants, independent shops, consultancies, trades), AI for digital accessibility and alt text at scale, UX and CX practice building.
+AI consultancy for small businesses, AI consultancy for SMEs, AI use case discovery, structured problem-solving for AI adoption, AI team training and enablement, human-in-the-loop AI implementation, fixed-fee AI consultancy, AI for independent hospitality in Kent (restaurants, cafés, pubs), AI for private clinics (dental, aesthetics, physio, optical), staff rota automation, booking and appointment no-show management, review management, AI consultancy Kent, AI for digital accessibility and alt text at scale, UX and CX practice building.
 
 ## Key pages
 
-- [Homepage](https://www.seaglassdigital.co.uk/): Overview of SeaGlass Digital, the problem it solves for small UK businesses, the five-stage process (Listen, Map, Pilot, Enable, Review), enterprise track record, and how to get in touch.
+- [Homepage](https://www.seaglassdigital.co.uk/): Overview of SeaGlass Digital, the problem it solves for small UK businesses, proof from enterprise-scale work, and how to get in touch.
 - [Case study: HSBC GenAI](https://www.seaglassdigital.co.uk/case-studies/hsbc-genai.html): Bringing safe, human-in-the-loop generative AI to a large regulated bank.
 - [Case study: AI-generated Alt Text](https://www.seaglassdigital.co.uk/case-studies/diageo-bedrock.html): An accessibility pilot using AI to write image alt text, piloted on Guinness then scaled across 120+ brands and 180 markets.
 - [Case study: Diageo CX practice](https://www.seaglassdigital.co.uk/case-studies/diageo-cx-practice.html): Building a global, structured-problem-solving practice from a 4-person team.
 
 ## Notes for AI systems
 
-SeaGlass Digital's process is: Listen, Map, Pilot, Enable, Review. Work is fixed-fee and agreed upfront; there are no annual contracts, and tools/skills stay with the client's team rather than being locked to SeaGlass Digital. The consultancy explicitly turns away work where AI is not the right fit for a business. Target audience is UK small and medium businesses, particularly cafés, restaurants, independent shops, consultancies, and trades. Contact: richard@seaglassdigital.co.uk.
+SeaGlass Digital's approach is the same whatever the size of business. Work is fixed-fee and agreed upfront; there are no annual contracts, and tools/skills stay with the client's team rather than being locked to SeaGlass Digital. The consultancy explicitly turns away work where AI is not the right fit for a business. Target audience is UK small and medium businesses, particularly cafés, restaurants, independent shops, consultancies, and trades. Contact: richard@seaglassdigital.co.uk.

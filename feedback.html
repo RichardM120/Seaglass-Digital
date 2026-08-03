@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tell me what you think — SeaGlass Digital</title>
+<meta name="description" content="A short structured feedback form for friends and colleagues reviewing the SeaGlass Digital site.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpolygon points='20,3 34,14 29,33 11,33 6,14' fill='%238FB8A4'/%3E%3Cpolygon points='20,10 29,17 26,30 14,30 11,17' fill='%23AFD0C9'/%3E%3Cpolygon points='20,16 25,20 23,27 17,27 15,20' fill='%23C9A268'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .fb-intro{ max-width:62ch; }
+  .fb-intro p{ opacity:0.85; margin:0 0 14px; }
+  .fb-form{ max-width:760px; margin-top:36px; }
+
+  .fb-band{
+    font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--sea-deep); opacity:0.8;
+    margin:40px 0 4px; display:block;
+  }
+  .fb-band-note{ font-size:0.84rem; opacity:0.7; margin:0 0 18px; max-width:56ch; }
+
+  .fb-q{
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,0.8);
+    border-radius:var(--radius-soft);
+    box-shadow:var(--shadow-soft);
+    padding:24px 22px;
+    margin-bottom:var(--gap);
+  }
+  .fb-q .q-label{
+    display:block; font-family:'Fraunces',serif; font-size:1.08rem;
+    color:var(--sea-deep); margin-bottom:6px; line-height:1.35; padding:0;
+  }
+  .fb-hint{ font-size:0.84rem; opacity:0.7; margin:0 0 14px; }
+
+  .fb-q textarea, .fb-q input[type="text"]{
+    width:100%; font-family:'Inter',sans-serif; font-size:0.96rem; color:var(--ink);
+    background:var(--white); border:1px solid rgba(47,79,73,0.25);
+    border-radius:4px; padding:11px 13px; line-height:1.5; resize:vertical;
+  }
+  .fb-q textarea{ min-height:84px; }
+  .fb-q textarea:focus, .fb-q input:focus{
+    outline:2px solid var(--sea-deep); outline-offset:1px; border-color:transparent;
+  }
+
+  /* 0-10 NPS scale */
+  .nps-scale{ display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 8px; }
+  .nps-scale label{
+    flex:1 1 52px; text-align:center; cursor:pointer;
+    border:1px solid rgba(47,79,73,0.25); border-radius:4px;
+    background:var(--white); padding:12px 4px; font-size:0.95rem; font-weight:500;
+    transition:background 0.15s ease, border-color 0.15s ease;
+  }
+  .nps-scale input{ position:absolute; opacity:0; width:0; height:0; }
+  .nps-scale label:hover{ border-color:var(--sea-deep); }
+  .nps-scale label.is-picked{
+    background:var(--sea-deep); color:var(--white); border-color:var(--sea-deep);
+  }
+  .nps-scale label:focus-within{ outline:2px solid var(--sea-deep); outline-offset:2px; }
+  .nps-ends{
+    display:flex; justify-content:space-between;
+    font-size:0.76rem; opacity:0.7; margin-bottom:14px;
+  }
+
+  /* option rows */
+  .opt-row{ display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 4px; }
+  .opt-row label{
+    display:inline-flex; align-items:center; gap:7px; cursor:pointer;
+    font-size:0.9rem; padding:9px 13px;
+    border:1px solid rgba(47,79,73,0.25); border-radius:4px; background:var(--white);
+  }
+  .opt-row label.is-picked{ background:var(--glass-aqua); border-color:var(--sea-deep); }
+  .opt-row input{ accent-color:var(--sea-deep); }
+  .opt-row label:focus-within{ outline:2px solid var(--sea-deep); outline-offset:1px; }
+
+  .sub-label{ display:block; font-size:0.9rem; font-weight:600; margin:16px 0 2px; }
+
+  .fb-actions{ margin-top:10px; display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+  .fb-note{ margin-top:24px; font-size:0.85rem; opacity:0.75; max-width:62ch; }
+  .fb-fallback{
+    margin-top:20px; padding:18px 20px; background:var(--sand-deep);
+    border-left:3px solid var(--glass-amber-text); border-radius:3px;
+    font-size:0.88rem; display:none;
+  }
+  .fb-fallback textarea{
+    width:100%; min-height:220px; margin-top:12px;
+    font-family:'IBM Plex Mono',monospace; font-size:0.78rem; padding:12px;
+    border:1px solid rgba(47,79,73,0.25); border-radius:4px;
+  }
+  @media (max-width:520px){
+    .nps-scale label{ flex:1 1 40px; padding:11px 2px; font-size:0.88rem; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#top" class="skip-link">Skip to main content</a>
+
+<header class="site">
+  <nav>
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false">
+        <polygon points="20,3 34,14 29,33 11,33 6,14" fill="#8FB8A4" opacity="0.9"/>
+        <polygon points="20,10 29,17 26,30 14,30 11,17" fill="#AFD0C9" opacity="0.85"/>
+        <polygon points="20,16 25,20 23,27 17,27 15,20" fill="#C9A268"/>
+      </svg>
+      <span class="brand-word">seaglass<span class="brand-word-sub">digital</span></span>
+    </a>
+    <a class="nav-cta" href="index.html">Back to the site</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Honest feedback wanted</span>
+      <h1 style="font-size:clamp(2rem,4vw,2.7rem);max-width:20ch;margin-bottom:20px;">Tell me what you actually think.</h1>
+
+      <div class="fb-intro">
+        <p>Thanks for taking a look. This is a new site for a new business, so blunt is more useful than kind — if something didn't make sense, sounded like waffle, or made you think "who is this even for?", that's exactly what I need to hear.</p>
+        <p>The scores take a minute; the written bits are where the real value is. Skip anything you don't have a view on.</p>
+      </div>
+
+      <div class="fb-form">
+
+        <!-- QUICK 5 -->
+        <span class="fb-band">The quick version — 5 questions, one minute</span>
+        <p class="fb-band-note">If you only do this bit, that's genuinely useful. 1 is poor, 5 is excellent.</p>
+
+        <div class="fb-q">
+          <span class="q-label">1. How clear was the content?</span>
+          <p class="fb-hint">Could you follow what was being said, without re-reading?</p>
+          <div class="opt-row" role="radiogroup" aria-label="Clarity of content">
+            <label><input type="radio" name="q_clarity" value="1">1</label>
+            <label><input type="radio" name="q_clarity" value="2">2</label>
+            <label><input type="radio" name="q_clarity" value="3">3</label>
+            <label><input type="radio" name="q_clarity" value="4">4</label>
+            <label><input type="radio" name="q_clarity" value="5">5</label>
+          </div>
+        </div>
+
+        <div class="fb-q">
+          <span class="q-label">2. How clear was it what SeaGlass Digital does, and who for?</span>
+          <p class="fb-hint">Within the first few seconds, not after hunting for it.</p>
+          <div class="opt-row" role="radiogroup" aria-label="Clarity of offer and audience">
+            <label><input type="radio" name="q_offer" value="1">1</label>
+            <label><input type="radio" name="q_offer" value="2">2</label>
+            <label><input type="radio" name="q_offer" value="3">3</label>
+            <label><input type="radio" name="q_offer" value="4">4</label>
+            <label><input type="radio" name="q_offer" value="5">5</label>
+          </div>
+        </div>
+
+        <div class="fb-q">
+          <span class="q-label">3. How did the design look and feel?</span>
+          <p class="fb-hint">Layout, colours, typography — did it look like a business you'd take seriously?</p>
+          <div class="opt-row" role="radiogroup" aria-label="Design look and feel">
+            <label><input type="radio" name="q_design" value="1">1</label>
+            <label><input type="radio" name="q_design" value="2">2</label>
+            <label><input type="radio" name="q_design" value="3">3</label>
+            <label><input type="radio" name="q_design" value="4">4</label>
+            <label><input type="radio" name="q_design" value="5">5</label>
+          </div>
+        </div>
+
+        <div class="fb-q">
+          <span class="q-label">4. How easy was it to get around?</span>
+          <p class="fb-hint">Finding things, scrolling, reading on your phone.</p>
+          <div class="opt-row" role="radiogroup" aria-label="Ease of navigation">
+            <label><input type="radio" name="q_ease" value="1">1</label>
+            <label><input type="radio" name="q_ease" value="2">2</label>
+            <label><input type="radio" name="q_ease" value="3">3</label>
+            <label><input type="radio" name="q_ease" value="4">4</label>
+            <label><input type="radio" name="q_ease" value="5">5</label>
+          </div>
+        </div>
+
+        <div class="fb-q">
+          <label class="q-label" for="q_change">5. What one thing would you change?</label>
+          <p class="fb-hint">Content, wording, design, anything. Be specific and be blunt — this is the most useful answer on the page.</p>
+          <textarea id="q_change" style="min-height:120px;"></textarea>
+        </div>
+
+        <div class="fb-actions">
+          <button type="button" class="btn btn-primary js-fb-send">Send feedback</button>
+          <button type="button" class="btn btn-ghost js-fb-copy">Copy instead</button>
+        </div>
+        <p class="fb-note">Done — that's all I need. If you've got another five minutes and fancy going deeper, the detailed version is below. Answer any of it and hit send again.</p>
+
+        <!-- DETAILED -->
+        <span class="fb-band" style="margin-top:56px;">Optional: the detailed version</span>
+        <p class="fb-band-note">Only if you're interested. Everything below is optional.</p>
+
+        <span class="fb-band">The headline question</span>
+        <p class="fb-band-note">One number that captures whether this is worth recommending at all.</p>
+
+        <div class="fb-q">
+          <span class="q-label">How likely are you to recommend SeaGlass Digital to a small business owner who's curious about AI?</span>
+          <div class="nps-scale" role="radiogroup" aria-label="Likelihood to recommend, 0 to 10">
+            <label><input type="radio" name="nps" value="0">0</label>
+            <label><input type="radio" name="nps" value="1">1</label>
+            <label><input type="radio" name="nps" value="2">2</label>
+            <label><input type="radio" name="nps" value="3">3</label>
+            <label><input type="radio" name="nps" value="4">4</label>
+            <label><input type="radio" name="nps" value="5">5</label>
+            <label><input type="radio" name="nps" value="6">6</label>
+            <label><input type="radio" name="nps" value="7">7</label>
+            <label><input type="radio" name="nps" value="8">8</label>
+            <label><input type="radio" name="nps" value="9">9</label>
+            <label><input type="radio" name="nps" value="10">10</label>
+          </div>
+          <div class="nps-ends"><span>0 — not a chance</span><span>10 — already have</span></div>
+        </div>
+
+        <div class="fb-q">
+          <label class="q-label" for="npswhy">What's the main reason for that score?</label>
+          <p class="fb-hint">The single most useful box on this page.</p>
+          <textarea id="npswhy"></textarea>
+        </div>
+
+        <!-- HAPPINESS -->
+        <span class="fb-band">H — Happiness: how it felt</span>
+        <p class="fb-band-note">Gut reaction, tone, whether it reads like a real business.</p>
+
+        <div class="fb-q">
+          <span class="q-label">Overall impression of the site?</span>
+          <div class="opt-row" role="radiogroup" aria-label="Overall impression">
+            <label><input type="radio" name="happy" value="1 - poor">1 — poor</label>
+            <label><input type="radio" name="happy" value="2">2</label>
+            <label><input type="radio" name="happy" value="3 - fine">3 — fine</label>
+            <label><input type="radio" name="happy" value="4">4</label>
+            <label><input type="radio" name="happy" value="5 - excellent">5 — excellent</label>
+          </div>
+        </div>
+
+        <div class="fb-q">
+          <span class="q-label">Does it feel trustworthy?</span>
+          <div class="opt-row" role="radiogroup" aria-label="Trust">
+            <label><input type="radio" name="trust" value="Yes, credible">Yes, credible</label>
+            <label><input type="radio" name="trust" value="Mostly">Mostly</label>
+            <label><input type="radio" name="trust" value="Not sure">Not sure</label>
+            <label><input type="radio" name="trust" value="Felt salesy or vague">Felt salesy or vague</label>
+          </div>
+          <label for="trustwhy" class="fb-hint" style="display:block;margin-top:14px;">Anything that felt salesy, vague or too good to be true?</label>
+          <textarea id="trustwhy"></textarea>
+        </div>
+
+        <!-- ENGAGEMENT -->
+        <span class="fb-band">E — Engagement: did it hold you</span>
+        <p class="fb-band-note">Whether you kept reading, or quietly bailed.</p>
+
+        <div class="fb-q">
+          <span class="q-label">Honestly, how much did you read?</span>
+          <div class="opt-row" role="radiogroup" aria-label="How much did you read">
+            <label><input type="radio" name="engage" value="All of it">All of it</label>
+            <label><input type="radio" name="engage" value="Most of it">Most of it</label>
+            <label><input type="radio" name="engage" value="Skimmed">Skimmed</label>
+            <label><input type="radio" name="engage" value="Gave up early">Gave up early</label>
+          </div>
+          <label for="engagewhere" class="fb-hint" style="display:block;margin-top:14px;">Where did your attention drop off?</label>
+          <textarea id="engagewhere"></textarea>
+        </div>
+
+        <!-- ADOPTION -->
+        <span class="fb-band">A — Adoption: would you act</span>
+        <p class="fb-band-note">The bit that decides whether the site earns its keep.</p>
+
+        <div class="fb-q">
+          <span class="q-label">If you ran a small business, how likely would you be to get in touch?</span>
+          <div class="opt-row" role="radiogroup" aria-label="Likelihood to get in touch">
+            <label><input type="radio" name="adopt" value="Very likely">Very likely</label>
+            <label><input type="radio" name="adopt" value="Likely">Likely</label>
+            <label><input type="radio" name="adopt" value="Unlikely">Unlikely</label>
+            <label><input type="radio" name="adopt" value="No">No</label>
+          </div>
+          <label for="adoptwhy" class="fb-hint" style="display:block;margin-top:14px;">What tipped you that way — and what would change your mind?</label>
+          <textarea id="adoptwhy"></textarea>
+        </div>
+
+        <div class="fb-q">
+          <label class="q-label" for="missing">What's missing?</label>
+          <p class="fb-hint">Anything you expected and couldn't find — pricing, examples, credentials, availability?</p>
+          <textarea id="missing"></textarea>
+        </div>
+
+        <!-- RETENTION -->
+        <span class="fb-band">R — Retention: does it stick</span>
+        <p class="fb-band-note">Most people won't act on a first visit, so being remembered matters.</p>
+
+        <div class="fb-q">
+          <span class="q-label">In a month's time, would you remember what SeaGlass Digital does?</span>
+          <div class="opt-row" role="radiogroup" aria-label="Memorability">
+            <label><input type="radio" name="retain" value="Yes">Yes</label>
+            <label><input type="radio" name="retain" value="Probably">Probably</label>
+            <label><input type="radio" name="retain" value="Probably not">Probably not</label>
+            <label><input type="radio" name="retain" value="No">No</label>
+          </div>
+          <label for="retainrecall" class="fb-hint" style="display:block;margin-top:14px;">What's the one thing you'd remember?</label>
+          <textarea id="retainrecall"></textarea>
+        </div>
+
+        <!-- TASK SUCCESS -->
+        <span class="fb-band">T — Task success: did it do its job</span>
+        <p class="fb-band-note">A site has three jobs: say what it does, say who it's for, say what to do next.</p>
+
+        <div class="fb-q">
+          <span class="q-label">Could you work these out?</span>
+
+          <span class="sub-label">What the business actually does</span>
+          <div class="opt-row" role="radiogroup" aria-label="Could you tell what the business does">
+            <label><input type="radio" name="task1" value="Yes, easily">Yes, easily</label>
+            <label><input type="radio" name="task1" value="Took a while">Took a while</label>
+            <label><input type="radio" name="task1" value="No">No</label>
+          </div>
+
+          <span class="sub-label">Who it's for</span>
+          <div class="opt-row" role="radiogroup" aria-label="Could you tell who it is for">
+            <label><input type="radio" name="task2" value="Yes, easily">Yes, easily</label>
+            <label><input type="radio" name="task2" value="Took a while">Took a while</label>
+            <label><input type="radio" name="task2" value="No">No</label>
+          </div>
+
+          <span class="sub-label">What to do if you were interested</span>
+          <div class="opt-row" role="radiogroup" aria-label="Could you tell what to do next">
+            <label><input type="radio" name="task3" value="Yes, easily">Yes, easily</label>
+            <label><input type="radio" name="task3" value="Took a while">Took a while</label>
+            <label><input type="radio" name="task3" value="No">No</label>
+          </div>
+        </div>
+
+        <div class="fb-q">
+          <label class="q-label" for="inwords">In your own words, what does SeaGlass Digital do?</label>
+          <p class="fb-hint">Don't scroll back up — just say what you took away. If you're unsure, say that; it's the most useful answer of all.</p>
+          <textarea id="inwords"></textarea>
+        </div>
+
+        <div class="fb-q">
+          <label class="q-label" for="jargon">Did anything confuse you, or read as jargon?</label>
+          <p class="fb-hint">Specific words or sentences are gold here.</p>
+          <textarea id="jargon"></textarea>
+        </div>
+
+        <div class="fb-q">
+          <label class="q-label" for="lookfeel">How did it look and work?</label>
+          <p class="fb-hint">Design, readability, anything broken or awkward — especially on a phone.</p>
+          <textarea id="lookfeel"></textarea>
+        </div>
+
+        <!-- ABOUT YOU -->
+        <span class="fb-band">Last bit</span>
+
+        <div class="fb-q">
+          <label class="q-label" for="anythingelse">Anything else at all?</label>
+          <textarea id="anythingelse"></textarea>
+        </div>
+
+        <div class="fb-q">
+          <label class="q-label" for="name">Your name (optional)</label>
+          <p class="fb-hint">Only so I know who to thank — and who to badger with follow-up questions.</p>
+          <input type="text" id="name">
+          <label for="device" class="fb-hint" style="display:block;margin-top:16px;">What did you look on?</label>
+          <input type="text" id="device" placeholder="e.g. iPhone, laptop, both">
+        </div>
+
+        <div class="fb-actions">
+          <button type="button" class="btn btn-primary js-fb-send">Send feedback</button>
+          <button type="button" class="btn btn-ghost js-fb-copy">Copy instead</button>
+        </div>
+
+        <p class="fb-note">This opens your email app with everything filled in — nothing is sent until you hit send there, and nothing is stored on this site. If your email app doesn't open, use "Copy instead" and paste it into a message.</p>
+
+        <div class="fb-fallback" id="fb-fallback">
+          <strong>Here's your feedback — copy this and send it however's easiest.</strong>
+          <textarea id="fb-fallback-text" readonly></textarea>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false">
+          <polygon points="20,3 34,14 29,33 11,33 6,14" fill="#8FB8A4" opacity="0.9"/>
+          <polygon points="20,10 29,17 26,30 14,30 11,17" fill="#AFD0C9" opacity="0.85"/>
+          <polygon points="20,16 25,20 23,27 17,27 15,20" fill="#C9A268"/>
+        </svg>
+        <span class="fine">SeaGlass Digital · Structured problem-solving &amp; AI for small business · UK</span>
+      </div>
+      <ul class="foot-links" role="list">
+        <li><a href="index.html">Back to the site</a></li>
+      </ul>
+    </div>
+    <p class="foot-legal">SeaGlass Digital is a trading name of C W Casting Limited, registered in England and Wales. Company No. 08180278.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var EMAIL = 'richard@seaglassdigital.co.uk';
+
+  var fields = [
+    ['radio','q_clarity',  'QUICK 1 - clarity of content (1-5)'],
+    ['radio','q_offer',    'QUICK 2 - clear what it does and who for (1-5)'],
+    ['radio','q_design',   'QUICK 3 - design look and feel (1-5)'],
+    ['radio','q_ease',     'QUICK 4 - ease of getting around (1-5)'],
+    ['text', 'q_change',   'QUICK 5 - the one thing to change'],
+    ['radio','nps',        'NPS score (0-10)'],
+    ['text', 'npswhy',     'Reason for that score'],
+    ['radio','happy',      'HAPPINESS - overall impression'],
+    ['radio','trust',      'HAPPINESS - trustworthy?'],
+    ['text', 'trustwhy',   'HAPPINESS - anything salesy or vague'],
+    ['radio','engage',     'ENGAGEMENT - how much was read'],
+    ['text', 'engagewhere','ENGAGEMENT - where attention dropped'],
+    ['radio','adopt',      'ADOPTION - likelihood to get in touch'],
+    ['text', 'adoptwhy',   'ADOPTION - why, and what would change it'],
+    ['text', 'missing',    'ADOPTION - what is missing'],
+    ['radio','retain',     'RETENTION - would remember in a month'],
+    ['text', 'retainrecall','RETENTION - the one thing remembered'],
+    ['radio','task1',      'TASK - could tell what the business does'],
+    ['radio','task2',      'TASK - could tell who it is for'],
+    ['radio','task3',      'TASK - could tell what to do next'],
+    ['text', 'inwords',    'TASK - what it does, in their words'],
+    ['text', 'jargon',     'TASK - confusing or jargon'],
+    ['text', 'lookfeel',   'TASK - look and feel'],
+    ['text', 'anythingelse','Anything else'],
+    ['text', 'name',       'Name'],
+    ['text', 'device',     'Device']
+  ];
+
+  // Highlight the chosen option (avoids relying on :has() support)
+  document.querySelectorAll('.nps-scale, .opt-row').forEach(function(group){
+    group.addEventListener('change', function(){
+      var name = group.querySelector('input') && group.querySelector('input').name;
+      if (!name) return;
+      document.querySelectorAll('input[name="' + name + '"]').forEach(function(inp){
+        inp.closest('label').classList.toggle('is-picked', inp.checked);
+      });
+    });
+  });
+
+  function build(){
+    var lines = ['Feedback on seaglassdigital.co.uk', ''];
+    var answered = 0;
+    fields.forEach(function(f){
+      var type = f[0], key = f[1], label = f[2], val = '';
+      if (type === 'radio') {
+        var picked = document.querySelector('input[name="' + key + '"]:checked');
+        val = picked ? picked.value : '';
+      } else {
+        var el = document.getElementById(key);
+        val = el ? el.value.trim() : '';
+      }
+      if (val) {
+        answered++;
+        lines.push(label + ': ' + val);
+        if (type === 'text' && val.length > 60) { lines.push(''); }
+      }
+    });
+    return answered ? lines.join('\n') : null;
+  }
+
+  document.querySelectorAll('.js-fb-send').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var body = build();
+      if (!body) { alert('Add at least one answer first.'); return; }
+      window.location.href = 'mailto:' + EMAIL +
+        '?subject=' + encodeURIComponent('Site feedback') +
+        '&body=' + encodeURIComponent(body);
+    });
+  });
+
+  document.querySelectorAll('.js-fb-copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+    var body = build();
+    if (!body) { alert('Add at least one answer first.'); return; }
+    var box = document.getElementById('fb-fallback');
+    var ta  = document.getElementById('fb-fallback-text');
+    ta.value = body;
+    box.style.display = 'block';
+    ta.select();
+    try { document.execCommand('copy'); } catch(e){}
+    if (navigator.clipboard) { navigator.clipboard.writeText(body).catch(function(){}); }
+      box.scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
