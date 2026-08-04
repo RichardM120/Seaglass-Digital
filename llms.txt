@@ -9,6 +9,7 @@ AI consultancy for small businesses, AI consultancy for SMEs, AI use case discov
 ## Key pages
 
 - [Homepage](https://www.seaglassdigital.co.uk/): Overview of SeaGlass Digital, the problem it solves for small UK businesses, proof from enterprise-scale work, and how to get in touch.
+- [FAQ](https://www.seaglassdigital.co.uk/faq.html): Answers on pricing, timelines, process, in-person vs remote working, business fit, and what happens after a project ends.
 - [Case study: HSBC GenAI](https://www.seaglassdigital.co.uk/case-studies/hsbc-genai.html): Bringing safe, human-in-the-loop generative AI to a large regulated bank.
 - [Case study: AI-generated Alt Text](https://www.seaglassdigital.co.uk/case-studies/diageo-bedrock.html): An accessibility pilot using AI to write image alt text, piloted on Guinness then scaled across 120+ brands and 180 markets.
 - [Case study: Diageo CX practice](https://www.seaglassdigital.co.uk/case-studies/diageo-cx-practice.html): Building a global, structured-problem-solving practice from a 4-person team.
