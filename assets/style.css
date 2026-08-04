@@ -102,54 +102,6 @@
     left:0;
   }
 
-  /* ---------- PROMO PANEL ---------- */
-  .promo-panel{
-    position:relative;
-    background:var(--sea-deep);
-    max-height:200px;
-    overflow:hidden;
-    transition:max-height 0.4s ease, opacity 0.3s ease;
-  }
-  .promo-panel.is-closed{ max-height:0; opacity:0; pointer-events:none; }
-  .promo-panel-inner{
-    display:flex; align-items:center; justify-content:center;
-    gap:36px;
-    padding:22px 48px;
-  }
-  .promo-copy{
-    display:flex; align-items:baseline; flex-wrap:wrap; justify-content:center;
-    gap:8px;
-    text-decoration:none; color:var(--sand);
-    font-size:0.94rem; font-weight:500; line-height:1.5;
-    text-align:center; max-width:52ch;
-  }
-  .promo-copy strong{ text-decoration:underline; text-underline-offset:3px; white-space:nowrap; }
-  .promo-text-short{ display:none; }
-  .promo-pieces{
-    display:flex; align-items:center; gap:14px; flex-shrink:0;
-  }
-  .promo-piece{
-    width:30px; height:30px;
-    animation:piece-bob 3.4s ease-in-out infinite;
-  }
-  .promo-piece.piece-a{ animation-delay:0s; width:34px; height:34px; }
-  .promo-piece.piece-b{ animation-delay:0.7s; width:24px; height:24px; }
-  .promo-piece.piece-c{ animation-delay:1.4s; width:28px; height:28px; }
-  .promo-close{
-    position:absolute; right:10px; top:10px;
-    background:none; border:none; color:var(--sand); opacity:0.65;
-    font-size:1.2rem; line-height:1; cursor:pointer; padding:8px;
-    transition:opacity 0.2s ease;
-  }
-  .promo-close:hover{ opacity:1; }
-  @keyframes piece-bob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-9px); } }
-  @media (max-width:720px){
-    .promo-panel-inner{ flex-direction:column; gap:16px; padding:20px 40px; }
-    .promo-copy{ font-size:0.84rem; }
-    .promo-text-full{ display:none; }
-    .promo-text-short{ display:inline; }
-  }
-
   /* ---------- NAV ---------- */
   header.site{
     position:sticky; top:0; z-index:50;
@@ -275,7 +227,41 @@
   /* Hero illustration: scattered tumbled glass cluster */
   .hero-art{ position:relative; }
   .hero-art svg{ width:100%; height:auto; }
-  .shard-piece{ filter:drop-shadow(0 8px 18px rgba(47,79,73,0.16)); }
+  .shard-piece{
+    filter:drop-shadow(0 8px 18px rgba(47,79,73,0.16));
+    animation-timing-function:ease-in-out;
+    animation-iteration-count:infinite;
+  }
+  .shard-piece.piece-1{ animation-name:shard-wave-1; animation-duration:5.8s; animation-delay:-0.8s; }
+  .shard-piece.piece-2{ animation-name:shard-wave-2; animation-duration:7.4s; animation-delay:-3.8s; }
+  .shard-piece.piece-3{ animation-name:shard-wave-3; animation-duration:4.8s; animation-delay:-0.2s; }
+  .shard-piece.piece-4{ animation-name:shard-wave-4; animation-duration:8.2s; animation-delay:-5.2s; }
+  .shard-piece.piece-5{ animation-name:shard-wave-5; animation-duration:6.2s; animation-delay:-2.6s; }
+  .shard-piece.piece-6{ animation-name:shard-wave-6; animation-duration:7.0s; animation-delay:-1.4s; }
+  @keyframes shard-wave-1{
+    0%{ transform:translate(0,0); } 30%{ transform:translate(10px,-16px); }
+    55%{ transform:translate(4px,-4px); } 80%{ transform:translate(16px,-12px); } 100%{ transform:translate(0,0); }
+  }
+  @keyframes shard-wave-2{
+    0%{ transform:translate(0,0); } 25%{ transform:translate(14px,-8px); }
+    60%{ transform:translate(6px,-18px); } 85%{ transform:translate(12px,-4px); } 100%{ transform:translate(0,0); }
+  }
+  @keyframes shard-wave-3{
+    0%{ transform:translate(0,0); } 35%{ transform:translate(8px,-14px); }
+    65%{ transform:translate(16px,-6px); } 100%{ transform:translate(0,0); }
+  }
+  @keyframes shard-wave-4{
+    0%{ transform:translate(0,0); } 20%{ transform:translate(12px,-4px); }
+    50%{ transform:translate(6px,-16px); } 78%{ transform:translate(18px,-10px); } 100%{ transform:translate(0,0); }
+  }
+  @keyframes shard-wave-5{
+    0%{ transform:translate(0,0); } 40%{ transform:translate(16px,-10px); }
+    70%{ transform:translate(4px,-18px); } 100%{ transform:translate(0,0); }
+  }
+  @keyframes shard-wave-6{
+    0%{ transform:translate(0,0); } 30%{ transform:translate(6px,-18px); }
+    58%{ transform:translate(14px,-8px); } 82%{ transform:translate(2px,-12px); } 100%{ transform:translate(0,0); }
+  }
 
   /* ---------- NEW TO AI REASSURANCE PANEL ---------- */
   .reassure{

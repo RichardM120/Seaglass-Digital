@@ -94,22 +94,6 @@
   </nav>
 </header>
 
-<section class="promo-panel" id="promo-panel">
-  <div class="wrap promo-panel-inner">
-    <a class="promo-copy" href="mailto:richard@seaglassdigital.co.uk?subject=Tell me more about SeaGlass Digital">
-      <span class="promo-text-full">Every piece of seaglass started out broken, smoothed by the tide into something better — let's do the same with AI in your business.</span>
-      <span class="promo-text-short">Curious what AI could do for your business?</span>
-      <strong>Say hello&nbsp;→</strong>
-    </a>
-    <div class="promo-pieces" aria-hidden="true">
-      <svg class="promo-piece piece-a" viewBox="0 0 40 40" fill="none" focusable="false"><polygon points="20,3 34,14 29,33 11,33 6,14" fill="#AFD0C9"/></svg>
-      <svg class="promo-piece piece-b" viewBox="0 0 40 40" fill="none" focusable="false"><polygon points="20,3 34,14 29,33 11,33 6,14" fill="#C9A268"/></svg>
-      <svg class="promo-piece piece-c" viewBox="0 0 40 40" fill="none" focusable="false"><polygon points="20,3 34,14 29,33 11,33 6,14" fill="#8FB8A4"/></svg>
-    </div>
-  </div>
-  <button type="button" class="promo-close" id="promo-close" aria-label="Dismiss this message">&times;</button>
-</section>
-
 <main id="top">
 
   <!-- HERO -->
@@ -136,22 +120,22 @@
               <feGaussianBlur stdDeviation="0.6"/>
             </filter>
           </defs>
-          <g class="shard-piece" filter="url(#frost)">
+          <g class="shard-piece piece-1" filter="url(#frost)">
             <polygon points="140,40 230,20 260,110 190,160 110,120" fill="#8FB8A4" opacity="0.88" transform="rotate(-6 180 90)"/>
           </g>
-          <g class="shard-piece" filter="url(#frost)">
+          <g class="shard-piece piece-2" filter="url(#frost)">
             <polygon points="260,90 350,70 380,160 320,210 240,170" fill="#AFD0C9" opacity="0.9" transform="rotate(8 310 140)"/>
           </g>
-          <g class="shard-piece" filter="url(#frost)">
+          <g class="shard-piece piece-3" filter="url(#frost)">
             <polygon points="70,180 160,160 190,250 120,300 40,250" fill="#C9A268" opacity="0.92" transform="rotate(-4 115 230)"/>
           </g>
-          <g class="shard-piece" filter="url(#frost)">
+          <g class="shard-piece piece-4" filter="url(#frost)">
             <polygon points="220,220 320,200 350,300 270,350 190,300" fill="#8FB8A4" opacity="0.8" transform="rotate(5 270 275)"/>
           </g>
-          <g class="shard-piece" filter="url(#frost)">
+          <g class="shard-piece piece-5" filter="url(#frost)">
             <polygon points="330,250 410,240 420,320 360,350 310,300" fill="#B9C4BE" opacity="0.75" transform="rotate(-8 365 295)"/>
           </g>
-          <g class="shard-piece" filter="url(#frost)">
+          <g class="shard-piece piece-6" filter="url(#frost)">
             <polygon points="60,80 110,70 120,120 80,140 40,110" fill="#AFD0C9" opacity="0.7"/>
           </g>
         </svg>
@@ -292,20 +276,6 @@
 </div>
 
 <script>
-  var promoBar = document.getElementById('promo-panel');
-  var promoClose = document.getElementById('promo-close');
-  if (promoBar && promoClose) {
-    try {
-      if (localStorage.getItem('sg-promo-dismissed')) {
-        promoBar.classList.add('is-closed');
-      }
-    } catch (e) {}
-    promoClose.addEventListener('click', function(){
-      promoBar.classList.add('is-closed');
-      try { localStorage.setItem('sg-promo-dismissed', '1'); } catch (e) {}
-    });
-  }
-
   var navToggleBtn = document.getElementById('nav-toggle-btn');
   var navMenu = document.getElementById('nav-menu');
   if (navToggleBtn && navMenu) {
