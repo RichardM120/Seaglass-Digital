@@ -310,8 +310,8 @@
   /* ---------- GET INVOLVED ---------- */
   .involve{ background:var(--sand-deep); }
   .involve-head{ max-width:56ch; margin-bottom:48px; }
-  .involve-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); }
-  @media (max-width:900px){ .involve-grid{ grid-template-columns:1fr; } }
+  .involve-grid{ display:grid; grid-template-columns:repeat(2,1fr); max-width:820px; margin:0 auto; gap:var(--gap); }
+  @media (max-width:700px){ .involve-grid{ grid-template-columns:1fr; } }
   .involve-card{
     background:rgba(255,255,255,0.7);
     backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
