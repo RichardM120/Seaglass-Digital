@@ -94,6 +94,22 @@
   </nav>
 </header>
 
+<section class="promo-panel" id="promo-panel">
+  <div class="wrap promo-panel-inner">
+    <a class="promo-copy" href="mailto:richard@seaglassdigital.co.uk?subject=Tell me more about SeaGlass Digital">
+      <span class="promo-text-full">Every piece of seaglass started out broken, smoothed by the tide into something better — let's do the same with AI in your business.</span>
+      <span class="promo-text-short">Curious what AI could do for your business?</span>
+      <strong>Say hello&nbsp;→</strong>
+    </a>
+    <div class="promo-pieces" aria-hidden="true">
+      <svg class="promo-piece piece-a" viewBox="0 0 40 40" fill="none" focusable="false"><polygon points="20,3 34,14 29,33 11,33 6,14" fill="#AFD0C9"/></svg>
+      <svg class="promo-piece piece-b" viewBox="0 0 40 40" fill="none" focusable="false"><polygon points="20,3 34,14 29,33 11,33 6,14" fill="#C9A268"/></svg>
+      <svg class="promo-piece piece-c" viewBox="0 0 40 40" fill="none" focusable="false"><polygon points="20,3 34,14 29,33 11,33 6,14" fill="#8FB8A4"/></svg>
+    </div>
+  </div>
+  <button type="button" class="promo-close" id="promo-close" aria-label="Dismiss this message">&times;</button>
+</section>
+
 <main id="top">
 
   <!-- HERO -->
@@ -276,6 +292,20 @@
 </div>
 
 <script>
+  var promoBar = document.getElementById('promo-panel');
+  var promoClose = document.getElementById('promo-close');
+  if (promoBar && promoClose) {
+    try {
+      if (localStorage.getItem('sg-promo-dismissed')) {
+        promoBar.classList.add('is-closed');
+      }
+    } catch (e) {}
+    promoClose.addEventListener('click', function(){
+      promoBar.classList.add('is-closed');
+      try { localStorage.setItem('sg-promo-dismissed', '1'); } catch (e) {}
+    });
+  }
+
   var navToggleBtn = document.getElementById('nav-toggle-btn');
   var navMenu = document.getElementById('nav-menu');
   if (navToggleBtn && navMenu) {
