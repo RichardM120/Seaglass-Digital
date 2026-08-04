@@ -12,7 +12,7 @@
     --white:       #FFFFFF;
     --radius-soft: 8px;
     --max: 1180px;
-    --gap: 24px;
+    --gap: 16px;
     --shadow-soft: 0 14px 30px -18px rgba(47,79,73,0.35);
     --shadow-soft-hover: 0 20px 36px -18px rgba(47,79,73,0.42);
   }
@@ -53,9 +53,9 @@
   a{ color:inherit; }
   img,svg{ display:block; max-width:100%; }
   .wrap{ max-width:var(--max); margin:0 auto; padding:0 32px; }
-  section{ padding:96px 0; }
+  section{ padding:64px 0; }
   @media (max-width:720px){
-    section{ padding:40px 0; }
+    section{ padding:28px 0; }
     .wrap{ padding:0 20px; }
     body{ padding-bottom:68px; } /* room for the sticky mobile CTA bar */
     .hero{ padding:24px 0 36px; }
@@ -219,8 +219,8 @@
 
   .trust-strip{
     margin-top:40px; display:flex; gap:28px; flex-wrap:wrap;
-    font-family:'IBM Plex Mono', monospace; font-size:0.76rem; letter-spacing:0.03em;
-    color:var(--sea-deep); opacity:0.85;
+    font-family:'IBM Plex Mono', monospace; font-size:0.76rem; font-weight:600; letter-spacing:0.03em;
+    color:var(--sea-deep); opacity:1;
   }
   .trust-strip span::before{ content:"— "; }
 
