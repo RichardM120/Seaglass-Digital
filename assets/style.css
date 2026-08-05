@@ -65,7 +65,8 @@
     .pull-quote{ margin-top:20px; }
     .reassure{ padding:26px 0; }
     .hero-grid{ gap:32px; }
-    .hero p.lead{ margin:16px 0 22px; }
+    .hero p.hero-subtitle{ margin:12px 0 0; }
+    .hero p.lead{ margin:12px 0 22px; }
     .trust-strip{ margin-top:24px; gap:16px; }
   }
 
@@ -203,8 +204,11 @@
   @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
   .hero h1{ font-size:clamp(2.3rem, 4.4vw, 3.4rem); }
   .hero h1 em{ font-style:italic; color:var(--glass-amber-text); }
+  .hero p.hero-subtitle{
+    font-size:1.2rem; font-weight:600; max-width:46ch; margin:16px 0 0; color:var(--ink); opacity:0.92;
+  }
   .hero p.lead{
-    font-size:1.14rem; max-width:46ch; margin:22px 0 32px; color:var(--ink); opacity:0.86;
+    font-size:1.14rem; max-width:46ch; margin:14px 0 32px; color:var(--ink); opacity:0.86;
   }
   .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
   .btn{
