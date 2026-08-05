@@ -427,7 +427,7 @@
   font-family:'IBM Plex Mono',monospace; font-size:0.82rem; letter-spacing:0.04em;
   text-transform:uppercase; color:var(--sea-deep); opacity:0.7; margin-top:16px; display:block;
 }
-.cs-hero-image{ width:100%; height:auto; border-radius:12px; margin-top:32px; display:block; }
+.cs-hero-image{ width:100%; max-width:760px; height:auto; border-radius:12px; margin-top:32px; display:block; }
 .cs-body{ padding-top:0; }
 .cs-body h2{ font-size:1.4rem; margin:44px 0 14px; max-width:70ch; }
 .cs-body p{ opacity:0.86; margin:0 0 16px; max-width:70ch; }
