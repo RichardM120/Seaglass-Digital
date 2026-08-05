@@ -279,10 +279,10 @@
     width:36px; height:36px; flex-shrink:0; margin-top:4px; color:var(--sea-deep);
   }
   .reassure h2{
-    font-size:1.25rem; margin-bottom:8px; color:var(--sea-deep);
+    font-size:clamp(1.6rem,2.6vw,2rem); margin-bottom:8px; color:var(--sea-deep);
   }
   .reassure p{
-    margin:0; font-size:0.98rem; opacity:0.88; max-width:70ch; color:var(--ink);
+    margin:0; font-size:1.05rem; opacity:0.88; max-width:70ch; color:var(--ink);
   }
   @media (max-width:600px){
     .reassure-inner{ flex-direction:column; gap:14px; }
