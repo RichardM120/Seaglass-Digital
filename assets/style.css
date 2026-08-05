@@ -30,7 +30,7 @@
   }
   .page-bg{
     position:fixed; inset:0; z-index:-1; pointer-events:none;
-    opacity:0.1;
+    opacity:0.25;
     background-image:url("pebble-bg.svg");
     background-repeat:no-repeat;
     background-size:cover;
@@ -61,7 +61,7 @@
   a{ color:inherit; }
   img,svg{ display:block; max-width:100%; }
   .wrap{ max-width:var(--max); margin:0 auto; padding:0 32px; }
-  section{ padding:64px 0; }
+  section{ padding:64px 0; background:rgba(255,255,255,0.72); }
   @media (max-width:720px){
     section{ padding:28px 0; }
     .wrap{ padding:0 20px; }

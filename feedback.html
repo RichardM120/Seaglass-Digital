@@ -112,7 +112,16 @@
       </svg>
       <span class="brand-word">seaglass<span class="brand-word-sub">digital</span></span>
     </a>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="index.html#pain">The problem</a></li>
+      <li><a href="index.html#case">Our work</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="index.html#involve">Contact</a></li>
+    </ul>
     <a class="nav-cta" href="index.html">Back to the site</a>
+    <button type="button" class="nav-toggle-btn" id="nav-toggle-btn" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
   </nav>
 </header>
 
@@ -494,6 +503,31 @@
     });
   });
 })();
+</script>
+
+<script>
+  var navToggleBtn = document.getElementById('nav-toggle-btn');
+  var navMenu = document.getElementById('nav-menu');
+  if (navToggleBtn && navMenu) {
+    navToggleBtn.addEventListener('click', function(){
+      var isOpen = navToggleBtn.getAttribute('aria-expanded') === 'true';
+      navToggleBtn.setAttribute('aria-expanded', String(!isOpen));
+      navMenu.classList.toggle('nav-open', !isOpen);
+    });
+    navMenu.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navToggleBtn.setAttribute('aria-expanded', 'false');
+        navMenu.classList.remove('nav-open');
+      });
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && navToggleBtn.getAttribute('aria-expanded') === 'true') {
+        navToggleBtn.setAttribute('aria-expanded', 'false');
+        navMenu.classList.remove('nav-open');
+        navToggleBtn.focus();
+      }
+    });
+  }
 </script>
 
 </body>
