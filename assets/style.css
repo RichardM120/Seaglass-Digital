@@ -28,6 +28,13 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
+  .page-bg{
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background-image:url("pebble-bg.svg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center top;
+  }
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
     *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
@@ -198,31 +205,6 @@
 
   /* ---------- HERO ---------- */
   .hero{ padding:44px 0 70px; overflow:hidden; position:relative; }
-  .hero-bg{
-    position:absolute; inset:0; z-index:0; pointer-events:none;
-    background:linear-gradient(180deg, var(--sand) 0%, rgba(243,245,240,0.55) 35%, rgba(243,245,240,0.55) 70%, var(--sand) 100%);
-  }
-  .hero-bg svg{ position:absolute; inset:0; width:100%; height:100%; opacity:0.4; }
-  .hero-glass-piece{ animation:heroGlassBreathe 9s ease-in-out infinite; }
-  @keyframes heroGlassBreathe{
-    0%{ transform:scale(1); }
-    50%{ transform:scale(1.035); }
-    100%{ transform:scale(1); }
-  }
-  .hero-glass-glow{ animation:heroGlowPulse 9s ease-in-out infinite; }
-  @keyframes heroGlowPulse{
-    0%{ opacity:0.35; }
-    50%{ opacity:0.7; }
-    100%{ opacity:0.35; }
-  }
-  .hero-glint{ opacity:0; }
-  .hero-glint.g1{ animation:heroTwinkle 6s ease-in-out infinite 0.5s; }
-  .hero-glint.g2{ animation:heroTwinkle 5s ease-in-out infinite 2.4s; }
-  .hero-glint.g3{ animation:heroTwinkle 7s ease-in-out infinite 4s; }
-  @keyframes heroTwinkle{
-    0%,80%,100%{ opacity:0; transform:scale(0.6); }
-    90%{ opacity:0.95; transform:scale(1.25); }
-  }
   .hero-grid{
     position:relative; z-index:1;
     display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
