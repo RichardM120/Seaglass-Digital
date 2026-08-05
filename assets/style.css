@@ -147,6 +147,10 @@
     padding:6px 0; border-bottom:1px solid transparent;
   }
   .nav-links a:hover{ border-bottom-color:var(--glass-amber); }
+  .nav-links a[aria-current="page"],
+  .nav-links a.nav-current{
+    color:var(--glass-amber-text); font-weight:600; border-bottom-color:var(--glass-amber);
+  }
   .nav-cta{
     background:var(--sea-deep); color:var(--white); padding:9px 18px;
     border-radius:3px; text-decoration:none; font-size:0.88rem; font-weight:600;
