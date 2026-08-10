@@ -269,10 +269,14 @@
     visibility:hidden; pointer-events:none;
   }
 
-  /* Static fallback for JS-disabled browsers: all slides stacked */
-  .hero:not(.is-carousel) .hero-slide + .hero-slide{ margin-top:4px; }
-  .hero.is-carousel .hero-slide{ display:none; }
-  .hero.is-carousel .hero-slide.is-active{ display:flex; animation:hero-fade-in 0.5s ease; }
+  /* Only the active slide ever renders — true regardless of whether JS
+     has run yet, so panels always rotate in place via the nav controls
+     and never stack on top of each other (e.g. on first paint, or if
+     the enhancement script is slow/blocked). JS's job is just to move
+     the .is-active class and wire up the controls below. */
+  .hero-slide{ display:none; }
+  .hero-slide.is-active{ display:flex; }
+  .hero.is-carousel .hero-slide.is-active{ animation:hero-fade-in 0.5s ease; }
   @keyframes hero-fade-in{
     from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:translateY(0); }
   }
