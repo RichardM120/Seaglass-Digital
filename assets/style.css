@@ -496,7 +496,9 @@
   visibility:hidden; pointer-events:none;
 }
 
-/* Static fallback (no JS, or prefers-reduced-motion): all 4 panels stacked */
+/* Static fallback for JS-disabled browsers only: all 4 panels stacked.
+   (Reduced-motion users still get the rotating carousel — the global
+   reduced-motion rule above just makes the slide change instant.) */
 .hero:not(.is-carousel) .hero-slide + .hero-slide{
   margin-top:32px; padding-top:32px; border-top:1px solid rgba(47,79,73,0.15);
 }

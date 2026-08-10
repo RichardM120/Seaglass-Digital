@@ -445,9 +445,12 @@
     sections.forEach(function(section){ observer.observe(section); });
   })();
 
-  // Auto-rotating hero panel: 4 full-size slides (hero + 3 promos),
-  // progressively enhanced, off entirely for reduced-motion users
-  // (they get all 4 panels stacked statically instead).
+  // Auto-rotating hero panel: 4 full-size slides (hero + 3 promos), on
+  // every device. Rotates the same way on desktop and mobile; the
+  // site-wide reduced-motion rule (see top of stylesheet) still swaps
+  // the transition to an instant cut instead of a slide/fade for anyone
+  // with that OS setting on, so it's never a jarring motion, but the
+  // content keeps advancing rather than falling back to a static stack.
   (function(){
     var section = document.getElementById('hero-rotator');
     if (!section) return;
@@ -457,8 +460,7 @@
     var prevBtn = section.querySelector('.hero-prev');
     var nextBtn = section.querySelector('.hero-next');
     var toggleBtn = document.getElementById('hero-toggle');
-    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion || slides.length < 2 || !prevBtn || !nextBtn || !toggleBtn) return;
+    if (slides.length < 2 || !prevBtn || !nextBtn || !toggleBtn) return;
 
     section.classList.add('is-carousel');
 
