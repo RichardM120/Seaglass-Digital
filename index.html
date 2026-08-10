@@ -103,20 +103,85 @@
 
 <main id="top">
 
-  <!-- HERO: single banner, full-height square photo with an opaque text panel -->
-  <section class="hero">
-    <div class="hero-banner">
-      <div class="hero-media" aria-hidden="true">
-        <img src="assets/images/promo-hero-dashboard.jpg" alt="" width="1000" height="1000" loading="eager">
-      </div>
-      <div class="hero-copy">
-        <span class="eyebrow">SeaGlass Digital · AI for independent businesses</span>
-        <h1>Run your business.<br>Let AI handle the admin.</h1>
-        <p class="hero-subtitle">The right AI tools for independent teams drowning in admin, fitted to your setup and taught to your team.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="mailto:richard@seaglassdigital.co.uk?subject=Book an operations audit">Book an audit</a>
+  <!-- HERO ROTATOR: 4 full-height slides, auto-rotating -->
+  <section class="hero" id="hero-rotator">
+    <div class="hero-slides" id="hero-slides">
+
+      <article class="hero-slide hero-banner is-active" id="hero-slide-0">
+        <div class="hero-media" aria-hidden="true">
+          <img src="assets/images/promo-hero-dashboard.jpg" alt="" width="1000" height="1000" loading="eager">
         </div>
+        <div class="hero-copy">
+          <span class="eyebrow">SeaGlass Digital · AI for independent businesses</span>
+          <h1>Run your business.<br>Let AI handle the admin.</h1>
+          <p class="hero-subtitle">The right AI tools for independent teams drowning in admin, fitted to your setup and taught to your team.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="mailto:richard@seaglassdigital.co.uk?subject=Book an operations audit">Book an audit</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="hero-slide hero-banner" id="hero-slide-1">
+        <div class="hero-media" aria-hidden="true">
+          <img src="assets/images/promo-ai-tools.jpg" alt="" width="1000" height="1000" loading="lazy">
+        </div>
+        <div class="hero-copy">
+          <span class="eyebrow">How we help · AI, simplified</span>
+          <h1>Too many AI tools.<br>Not enough clarity.</h1>
+          <p class="hero-subtitle">We match the right tool, and only the right tool, to how your business actually runs.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="mailto:richard@seaglassdigital.co.uk?subject=Which AI tools do we need?">Get an AI tools audit</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="hero-slide hero-banner" id="hero-slide-2">
+        <div class="hero-media" aria-hidden="true">
+          <img src="assets/images/promo-digital.jpg" alt="" width="1000" height="1000" loading="lazy">
+        </div>
+        <div class="hero-copy">
+          <span class="eyebrow">How we help · Digital consultancy</span>
+          <h1>One website. One voice.<br>Less to manage.</h1>
+          <p class="hero-subtitle">We simplify your online presence so it looks and sounds like you everywhere.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="mailto:richard@seaglassdigital.co.uk?subject=Simplify our website and social">Simplify my digital presence</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="hero-slide hero-banner" id="hero-slide-3">
+        <div class="hero-media" aria-hidden="true">
+          <img src="assets/images/promo-automation.jpg" alt="" width="1000" height="1000" loading="lazy">
+        </div>
+        <div class="hero-copy">
+          <span class="eyebrow">How we help · Backend automation</span>
+          <h1>Automate the admin.<br>Not your people.</h1>
+          <p class="hero-subtitle">We automate the repetitive stuff behind the scenes, so your team gets that time back.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="mailto:richard@seaglassdigital.co.uk?subject=Automate our admin">Free up my team's time</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="hero-controls">
+      <button type="button" class="hero-arrow hero-prev" aria-label="Previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <div class="hero-dots" role="tablist" aria-label="Choose a panel">
+        <button type="button" class="hero-dot is-active" role="tab" aria-selected="true" aria-controls="hero-slide-0" data-index="0"><span class="visually-hidden">Panel 1: Run your business</span></button>
+        <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-1" data-index="1"><span class="visually-hidden">Panel 2: AI tools</span></button>
+        <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-2" data-index="2"><span class="visually-hidden">Panel 3: Digital consultancy</span></button>
+        <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-3" data-index="3"><span class="visually-hidden">Panel 4: Backend automation</span></button>
       </div>
+      <button type="button" class="hero-arrow hero-next" aria-label="Next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <button type="button" class="hero-toggle" id="hero-toggle" aria-pressed="false" aria-label="Pause automatic rotation">
+        <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+        <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>
+      </button>
     </div>
   </section>
 
@@ -155,12 +220,26 @@
         <div><strong>120+</strong><span>brands across 180 markets</span></div>
         <div><strong>40+</strong><span>agencies, one standard method</span></div>
       </div>
-      <a class="case-mini" href="case-studies/hsbc-genai.html">
-        <span class="case-tag">AI &amp; Innovation</span>
-        <h3>Bringing safe GenAI to 14,000+ bank staff</h3>
-        <p>The same structured, human-in-the-loop approach now applied to a five-person shop.</p>
-        <span class="case-link">Read the case study →</span>
-      </a>
+      <div class="case-grid">
+        <a class="case-mini" href="case-studies/hsbc-genai.html">
+          <span class="case-tag">AI &amp; Innovation</span>
+          <h3>Bringing safe GenAI to 14,000+ bank staff</h3>
+          <p>The same structured, human-in-the-loop approach now applied to a five-person shop.</p>
+          <span class="case-link">Read the case study →</span>
+        </a>
+        <a class="case-mini" href="case-studies/diageo-bedrock.html">
+          <span class="case-tag">Using AI for Accessibility</span>
+          <h3>An accessibility pilot, scaled to 120 brands</h3>
+          <p>Founded and grew a global system that needed a simple solution to create thousands of image ’Alt Text’ descriptions for 120+ brands across 180 markets into multiple languages.</p>
+          <span class="case-link">Read the case study →</span>
+        </a>
+        <a class="case-mini" href="case-studies/diageo-cx-practice.html">
+          <span class="case-tag">CX &amp; UX Practice</span>
+          <h3>Turning a 4-person team into a global practice</h3>
+          <p>Built a global CX/UX practice from scratch, standardising structured problem-solving across 40+ agencies. The same structured method now applied to single-site small businesses.</p>
+          <span class="case-link">Read the case study →</span>
+        </a>
+      </div>
       <a class="case-all-link" href="case-studies/index.html">See all case studies →</a>
     </div>
   </section>
@@ -175,7 +254,7 @@
       <div>
         <h2>How we work</h2>
         <p>Audit your pain point. Fit the right tool around how you already work. Train your team to run it — then we step back.</p>
-        <a class="case-link" href="process.html">See how it breaks down →</a>
+        <a class="btn btn-primary how-we-work-link" href="process.html">See how it breaks down →</a>
       </div>
     </div>
   </section>
@@ -267,6 +346,109 @@
     }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
 
     sections.forEach(function(section){ observer.observe(section); });
+  })();
+
+  // Auto-rotating hero panel: 4 full-height slides, on every device.
+  // The site-wide reduced-motion rule (top of stylesheet) still swaps
+  // the transition to an instant cut for anyone with that OS setting on.
+  (function(){
+    var section = document.getElementById('hero-rotator');
+    if (!section) return;
+    var slidesWrap = document.getElementById('hero-slides');
+    var slides = Array.prototype.slice.call(slidesWrap.children);
+    var dots = Array.prototype.slice.call(section.querySelectorAll('.hero-dot'));
+    var prevBtn = section.querySelector('.hero-prev');
+    var nextBtn = section.querySelector('.hero-next');
+    var toggleBtn = document.getElementById('hero-toggle');
+    if (slides.length < 2 || !prevBtn || !nextBtn || !toggleBtn) return;
+
+    section.classList.add('is-carousel');
+
+    var live = document.createElement('div');
+    live.setAttribute('aria-live', 'polite');
+    live.className = 'visually-hidden';
+    section.appendChild(live);
+
+    var current = 0;
+    var timer = null;
+    var playing = true;
+    var DURATION = 5000;
+
+    // Pin the container to the tallest slide's natural height so rotating
+    // between shorter/longer copy never resizes the panel.
+    function lockHeight(){
+      section.classList.add('measuring');
+      var maxH = 0;
+      slides.forEach(function(s){ maxH = Math.max(maxH, s.offsetHeight); });
+      section.classList.remove('measuring');
+      slidesWrap.style.minHeight = maxH ? maxH + 'px' : '';
+    }
+
+    function announce(i){
+      var heading = slides[i].querySelector('h1');
+      live.textContent = 'Showing ' + (i + 1) + ' of ' + slides.length + ': ' + (heading ? heading.textContent : '');
+    }
+
+    function show(i){
+      slides[current].classList.remove('is-active');
+      dots[current].classList.remove('is-active');
+      dots[current].setAttribute('aria-selected', 'false');
+      current = (i + slides.length) % slides.length;
+      slides[current].classList.add('is-active');
+      dots[current].classList.add('is-active');
+      dots[current].setAttribute('aria-selected', 'true');
+      announce(current);
+    }
+
+    function next(){ show(current + 1); }
+    function prev(){ show(current - 1); }
+
+    function start(){
+      stop();
+      timer = window.setInterval(next, DURATION);
+      playing = true;
+      toggleBtn.setAttribute('aria-pressed', 'false');
+      toggleBtn.setAttribute('aria-label', 'Pause automatic rotation');
+    }
+    function stop(){
+      if (timer){ window.clearInterval(timer); timer = null; }
+    }
+    function pause(){
+      stop();
+      playing = false;
+      toggleBtn.setAttribute('aria-pressed', 'true');
+      toggleBtn.setAttribute('aria-label', 'Resume automatic rotation');
+    }
+
+    prevBtn.addEventListener('click', function(){ prev(); start(); });
+    nextBtn.addEventListener('click', function(){ next(); start(); });
+    dots.forEach(function(dot, i){
+      dot.addEventListener('click', function(){ show(i); start(); });
+    });
+    toggleBtn.addEventListener('click', function(){
+      if (playing){ pause(); } else { start(); }
+    });
+
+    section.addEventListener('mouseenter', stop);
+    section.addEventListener('mouseleave', function(){ if (playing) start(); });
+    section.addEventListener('focusin', stop);
+    section.addEventListener('focusout', function(){ if (playing) start(); });
+
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden){ stop(); } else if (playing){ start(); }
+    });
+
+    lockHeight();
+    if (document.fonts && document.fonts.ready){
+      document.fonts.ready.then(lockHeight);
+    }
+    var resizeTimer;
+    window.addEventListener('resize', function(){
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(lockHeight, 150);
+    });
+
+    start();
   })();
 </script>
 </body>
