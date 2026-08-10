@@ -15,17 +15,36 @@
     --gap: 16px;
     --shadow-soft: 0 14px 30px -18px rgba(47,79,73,0.35);
     --shadow-soft-hover: 0 20px 36px -18px rgba(47,79,73,0.42);
+
+    /* Type scale: ratio 1.2 ("minor third"), rounded to practical values.
+       Every font-size in this file resolves to one of these steps —
+       no ad hoc sizes. Base is 1rem = 17px (see html{} below), so the
+       scale still honours a user's browser/OS text-size preference
+       instead of being pinned to a hard pixel value. */
+    --fs-2xs:  0.7rem;    /* ~12px — mono labels, eyebrows, tags */
+    --fs-xs:   0.85rem;   /* ~14px — captions, secondary/meta text */
+    --fs-sm:   0.95rem;   /* ~16px — dense UI text, nav links */
+    --fs-base: 1rem;      /* 17px  — body copy */
+    --fs-md:   1.2rem;    /* ~20px — lead paragraphs, sub-heads */
+    --fs-lg:   1.45rem;   /* ~25px — card/component headings (h3) */
+    --fs-xl:   1.75rem;   /* ~30px — section headings (h2) */
+    --fs-2xl:  2.1rem;    /* ~36px — display h1 / hard numbers */
+    --fs-3xl:  2.5rem;    /* ~42px — large page-hero h1 */
+
+    --lh-tight: 1.1;      /* large display type only */
+    --lh-heading: 1.25;   /* headings under --fs-xl: room to wrap */
+    --lh-body: 1.6;       /* running text */
   }
 
   *{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
+  html{ font-size:106.25%; scroll-behavior:smooth; } /* 1rem = 17px at default browser zoom, but still scales with user font-size prefs */
   body{
     margin:0;
     background:var(--sand);
     color:var(--ink);
     font-family:'Inter', sans-serif;
-    font-size:17px;
-    line-height:1.6;
+    font-size:var(--fs-base);
+    line-height:var(--lh-body);
     -webkit-font-smoothing:antialiased;
   }
   .page-bg{
@@ -44,13 +63,16 @@
   h1,h2,h3{
     font-family:'Fraunces', serif;
     font-weight:500;
-    line-height:1.08;
+    line-height:var(--lh-heading);
     margin:0;
     color:var(--sea-deep);
   }
+  h1{ font-size:var(--fs-2xl); line-height:var(--lh-tight); }
+  h2{ font-size:var(--fs-xl); }
+  h3{ font-size:var(--fs-lg); }
   .eyebrow{
     font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
+    font-size:var(--fs-2xs);
     letter-spacing:0.14em;
     text-transform:uppercase;
     color:var(--sea-deep);
@@ -84,7 +106,7 @@
       box-shadow:0 -8px 20px -12px rgba(47,79,73,0.25);
     }
     .mobile-cta-bar .btn{
-      width:100%; justify-content:center; padding:14px 20px; font-size:1rem;
+      width:100%; justify-content:center; padding:14px 20px; font-size:var(--fs-base);
     }
   }
 
@@ -97,7 +119,7 @@
     position:absolute; left:-9999px; top:0;
     background:var(--sea-deep); color:var(--white);
     padding:12px 20px; z-index:100; border-radius:0 0 4px 0;
-    font-size:0.9rem; font-weight:600; text-decoration:none;
+    font-size:var(--fs-sm); font-weight:600; text-decoration:none;
   }
   .skip-link:focus{
     left:0;
@@ -125,6 +147,8 @@
   .brand:hover .brand-word, .brand:focus-visible .brand-word{ text-decoration:underline; text-decoration-color:var(--glass-amber); text-decoration-thickness:2px; text-underline-offset:3px; }
   .brand-mark{ width:44px; height:44px; }
   .brand-word{
+    /* Logo/wordmark: an identity element, deliberately outside the
+       content type scale (same convention as sizing a brand mark in px). */
     font-family:'Fraunces', serif; font-style:italic; font-weight:500;
     font-size:1.9rem; color:#1E3733; letter-spacing:0.01em; line-height:1;
     white-space:nowrap;
@@ -141,7 +165,7 @@
   }
   .nav-links{ display:flex; gap:30px; list-style:none; margin:0; padding:0; }
   .nav-links a{
-    text-decoration:none; font-size:0.92rem; font-weight:500; color:var(--ink);
+    text-decoration:none; font-size:var(--fs-sm); font-weight:500; color:var(--ink);
     padding:6px 4px; margin:0 -4px; border-radius:3px;
     border-bottom:2px solid transparent;
     transition:color 0.15s ease, border-bottom-color 0.15s ease, background 0.15s ease, font-weight 0.15s ease;
@@ -156,7 +180,7 @@
   }
   .nav-cta{
     background:var(--sea-deep); color:var(--white); padding:9px 18px;
-    border-radius:3px; text-decoration:none; font-size:0.88rem; font-weight:600;
+    border-radius:3px; text-decoration:none; font-size:var(--fs-xs); font-weight:600;
     border:1px solid var(--sea-deep);
     transition:background 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
@@ -167,8 +191,8 @@
 
   /* Mobile nav toggle (accessible button, JS-driven) */
   .nav-toggle-btn{
-    display:none; flex-direction:column; justify-content:center; gap:5px;
-    cursor:pointer; padding:10px; margin-left:14px; -webkit-tap-highlight-color:transparent;
+    display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px;
+    cursor:pointer; min-width:44px; min-height:44px; margin-left:14px; -webkit-tap-highlight-color:transparent;
     background:none; border:2px solid transparent; border-radius:4px;
     transition:background 0.15s ease, border-color 0.15s ease;
   }
@@ -193,7 +217,7 @@
       transition:opacity 0.2s ease, transform 0.2s ease;
     }
     .nav-links a{
-      padding:14px 12px; margin:0 -12px; border-bottom:1px solid rgba(47,79,73,0.08); font-size:1rem;
+      padding:14px 12px; margin:0 -12px; border-bottom:1px solid rgba(47,79,73,0.08); font-size:var(--fs-base);
       border-radius:4px;
     }
     .nav-links a:hover, .nav-links a:focus-visible{ background:rgba(143,184,164,0.28); }
@@ -244,15 +268,15 @@
     display:flex; flex-direction:column; justify-content:center;
     box-shadow:24px 0 48px -24px rgba(30,43,39,0.35);
   }
-  .hero h1{ font-size:clamp(1.8rem, 3.2vw, 2.5rem); }
+  .hero h1{ font-size:clamp(var(--fs-2xl), 3.2vw, var(--fs-3xl)); line-height:var(--lh-tight); }
   .hero p.hero-subtitle{
-    font-size:1.02rem; font-weight:600; max-width:46ch; margin:12px 0 0; color:var(--ink); opacity:0.92;
+    font-size:var(--fs-md); font-weight:600; line-height:1.5; max-width:46ch; margin:12px 0 0; color:var(--ink); opacity:0.92;
   }
   .btn-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:22px; }
   .btn{
     display:inline-flex; align-items:center; gap:8px;
     padding:11px 20px; border-radius:3px; text-decoration:none;
-    font-weight:600; font-size:0.9rem; border:1px solid transparent;
+    font-weight:600; font-size:var(--fs-sm); border:1px solid transparent;
   }
   .btn-primary{ background:var(--glass-amber); color:var(--ink); }
   .btn-primary:hover{ background:#bb9257; }
@@ -280,10 +304,10 @@
     width:36px; height:36px; flex-shrink:0; margin-top:4px; color:var(--sea-deep);
   }
   .how-we-work h2{
-    font-size:clamp(1.5rem,2.4vw,1.9rem); margin-bottom:8px; color:var(--sea-deep);
+    font-size:clamp(var(--fs-xl), 2.4vw, var(--fs-2xl)); margin-bottom:8px; color:var(--sea-deep);
   }
   .how-we-work p{
-    margin:0; font-size:1.02rem; opacity:0.9; max-width:70ch; color:var(--ink);
+    margin:0; font-size:var(--fs-md); line-height:1.5; opacity:0.9; max-width:70ch; color:var(--ink);
   }
   .how-we-work .case-link{ display:inline-block; margin-top:10px; }
   @media (max-width:600px){
@@ -294,7 +318,7 @@
   .pain{ background:var(--sand-deep); }
   .pain-line{
     font-family:'Fraunces', serif; font-weight:500; color:var(--sea-deep);
-    font-size:clamp(1.4rem, 2.6vw, 1.9rem); line-height:1.4; max-width:38ch; margin:0;
+    font-size:clamp(var(--fs-xl), 2.6vw, var(--fs-2xl)); line-height:1.4; max-width:38ch; margin:0;
   }
 
   /* ---------- SAVINGS / GROWTH ---------- */
@@ -304,8 +328,8 @@
     background:rgba(255,255,255,0.7); border:1px solid rgba(255,255,255,0.8);
     border-radius:var(--radius-soft); padding:28px 26px;
   }
-  .pillar h3{ font-size:1.1rem; margin-bottom:10px; }
-  .pillar p{ font-size:0.94rem; opacity:0.82; margin:0; }
+  .pillar h3{ margin-bottom:10px; }
+  .pillar p{ font-size:var(--fs-sm); line-height:1.55; opacity:0.82; margin:0; }
 
   /* ---------- CASE STUDY / PROOF ---------- */
   .case{ }
@@ -314,8 +338,8 @@
     display:flex; gap:40px; flex-wrap:wrap; margin:0 0 36px;
     padding:26px 0; border-top:1px solid rgba(47,79,73,0.15); border-bottom:1px solid rgba(47,79,73,0.15);
   }
-  .proof-stats div strong{ display:block; font-family:'Fraunces',serif; font-size:1.9rem; color:var(--glass-amber-text); }
-  .proof-stats div span{ font-size:0.78rem; opacity:0.7; }
+  .proof-stats div strong{ display:block; font-family:'Fraunces',serif; font-size:var(--fs-2xl); line-height:var(--lh-tight); color:var(--glass-amber-text); }
+  .proof-stats div span{ font-size:var(--fs-xs); opacity:0.7; }
   .case-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); }
   @media (max-width:900px){ .case-grid{ grid-template-columns:1fr; } }
   .case-mini{
@@ -332,19 +356,18 @@
     transform:translateY(-4px);
     box-shadow:var(--shadow-soft-hover);
   }
-  .case-mini h3{ font-size:1.08rem; margin:14px 0 10px; }
-  .case-mini p{ font-size:0.88rem; opacity:0.78; margin:0 0 16px; }
+  .case-mini h3{ margin:14px 0 10px; }
+  .case-mini p{ font-size:var(--fs-xs); line-height:1.5; opacity:0.78; margin:0 0 16px; }
   .case-link{
-    font-family:'IBM Plex Mono',monospace; font-size:0.76rem; letter-spacing:0.02em;
+    font-family:'IBM Plex Mono',monospace; font-size:var(--fs-xs); letter-spacing:0.02em;
     color:var(--glass-amber-text); font-weight:500;
   }
   .case-tag{
-    display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:0.7rem;
+    display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:var(--fs-2xs);
     letter-spacing:0.08em; text-transform:uppercase; color:var(--sea-deep);
     background:var(--glass-aqua); padding:5px 10px; border-radius:2px; margin-bottom:18px;
   }
-  .case h3{ font-size:1.5rem; margin-bottom:14px; }
-  .case-all-link{ display:inline-block; margin-top:22px; font-weight:600; color:var(--sea-deep); text-decoration:none; }
+  .case-all-link{ display:inline-block; margin-top:22px; font-weight:600; font-size:var(--fs-sm); color:var(--sea-deep); text-decoration:none; }
   .case-all-link:hover{ text-decoration:underline; }
 
   /* ---------- FAQ ---------- */
@@ -352,7 +375,7 @@
     max-width:760px; margin:0 auto 40px;
     display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;
   }
-  .faq-intro p{ margin:0; max-width:52ch; font-size:1rem; color:var(--ink); opacity:0.85; }
+  .faq-intro p{ margin:0; max-width:52ch; font-size:var(--fs-base); color:var(--ink); opacity:0.85; }
   .faq-intro .btn{ flex-shrink:0; }
   @media (max-width:640px){
     .faq-intro{ flex-direction:column; align-items:flex-start; margin-bottom:28px; }
@@ -366,8 +389,8 @@
   }
   .faq-item summary{
     display:flex; align-items:center; justify-content:space-between; gap:16px;
-    padding:20px 24px; cursor:pointer;
-    font-family:'Fraunces', serif; font-weight:500; font-size:1.05rem;
+    padding:20px 24px; cursor:pointer; min-height:44px;
+    font-family:'Fraunces', serif; font-weight:500; font-size:var(--fs-md); line-height:1.35;
     color:var(--sea-deep); list-style:none;
   }
   .faq-item summary::-webkit-details-marker{ display:none; }
@@ -377,17 +400,17 @@
   .faq-chevron{ width:18px; height:18px; flex-shrink:0; color:var(--glass-amber-text); transition:transform 0.25s ease; }
   .faq-item[open] .faq-chevron{ transform:rotate(180deg); }
   .faq-answer{ padding:0 24px 22px; }
-  .faq-answer p{ margin:0; font-size:0.95rem; line-height:1.65; color:var(--ink); opacity:0.85; max-width:66ch; }
+  .faq-answer p{ margin:0; font-size:var(--fs-base); line-height:1.65; color:var(--ink); opacity:0.85; max-width:66ch; }
   @media (max-width:640px){
-    .faq-item summary{ padding:16px 18px; font-size:0.98rem; }
+    .faq-item summary{ padding:16px 18px; }
     .faq-answer{ padding:0 18px 18px; }
   }
 
   /* ---------- GET INVOLVED ---------- */
   .involve{ background:var(--sea-deep); text-align:center; }
   .involve .wrap{ max-width:640px; }
-  .involve h2{ color:var(--white); font-size:clamp(1.6rem,2.8vw,2.1rem); margin-bottom:14px; }
-  .involve p{ color:var(--white); opacity:0.88; font-size:1rem; margin:0 0 26px; }
+  .involve h2{ color:var(--white); font-size:clamp(var(--fs-xl),2.8vw,var(--fs-2xl)); margin-bottom:14px; }
+  .involve p{ color:var(--white); opacity:0.88; font-size:var(--fs-md); line-height:1.5; margin:0 0 26px; }
   .involve .btn-row{ justify-content:center; margin-top:0; }
   .involve .btn-ghost{ border-color:rgba(255,255,255,0.5); color:var(--white); }
   .involve .btn-ghost:hover{ background:rgba(255,255,255,0.1); }
@@ -400,35 +423,35 @@
   }
   .foot-brand{ display:flex; align-items:center; gap:10px; }
   .foot-brand .brand-mark{ width:28px; height:28px; }
-  footer .fine{ font-family:'IBM Plex Mono',monospace; font-size:0.74rem; opacity:0.7; }
+  footer .fine{ font-family:'IBM Plex Mono',monospace; font-size:var(--fs-2xs); opacity:0.7; }
   .foot-links{ display:flex; gap:var(--gap); list-style:none; margin:0; padding:0; }
-  .foot-links a{ text-decoration:none; font-size:0.85rem; opacity:0.75; }
+  .foot-links a{ text-decoration:none; font-size:var(--fs-xs); opacity:0.75; }
   .foot-links a:hover{ opacity:1; }
-  .foot-legal{ font-family:'IBM Plex Mono',monospace; font-size:0.74rem; opacity:0.7; margin-top:18px; }
+  .foot-legal{ font-family:'IBM Plex Mono',monospace; font-size:var(--fs-2xs); opacity:0.7; margin-top:18px; }
 
 /* ---------- CASE STUDY DETAIL PAGE ---------- */
 .cs-hero{ padding:64px 0 40px; }
 .cs-hero:has(+ .faq){ padding-bottom:6px; }
 .cs-hero + .faq{ padding-top:15px; }
 .cs-hero .case-tag{ margin-bottom:18px; }
-.cs-hero h1{ font-size:clamp(2rem,4vw,2.8rem); max-width:22ch; }
+.cs-hero h1{ font-size:clamp(var(--fs-2xl),4vw,var(--fs-3xl)); line-height:var(--lh-tight); max-width:22ch; }
 .cs-hero .client{
-  font-family:'IBM Plex Mono',monospace; font-size:0.82rem; letter-spacing:0.04em;
+  font-family:'IBM Plex Mono',monospace; font-size:var(--fs-xs); letter-spacing:0.04em;
   text-transform:uppercase; color:var(--sea-deep); opacity:0.7; margin-top:16px; display:block;
 }
 .cs-hero-image{ width:100%; max-width:70ch; height:auto; border-radius:12px; margin-top:32px; display:block; }
 .cs-body{ padding-top:0; }
-.cs-body h2{ font-size:1.4rem; margin:44px 0 14px; max-width:70ch; }
-.cs-body p{ opacity:0.86; margin:0 0 16px; max-width:70ch; }
-.cs-body ul{ opacity:0.86; padding-left:20px; margin:0 0 16px; max-width:70ch; }
+.cs-body h2{ font-size:var(--fs-lg); margin:44px 0 14px; max-width:70ch; }
+.cs-body p{ font-size:var(--fs-base); opacity:0.86; margin:0 0 16px; max-width:70ch; }
+.cs-body ul{ font-size:var(--fs-base); opacity:0.86; padding-left:20px; margin:0 0 16px; max-width:70ch; }
 .cs-body li{ margin-bottom:8px; }
 .cs-stats-row{ display:flex; gap:40px; flex-wrap:wrap; margin:36px 0; padding:26px 0; border-top:1px solid rgba(47,79,73,0.15); border-bottom:1px solid rgba(47,79,73,0.15); }
-.cs-stats-row div strong{ display:block; font-family:'Fraunces',serif; font-size:1.9rem; color:var(--glass-amber-text); }
-.cs-stats-row div span{ font-size:0.78rem; opacity:0.7; }
-.cs-back{ display:inline-block; margin-bottom:28px; font-size:0.88rem; color:var(--sea-deep); text-decoration:none; font-weight:600; }
+.cs-stats-row div strong{ display:block; font-family:'Fraunces',serif; font-size:var(--fs-2xl); line-height:var(--lh-tight); color:var(--glass-amber-text); }
+.cs-stats-row div span{ font-size:var(--fs-xs); opacity:0.7; }
+.cs-back{ display:inline-block; margin-bottom:28px; font-size:var(--fs-xs); color:var(--sea-deep); text-decoration:none; font-weight:600; }
 .cs-back:hover{ text-decoration:underline; }
 .cs-cta{ margin:56px 0 0; padding:36px; background:var(--sea-deep); border-radius:var(--radius-soft); color:var(--white); }
-.cs-cta h3{ color:var(--white); font-size:1.25rem; margin-bottom:14px; }
+.cs-cta h3{ color:var(--white); margin-bottom:14px; }
 
 .visually-hidden{
   position:absolute; width:1px; height:1px; padding:0; margin:-1px;
@@ -446,10 +469,10 @@
 .flow-num{
   display:inline-flex; align-items:center; justify-content:center;
   width:28px; height:28px; border-radius:50%; background:var(--sea-deep); color:var(--white);
-  font-family:'IBM Plex Mono',monospace; font-size:0.8rem; margin-bottom:14px;
+  font-family:'IBM Plex Mono',monospace; font-size:var(--fs-xs); margin-bottom:14px;
 }
-.flow-step h3{ font-size:1rem; margin-bottom:8px; }
-.flow-step p{ font-size:0.85rem; opacity:0.78; margin:0; }
+.flow-step h3{ font-size:var(--fs-md); margin-bottom:8px; }
+.flow-step p{ font-size:var(--fs-xs); line-height:1.5; opacity:0.78; margin:0; }
 .flow-arrow{
   display:flex; align-items:center; justify-content:center;
   font-size:1.4rem; color:var(--glass-amber-text); flex:0 0 auto; padding:0 2px;
