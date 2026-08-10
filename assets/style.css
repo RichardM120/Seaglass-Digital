@@ -478,78 +478,58 @@
 .cs-cta{ margin:56px 0 0; padding:36px; background:var(--sea-deep); border-radius:var(--radius-soft); color:var(--white); }
 .cs-cta h3{ color:var(--white); font-size:1.25rem; margin-bottom:14px; }
 
-/* ---------- PROMO ROTATOR ---------- */
+/* ---------- HERO ROTATOR (4 full-size slides: hero + 3 promos) ---------- */
 .visually-hidden{
   position:absolute; width:1px; height:1px; padding:0; margin:-1px;
   overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
 }
-.promo-rotator{ background:var(--white); padding:52px 0 60px; }
-.promo-head{ max-width:56ch; margin:0 auto 32px; text-align:center; }
-.promo-head h2{ font-size:clamp(1.6rem,2.8vw,2.1rem); }
-.promo-slides{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); }
-@media (max-width:900px){ .promo-slides{ grid-template-columns:1fr; } }
-.promo-slide{
-  background:rgba(255,255,255,0.7);
-  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
-  border:1px solid rgba(255,255,255,0.8);
-  border-radius:var(--radius-soft);
-  box-shadow:var(--shadow-soft);
-  padding:30px 26px;
-  display:flex; flex-direction:column;
-}
-.promo-slide .icon{ width:32px; height:32px; color:var(--sea-deep); margin-bottom:16px; }
-.promo-tag{
-  display:inline-block; align-self:flex-start;
-  font-family:'IBM Plex Mono',monospace; font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase;
-  color:var(--sea-deep); background:var(--glass-aqua); padding:5px 10px; border-radius:2px; margin-bottom:14px;
-}
-.promo-slide h3{ font-size:1.15rem; margin:0 0 10px; }
-.promo-slide p{ font-size:0.92rem; opacity:0.82; margin:0 0 20px; flex-grow:1; }
-.promo-cta{
-  font-family:'IBM Plex Mono',monospace; font-size:0.78rem; letter-spacing:0.02em; font-weight:600;
-  color:var(--glass-amber-text); text-decoration:none; align-self:flex-start;
-  border-bottom:1px solid transparent;
-}
-.promo-cta:hover, .promo-cta:focus-visible{ border-bottom-color:var(--glass-amber-text); }
+.hero-slides{ position:relative; }
 
-/* Controls are carousel-only; hidden entirely for the static grid fallback */
-.promo-controls{ display:none; }
+/* Static fallback (no JS, or prefers-reduced-motion): all 4 panels stacked */
+.hero:not(.is-carousel) .hero-slide + .hero-slide{
+  margin-top:56px; padding-top:56px; border-top:1px solid rgba(47,79,73,0.15);
+}
+
+/* Controls are carousel-only; hidden entirely for the stacked fallback */
+.hero-controls{ display:none; }
 
 /* JS-enhanced single-slide carousel mode */
-.promo-rotator.is-carousel .promo-slides{ display:block; position:relative; }
-.promo-rotator.is-carousel .promo-slide{ display:none; width:100%; }
-.promo-rotator.is-carousel .promo-slide.is-active{
-  display:flex; animation:promo-fade-in 0.5s ease;
+.hero.is-carousel .hero-slide{ display:none; }
+.hero.is-carousel .hero-slide.is-active{
+  display:grid; animation:hero-fade-in 0.5s ease;
 }
-@keyframes promo-fade-in{
+@keyframes hero-fade-in{
   from{ opacity:0; transform:translateY(6px); }
   to{ opacity:1; transform:translateY(0); }
 }
-.promo-rotator.is-carousel .promo-controls{
-  display:flex; align-items:center; justify-content:center; gap:16px; margin-top:26px;
+.hero.is-carousel .hero-controls{
+  display:flex; align-items:center; justify-content:flex-start; gap:16px; margin-top:36px;
 }
-.promo-arrow, .promo-toggle{
+.hero-arrow, .hero-toggle{
   background:none; border:1px solid rgba(47,79,73,0.3); color:var(--sea-deep);
   width:34px; height:34px; border-radius:50%;
   display:inline-flex; align-items:center; justify-content:center;
   cursor:pointer; transition:background 0.15s ease, border-color 0.15s ease;
 }
-.promo-arrow:hover, .promo-arrow:focus-visible,
-.promo-toggle:hover, .promo-toggle:focus-visible{
+.hero-arrow:hover, .hero-arrow:focus-visible,
+.hero-toggle:hover, .hero-toggle:focus-visible{
   background:rgba(143,184,164,0.18); border-color:var(--sea-deep);
 }
-.promo-arrow svg{ width:16px; height:16px; }
-.promo-dots{ display:flex; gap:8px; }
-.promo-dot{
+.hero-arrow svg{ width:16px; height:16px; }
+.hero-dots{ display:flex; gap:8px; }
+.hero-dot{
   width:9px; height:9px; border-radius:50%; border:1px solid var(--sea-deep);
   background:transparent; padding:0; cursor:pointer;
 }
-.promo-dot.is-active{ background:var(--sea-deep); }
-.promo-toggle{ margin-left:4px; }
-.promo-toggle svg{ width:14px; height:14px; }
-.promo-toggle .icon-play{ display:none; }
-.promo-toggle[aria-pressed="true"] .icon-pause{ display:none; }
-.promo-toggle[aria-pressed="true"] .icon-play{ display:block; }
+.hero-dot.is-active{ background:var(--sea-deep); }
+.hero-toggle{ margin-left:4px; }
+.hero-toggle svg{ width:14px; height:14px; }
+.hero-toggle .icon-play{ display:none; }
+.hero-toggle[aria-pressed="true"] .icon-pause{ display:none; }
+.hero-toggle[aria-pressed="true"] .icon-play{ display:block; }
+@media (max-width:900px){
+  .hero.is-carousel .hero-controls{ justify-content:center; }
+}
 
 /* ---------- INITIAL DISCOVERY FLOW + PRICING ---------- */
 .flow-diagram{
