@@ -264,6 +264,7 @@
     color:var(--sea-deep); opacity:1;
   }
   .trust-strip span::before{ content:"· "; }
+  @media (max-width:900px){ .trust-strip{ display:none; } }
 
   /* Hero illustration: scattered tumbled glass cluster, capped so it never
      drives the panel taller than the text column beside it */
@@ -555,7 +556,7 @@
 .hero-toggle[aria-pressed="true"] .icon-pause{ display:none; }
 .hero-toggle[aria-pressed="true"] .icon-play{ display:block; }
 @media (max-width:900px){
-  .hero.is-carousel .hero-controls{ justify-content:center; }
+  .hero.is-carousel .hero-controls{ display:none; }
 }
 
 /* ---------- INITIAL DISCOVERY FLOW + PRICING ---------- */
