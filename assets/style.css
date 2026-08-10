@@ -270,6 +270,20 @@
   .hero-art{ position:relative; max-width:300px; margin-left:auto; }
   @media (max-width:900px){ .hero-art{ max-width:220px; margin:0 auto; } }
   .hero-art svg{ width:100%; height:auto; }
+  .hero-art.hero-art-photo{ max-width:420px; }
+  @media (max-width:900px){ .hero-art.hero-art-photo{ display:none; } }
+  .hero-art-photo img{
+    width:100%; height:auto; display:block; border-radius:var(--radius-soft);
+    box-shadow:0 8px 24px rgba(47,79,73,0.18);
+  }
+  .mobile-promo-img{ display:none; }
+  @media (max-width:900px){
+    .mobile-promo-img{
+      display:block; width:100%; max-width:420px; height:auto;
+      margin:28px auto 0; border-radius:var(--radius-soft);
+      box-shadow:0 8px 24px rgba(47,79,73,0.18);
+    }
+  }
   .shard-piece{
     filter:drop-shadow(0 8px 18px rgba(47,79,73,0.16));
     animation-timing-function:ease-in-out;
