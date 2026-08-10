@@ -66,16 +66,16 @@
     section{ padding:28px 0; }
     .wrap{ padding:0 20px; }
     body{ padding-bottom:68px; } /* room for the sticky mobile CTA bar */
-    .hero{ padding:24px 0 36px; }
+    .hero{ padding:16px 0 20px; }
     .pain-head{ margin-bottom:32px; }
     .involve-head{ margin-bottom:28px; }
     .why-in-pain{ margin-top:28px; }
     .pull-quote{ margin-top:20px; }
     .reassure{ padding:26px 0; }
-    .hero-grid{ gap:32px; }
-    .hero p.hero-subtitle{ margin:12px 0 0; }
-    .hero p.lead{ margin:12px 0 22px; }
-    .trust-strip{ margin-top:24px; gap:16px; }
+    .hero-grid{ gap:18px; }
+    .hero p.hero-subtitle{ margin:8px 0 0; }
+    .hero p.lead{ margin:8px 0 16px; }
+    .trust-strip{ margin-top:14px; gap:16px; }
   }
 
   /* ---------- STICKY MOBILE CTA ---------- */
@@ -233,25 +233,25 @@
   }
 
   /* ---------- HERO ---------- */
-  .hero{ padding:44px 0 70px; overflow:hidden; position:relative; }
+  .hero{ padding:24px 0 32px; overflow:hidden; position:relative; }
   .hero-grid{
     position:relative; z-index:1;
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+    display:grid; grid-template-columns:1.25fr 0.75fr; gap:36px; align-items:center;
   }
   @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
-  .hero h1{ font-size:clamp(2.3rem, 4.4vw, 3.4rem); }
+  .hero h1{ font-size:clamp(1.8rem, 3.2vw, 2.5rem); }
   .hero h1 em{ font-style:italic; color:var(--glass-amber-text); }
   .hero p.hero-subtitle{
-    font-size:1.2rem; font-weight:600; max-width:46ch; margin:16px 0 0; color:var(--ink); opacity:0.92;
+    font-size:1.02rem; font-weight:600; max-width:46ch; margin:10px 0 0; color:var(--ink); opacity:0.92;
   }
   .hero p.lead{
-    font-size:1.14rem; max-width:46ch; margin:14px 0 32px; color:var(--ink); opacity:0.86;
+    font-size:0.94rem; max-width:46ch; margin:8px 0 20px; color:var(--ink); opacity:0.86;
   }
   .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
   .btn{
     display:inline-flex; align-items:center; gap:8px;
-    padding:13px 24px; border-radius:3px; text-decoration:none;
-    font-weight:600; font-size:0.95rem; border:1px solid transparent;
+    padding:11px 20px; border-radius:3px; text-decoration:none;
+    font-weight:600; font-size:0.9rem; border:1px solid transparent;
   }
   .btn-primary{ background:var(--glass-amber); color:var(--ink); }
   .btn-primary:hover{ background:#bb9257; }
@@ -259,14 +259,16 @@
   .btn-ghost:hover{ background:rgba(47,79,73,0.06); }
 
   .trust-strip{
-    margin-top:40px; display:flex; gap:28px; flex-wrap:wrap;
-    font-family:'IBM Plex Mono', monospace; font-size:0.76rem; font-weight:600; letter-spacing:0.03em;
+    margin-top:18px; display:flex; gap:24px; flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace; font-size:0.7rem; font-weight:600; letter-spacing:0.03em;
     color:var(--sea-deep); opacity:1;
   }
   .trust-strip span::before{ content:"· "; }
 
-  /* Hero illustration: scattered tumbled glass cluster */
-  .hero-art{ position:relative; }
+  /* Hero illustration: scattered tumbled glass cluster, capped so it never
+     drives the panel taller than the text column beside it */
+  .hero-art{ position:relative; max-width:300px; margin-left:auto; }
+  @media (max-width:900px){ .hero-art{ max-width:220px; margin:0 auto; } }
   .hero-art svg{ width:100%; height:auto; }
   .shard-piece{
     filter:drop-shadow(0 8px 18px rgba(47,79,73,0.16));
@@ -487,7 +489,7 @@
 
 /* Static fallback (no JS, or prefers-reduced-motion): all 4 panels stacked */
 .hero:not(.is-carousel) .hero-slide + .hero-slide{
-  margin-top:56px; padding-top:56px; border-top:1px solid rgba(47,79,73,0.15);
+  margin-top:32px; padding-top:32px; border-top:1px solid rgba(47,79,73,0.15);
 }
 
 /* Controls are carousel-only; hidden entirely for the stacked fallback */
@@ -503,7 +505,7 @@
   to{ opacity:1; transform:translateY(0); }
 }
 .hero.is-carousel .hero-controls{
-  display:flex; align-items:center; justify-content:flex-start; gap:16px; margin-top:36px;
+  display:flex; align-items:center; justify-content:flex-start; gap:16px; margin-top:16px;
 }
 .hero-arrow, .hero-toggle{
   background:none; border:1px solid rgba(47,79,73,0.3); color:var(--sea-deep);
