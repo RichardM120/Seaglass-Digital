@@ -151,6 +151,56 @@
     </div>
   </section>
 
+  <!-- PROMO ROTATOR -->
+  <section class="promo-rotator" id="promo">
+    <div class="wrap">
+      <div class="promo-head">
+        <span class="eyebrow">How we help</span>
+        <h2>Three ways we simplify the day-to-day.</h2>
+      </div>
+      <div class="promo-slides" id="promo-slides">
+        <article class="promo-slide is-active" id="promo-slide-0">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><path d="M3 4h18l-7 9v6l-4 2v-8L3 4Z"/></svg>
+          <span class="promo-tag">AI, simplified</span>
+          <h3>Which AI tool do you actually need?</h3>
+          <p>ChatGPT, Copilot, and a new app every month, all promising to save you time. We match the right tool, and only the right tool, to how your business runs, so you're not paying for three subscriptions and using one.</p>
+          <a class="promo-cta" href="mailto:richard@seaglassdigital.co.uk?subject=Which AI tools do we need?">Get an AI tools audit →</a>
+        </article>
+        <article class="promo-slide" id="promo-slide-1">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.5 4 5.5 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.5-4-9s1.5-6.5 4-9Z"/></svg>
+          <span class="promo-tag">Digital consultancy</span>
+          <h3>One website. One voice. Less to manage.</h3>
+          <p>A website that says one thing and social media that says another is more work, not more customers. We simplify your online presence so it looks and sounds like you everywhere, without a marketing team to run it.</p>
+          <a class="promo-cta" href="mailto:richard@seaglassdigital.co.uk?subject=Simplify our website and social">Simplify my digital presence →</a>
+        </article>
+        <article class="promo-slide" id="promo-slide-2">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span class="promo-tag">Backend automation</span>
+          <h3>Automate the admin, not your people</h3>
+          <p>The quoting, the rota, the reconciling: hours nobody signed up for. We automate the repetitive stuff behind the scenes, not your team, so they get that time back for the customers in front of them.</p>
+          <a class="promo-cta" href="mailto:richard@seaglassdigital.co.uk?subject=Automate our admin">Free up my team's time →</a>
+        </article>
+      </div>
+      <div class="promo-controls">
+        <button type="button" class="promo-arrow promo-prev" aria-label="Previous promo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <div class="promo-dots" role="tablist" aria-label="Choose a promo">
+          <button type="button" class="promo-dot is-active" role="tab" aria-selected="true" aria-controls="promo-slide-0" data-index="0"><span class="visually-hidden">Promo 1: AI tools</span></button>
+          <button type="button" class="promo-dot" role="tab" aria-selected="false" aria-controls="promo-slide-1" data-index="1"><span class="visually-hidden">Promo 2: Digital consultancy</span></button>
+          <button type="button" class="promo-dot" role="tab" aria-selected="false" aria-controls="promo-slide-2" data-index="2"><span class="visually-hidden">Promo 3: Backend automation</span></button>
+        </div>
+        <button type="button" class="promo-arrow promo-next" aria-label="Next promo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <button type="button" class="promo-toggle" id="promo-toggle" aria-pressed="false" aria-label="Pause automatic rotation">
+          <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+          <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
   <!-- NEW TO AI REASSURANCE PANEL -->
   <section class="reassure">
     <div class="wrap reassure-inner">
@@ -331,6 +381,89 @@
     }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
 
     sections.forEach(function(section){ observer.observe(section); });
+  })();
+
+  // Auto-rotating promo panel: progressively enhanced, off entirely for
+  // reduced-motion users (they get the static 3-card grid instead).
+  (function(){
+    var section = document.querySelector('.promo-rotator');
+    if (!section) return;
+    var slidesWrap = document.getElementById('promo-slides');
+    var slides = Array.prototype.slice.call(slidesWrap.children);
+    var dots = Array.prototype.slice.call(section.querySelectorAll('.promo-dot'));
+    var prevBtn = section.querySelector('.promo-prev');
+    var nextBtn = section.querySelector('.promo-next');
+    var toggleBtn = document.getElementById('promo-toggle');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || slides.length < 2 || !prevBtn || !nextBtn || !toggleBtn) return;
+
+    section.classList.add('is-carousel');
+
+    var live = document.createElement('div');
+    live.setAttribute('aria-live', 'polite');
+    live.className = 'visually-hidden';
+    section.appendChild(live);
+
+    var current = 0;
+    var timer = null;
+    var playing = true;
+    var DURATION = 6000;
+
+    function announce(i){
+      var heading = slides[i].querySelector('h3');
+      live.textContent = 'Showing ' + (i + 1) + ' of ' + slides.length + ': ' + (heading ? heading.textContent : '');
+    }
+
+    function show(i){
+      slides[current].classList.remove('is-active');
+      dots[current].classList.remove('is-active');
+      dots[current].setAttribute('aria-selected', 'false');
+      current = (i + slides.length) % slides.length;
+      slides[current].classList.add('is-active');
+      dots[current].classList.add('is-active');
+      dots[current].setAttribute('aria-selected', 'true');
+      announce(current);
+    }
+
+    function next(){ show(current + 1); }
+    function prev(){ show(current - 1); }
+
+    function start(){
+      stop();
+      timer = window.setInterval(next, DURATION);
+      playing = true;
+      toggleBtn.setAttribute('aria-pressed', 'false');
+      toggleBtn.setAttribute('aria-label', 'Pause automatic rotation');
+    }
+    function stop(){
+      if (timer){ window.clearInterval(timer); timer = null; }
+    }
+    function pause(){
+      stop();
+      playing = false;
+      toggleBtn.setAttribute('aria-pressed', 'true');
+      toggleBtn.setAttribute('aria-label', 'Resume automatic rotation');
+    }
+
+    prevBtn.addEventListener('click', function(){ prev(); start(); });
+    nextBtn.addEventListener('click', function(){ next(); start(); });
+    dots.forEach(function(dot, i){
+      dot.addEventListener('click', function(){ show(i); start(); });
+    });
+    toggleBtn.addEventListener('click', function(){
+      if (playing){ pause(); } else { start(); }
+    });
+
+    section.addEventListener('mouseenter', stop);
+    section.addEventListener('mouseleave', function(){ if (playing) start(); });
+    section.addEventListener('focusin', stop);
+    section.addEventListener('focusout', function(){ if (playing) start(); });
+
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden){ stop(); } else if (playing){ start(); }
+    });
+
+    start();
   })();
 </script>
 </body>
