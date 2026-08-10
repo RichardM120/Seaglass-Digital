@@ -556,7 +556,19 @@
 .hero-toggle[aria-pressed="true"] .icon-pause{ display:none; }
 .hero-toggle[aria-pressed="true"] .icon-play{ display:block; }
 @media (max-width:900px){
-  .hero.is-carousel .hero-controls{ display:none; }
+  .hero.is-carousel .wrap{ position:relative; }
+  .hero.is-carousel .hero-controls{
+    display:flex; position:absolute; top:50%; left:0; right:0;
+    transform:translateY(-50%); justify-content:space-between;
+    margin:0; padding:0 6px; pointer-events:none; z-index:2;
+  }
+  .hero-dots, .hero-toggle{ display:none; }
+  .hero-arrow{
+    pointer-events:auto; width:48px; height:48px;
+    background:rgba(255,255,255,0.9); border-color:rgba(47,79,73,0.22);
+    box-shadow:0 8px 20px rgba(47,79,73,0.2);
+  }
+  .hero-arrow svg{ width:22px; height:22px; }
 }
 
 /* ---------- INITIAL DISCOVERY FLOW + PRICING ---------- */
