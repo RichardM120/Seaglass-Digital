@@ -487,6 +487,15 @@
 }
 .hero-slides{ position:relative; }
 
+/* Briefly used by JS to measure every slide's natural height so the
+   container can be pinned to the tallest one and never jump between
+   slides. Stacks all slides invisibly on top of each other. */
+.hero.measuring .hero-slides{ position:relative; }
+.hero.measuring .hero-slide{
+  display:grid !important; position:absolute; inset:0; width:100%;
+  visibility:hidden; pointer-events:none;
+}
+
 /* Static fallback (no JS, or prefers-reduced-motion): all 4 panels stacked */
 .hero:not(.is-carousel) .hero-slide + .hero-slide{
   margin-top:32px; padding-top:32px; border-top:1px solid rgba(47,79,73,0.15);

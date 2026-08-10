@@ -113,7 +113,7 @@
             <span class="eyebrow">SeaGlass Digital · AI for independent businesses</span>
             <h1>Run your business.<br>Let AI handle the admin.</h1>
             <p class="hero-subtitle">The right AI tools for independent teams overwhelmed by day-to-day operational noise.</p>
-            <p class="lead">You're big enough to be drowning in admin, but too small to hire a dedicated operations department. SeaGlass Digital bridges that gap. We audit your daily pain points, implement quiet, reliable AI tools that fit your existing setup, and train your staff—so you can step away at the end of the day, and stay away.</p>
+            <p class="lead">You're big enough to be drowning in admin, but too small for a dedicated ops team. We audit your pain points, fit quiet AI tools around your setup, and train your team to run them.</p>
             <div class="btn-row">
               <a class="btn btn-primary" href="mailto:richard@seaglassdigital.co.uk?subject=Let's connect">Connect with us</a>
               <a class="btn btn-ghost" href="#case">See the proof</a>
@@ -472,6 +472,16 @@
     var playing = true;
     var DURATION = 5000;
 
+    // Pin the container to the tallest slide's natural height so rotating
+    // between shorter/longer copy never resizes the panel.
+    function lockHeight(){
+      section.classList.add('measuring');
+      var maxH = 0;
+      slides.forEach(function(s){ maxH = Math.max(maxH, s.offsetHeight); });
+      section.classList.remove('measuring');
+      slidesWrap.style.minHeight = maxH ? maxH + 'px' : '';
+    }
+
     function announce(i){
       var heading = slides[i].querySelector('h3');
       live.textContent = 'Showing ' + (i + 1) + ' of ' + slides.length + ': ' + (heading ? heading.textContent : '');
@@ -524,6 +534,16 @@
 
     document.addEventListener('visibilitychange', function(){
       if (document.hidden){ stop(); } else if (playing){ start(); }
+    });
+
+    lockHeight();
+    if (document.fonts && document.fonts.ready){
+      document.fonts.ready.then(lockHeight);
+    }
+    var resizeTimer;
+    window.addEventListener('resize', function(){
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(lockHeight, 150);
     });
 
     start();
