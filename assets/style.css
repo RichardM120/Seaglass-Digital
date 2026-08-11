@@ -399,10 +399,13 @@
   }
   .pain .btn-row{ margin-top:22px; }
 
-  /* ---------- SAVINGS / GROWTH ---------- */
-  .pillars-heading{
-    font-size:clamp(var(--fs-xl), 2.6vw, var(--fs-2xl)); margin-bottom:8px;
+  /* ---------- SECTION HEADING (promoted from the small eyebrow label to a
+     full heading, used where a section has no separate, bigger headline) ---------- */
+  .section-heading{
+    font-weight:700; font-size:clamp(var(--fs-xl), 2.6vw, var(--fs-2xl)); margin-bottom:8px;
   }
+
+  /* ---------- SAVINGS / GROWTH ---------- */
   .pillars{ display:grid; grid-template-columns:1fr 1fr; gap:var(--gap); margin-top:44px; }
   @media (max-width:700px){ .pillars{ grid-template-columns:1fr; } }
   .pillar{
@@ -416,7 +419,6 @@
 
   /* ---------- CASE STUDY / PROOF ---------- */
   .case{ }
-  .case .eyebrow{ font-size:var(--fs-sm); }
   .case-lede{ font-size:var(--fs-md); line-height:1.55; max-width:66ch; opacity:0.85; margin:0 0 30px; }
   .proof-stats{
     display:flex; gap:40px; flex-wrap:wrap; margin:0 0 36px;
