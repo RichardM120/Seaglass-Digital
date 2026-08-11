@@ -386,6 +386,11 @@
     font-family:'Fraunces', serif; font-weight:500; color:var(--sea-deep);
     font-size:clamp(var(--fs-xl), 2.6vw, var(--fs-2xl)); line-height:1.4; max-width:38ch; margin:0;
   }
+  .pain-resolve{
+    font-size:var(--fs-md); font-weight:600; line-height:1.5; max-width:52ch;
+    color:var(--ink); opacity:0.92; margin:20px 0 0;
+  }
+  .pain .btn-row{ margin-top:22px; }
 
   /* ---------- SAVINGS / GROWTH ---------- */
   .pillars{ display:grid; grid-template-columns:1fr 1fr; gap:var(--gap); margin-top:44px; }
