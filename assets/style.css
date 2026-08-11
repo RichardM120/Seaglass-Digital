@@ -541,57 +541,10 @@
 .cs-cta{ margin:56px 0 0; padding:36px; background:var(--sea-deep); border-radius:var(--radius-soft); color:var(--white); }
 .cs-cta h3{ color:var(--white); margin-bottom:14px; }
 
-/* ---------- INITIAL DISCOVERY FLOW + PRICING ---------- */
-.flow-diagram{
-  display:flex; align-items:stretch; gap:14px; flex-wrap:wrap;
-}
-.flow-step{
-  flex:0 1 220px; background:var(--white); border:1px solid rgba(47,79,73,0.12);
-  border-radius:var(--radius-soft); padding:24px 20px;
-}
-.flow-num{
-  display:inline-flex; align-items:center; justify-content:center;
-  width:28px; height:28px; border-radius:50%; background:var(--sea-deep); color:var(--white);
-  font-family:'IBM Plex Mono',monospace; font-size:var(--fs-xs); margin-bottom:14px;
-}
-.flow-step h3{ font-size:var(--fs-md); margin-bottom:8px; }
-.flow-step p{ font-size:var(--fs-xs); line-height:1.5; opacity:0.78; margin:0; }
-.flow-arrow{
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.4rem; color:var(--glass-amber-text); flex:0 0 auto; padding:0 2px;
-}
-@media (max-width:900px){
-  .flow-diagram{ flex-direction:column; }
-  .flow-arrow{ transform:rotate(90deg); padding:4px 0; }
-}
-
-/* ---------- THREE LEVELS OF ENGAGEMENT ---------- */
-.tier-grid{
-  display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); margin:28px 0 40px;
-}
-@media (max-width:900px){ .tier-grid{ grid-template-columns:1fr; } }
-.tier-card{
-  background:var(--white); border:1.5px solid rgba(47,79,73,0.4);
-  border-radius:var(--radius-soft); padding:28px 24px; scroll-margin-top:88px;
-}
-.tier-icon{ width:34px; height:34px; color:var(--sea-deep); margin-bottom:14px; }
-.tier-card h3{ margin-bottom:10px; }
-.tier-card .tier-fit{
+.work-card .tier-fit{
   font-family:'IBM Plex Mono',monospace; font-size:var(--fs-2xs); letter-spacing:0.02em;
   text-transform:uppercase; color:var(--glass-amber-text); font-weight:600;
-  opacity:1; margin:0 0 12px; max-width:none;
-}
-.tier-card > p:not(.tier-fit){ font-size:var(--fs-sm); line-height:1.55; opacity:0.86; margin:0; }
-.tier-breakdown{
-  margin:16px 0 0; padding:14px 0 0 0; border-top:1px solid rgba(47,79,73,0.12);
-  list-style:none; display:flex; flex-direction:column; gap:8px;
-}
-.tier-breakdown li{
-  font-size:var(--fs-xs); line-height:1.4; opacity:0.8; padding-left:18px; position:relative;
-}
-.tier-breakdown li::before{
-  content:''; position:absolute; left:0; top:0.5em; width:7px; height:7px;
-  border-radius:50%; background:var(--glass-amber);
+  opacity:1; margin:0 0 10px; max-width:none;
 }
 
 
