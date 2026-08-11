@@ -393,13 +393,18 @@
   .pain .btn-row{ margin-top:22px; }
 
   /* ---------- SAVINGS / GROWTH ---------- */
+  .pillars-heading{
+    font-size:clamp(var(--fs-xl), 2.6vw, var(--fs-2xl)); margin-bottom:8px;
+  }
   .pillars{ display:grid; grid-template-columns:1fr 1fr; gap:var(--gap); margin-top:44px; }
   @media (max-width:700px){ .pillars{ grid-template-columns:1fr; } }
   .pillar{
     background:rgba(255,255,255,0.7); border:1px solid rgba(255,255,255,0.8);
     border-radius:var(--radius-soft); padding:28px 26px;
   }
-  .pillar h3{ font-weight:700; margin-bottom:10px; }
+  .pillar-heading{ display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .pillar-icon{ width:28px; height:28px; flex-shrink:0; color:var(--sea-deep); }
+  .pillar h3{ font-weight:700; margin:0; }
   .pillar p{ font-size:var(--fs-md); line-height:1.55; opacity:0.85; margin:0; }
 
   /* ---------- CASE STUDY / PROOF ---------- */
