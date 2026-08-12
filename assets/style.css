@@ -556,6 +556,7 @@
   border-radius:var(--radius-soft); padding:28px 24px; scroll-margin-top:88px;
 }
 .tier-icon{ width:34px; height:34px; color:var(--sea-deep); margin-bottom:14px; }
+.tier-image{ display:block; width:100%; max-width:220px; height:auto; object-fit:contain; margin:0 auto 14px; }
 .tier-card h3{ margin-bottom:10px; }
 .tier-card .tier-fit{
   font-family:'IBM Plex Mono',monospace; font-size:var(--fs-2xs); letter-spacing:0.02em;
