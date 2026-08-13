@@ -72,7 +72,7 @@
 }
 </script>
 </head>
-<body>
+<body class="has-hero">
 <div class="page-bg" aria-hidden="true"></div>
 
 <a href="#top" class="skip-link">Skip to main content</a>
@@ -192,28 +192,25 @@
       <p class="how-we-work-lede">Three ways in, depending on how much you want to hand over. Most people start with a review.</p>
       <div class="work-cards">
         <a class="work-card" href="process.html#tier-review">
-          <svg class="work-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
-            <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
-          </svg>
-          <h3>Review &amp; recommendations</h3>
-          <p>A short, focused review and a clear set of written recommendations — implement them yourselves, or bring us back in.</p>
-          <span class="work-card-link">See how it breaks down →</span>
+          <img class="work-card-image" src="assets/images/tier-review.png" alt="" width="640" height="472" loading="lazy">
+          <div class="work-card-body">
+            <h3>Review &amp; recommendations</h3>
+            <span class="work-card-link">See how it breaks down →</span>
+          </div>
         </a>
         <a class="work-card" href="process.html#tier-fix">
-          <svg class="work-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
-            <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>
-          </svg>
-          <h3>Fix one problem</h3>
-          <p>We pin down the one clear problem you're trying to solve, fit the right tool around it, and train your team to run it.</p>
-          <span class="work-card-link">See how it breaks down →</span>
+          <img class="work-card-image" src="assets/images/tier-fix.png" alt="" width="640" height="472" loading="lazy">
+          <div class="work-card-body">
+            <h3>Fix one problem</h3>
+            <span class="work-card-link">See how it breaks down →</span>
+          </div>
         </a>
         <a class="work-card" href="process.html#tier-partnership">
-          <svg class="work-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
-            <circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/>
-          </svg>
-          <h3>Ongoing partnership</h3>
-          <p>Full discovery of where AI and digital can help, delivery of the fix, and continuous support — your team trained to run it themselves, with a check-in roughly every six months.</p>
-          <span class="work-card-link">See how it breaks down →</span>
+          <img class="work-card-image" src="assets/images/tier-partnership.png" alt="" width="640" height="472" loading="lazy">
+          <div class="work-card-body">
+            <h3>Ongoing partnership</h3>
+            <span class="work-card-link">See how it breaks down →</span>
+          </div>
         </a>
       </div>
     </div>
@@ -408,13 +405,22 @@
     var playing = true;
     var DURATION = 5000;
 
-    // Pin the container to the tallest slide's natural height so rotating
-    // between shorter/longer copy never resizes the panel.
+    // Pin the container to the tallest slide's natural content height so
+    // rotating between shorter/longer copy never resizes the panel. Each
+    // slide is measured in turn as the in-flow active slide (the only way
+    // its height reflects real content, since inactive slides are
+    // display:none) rather than stretched/stacked, so the panel sizes to
+    // fit the copy instead of an arbitrary fixed height.
     function lockHeight(){
-      section.classList.add('measuring');
+      var restoreIndex = current;
       var maxH = 0;
-      slides.forEach(function(s){ maxH = Math.max(maxH, s.offsetHeight); });
-      section.classList.remove('measuring');
+      slides.forEach(function(s){
+        slides.forEach(function(other){ other.classList.remove('is-active'); });
+        s.classList.add('is-active');
+        maxH = Math.max(maxH, s.offsetHeight);
+      });
+      slides.forEach(function(s){ s.classList.remove('is-active'); });
+      slides[restoreIndex].classList.add('is-active');
       slidesWrap.style.minHeight = maxH ? maxH + 'px' : '';
     }
 
