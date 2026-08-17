@@ -104,7 +104,7 @@
 
 <main id="top">
 
-  <!-- HERO ROTATOR: 4 full-height slides, auto-rotating -->
+  <!-- HERO ROTATOR: 5 full-height slides, auto-rotating -->
   <section class="hero" id="hero-rotator">
     <div class="hero-slides" id="hero-slides">
 
@@ -164,6 +164,20 @@
         </div>
       </article>
 
+      <article class="hero-slide hero-banner" id="hero-slide-4">
+        <div class="hero-media" aria-hidden="true">
+          <img src="assets/images/promo-calculator.jpg" alt="" width="1000" height="1000" loading="lazy">
+        </div>
+        <div class="hero-copy">
+          <span class="eyebrow">Free tool · Two-minute check</span>
+          <h2>What's admin really costing you?<br>Find out in two minutes.</h2>
+          <p class="hero-subtitle">Drag a few sliders and see your annual admin cost, and what's realistically recoverable.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="calculator.html">Try the calculator</a>
+          </div>
+        </div>
+      </article>
+
     </div>
 
     <div class="hero-controls">
@@ -175,6 +189,7 @@
         <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-1" data-index="1"><span class="visually-hidden">Panel 2: AI tools</span></button>
         <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-2" data-index="2"><span class="visually-hidden">Panel 3: Digital consultancy</span></button>
         <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-3" data-index="3"><span class="visually-hidden">Panel 4: Backend automation</span></button>
+        <button type="button" class="hero-dot" role="tab" aria-selected="false" aria-controls="hero-slide-4" data-index="4"><span class="visually-hidden">Panel 5: Admin calculator</span></button>
       </div>
       <button type="button" class="hero-arrow hero-next" aria-label="Next">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
@@ -380,7 +395,7 @@
     sections.forEach(function(section){ observer.observe(section); });
   })();
 
-  // Auto-rotating hero panel: 4 full-height slides, on every device.
+  // Auto-rotating hero panel: 5 full-height slides, on every device.
   // The site-wide reduced-motion rule (top of stylesheet) still swaps
   // the transition to an instant cut for anyone with that OS setting on.
   (function(){

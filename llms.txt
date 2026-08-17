@@ -4,12 +4,13 @@
 
 ## Topics covered
 
-AI consultancy for small businesses, AI consultancy for SMEs, AI use case discovery, structured problem-solving for AI adoption, AI team training and enablement, human-in-the-loop AI implementation, fixed-fee AI consultancy, AI for independent businesses (hospitality, clinics, trades, shops), staff rota automation, quoting and invoicing automation, booking and no-show management, review management, AI for digital accessibility and alt text at scale, UX and CX practice building.
+AI consultancy for small businesses, AI consultancy for SMEs, AI use case discovery, structured problem-solving for AI adoption, AI team training and enablement, human-in-the-loop AI implementation, fixed-fee AI consultancy, AI for independent businesses (hospitality, clinics, trades, shops), staff rota automation, quoting and invoicing automation, booking and no-show management, review management, AI for digital accessibility and alt text at scale, UX and CX practice building, admin cost calculator for small businesses.
 
 ## Key pages
 
 - [Homepage](https://www.seaglassdigital.co.uk/): Overview of SeaGlass Digital, the problem it solves for small UK businesses, proof from enterprise-scale work, and how to get in touch.
 - [How we work](https://www.seaglassdigital.co.uk/process.html): The three ways to engage — a fixed-fee review, a single problem fixed and handed over, or an ongoing partnership — what's done, what's delivered, and typical duration for each.
+- [Admin Drag Calculator](https://www.seaglassdigital.co.uk/calculator.html): Interactive tool estimating the annual cost of admin (quoting, scheduling, invoicing, enquiries) and the recoverable value from automation, with presets for common business types (shop, interior/garden design, restaurant) alongside a fully custom mode.
 - [FAQ](https://www.seaglassdigital.co.uk/faq.html): Answers on pricing, timelines, process, in-person vs remote working, business fit, and what happens after a project ends.
 - [Case studies](https://www.seaglassdigital.co.uk/case-studies/index.html): Index of large-scale enterprise work (HSBC, Diageo) behind SeaGlass Digital's method.
 - [Case study: HSBC GenAI](https://www.seaglassdigital.co.uk/case-studies/hsbc-genai.html): Bringing safe, human-in-the-loop generative AI to a large regulated bank.
