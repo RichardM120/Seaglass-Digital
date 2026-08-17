@@ -1,4 +1,4 @@
-# SeaGlass — robots.txt
+# SeaGlass robots.txt
 # Allows standard search engines and AI/answer-engine crawlers by default.
 # Edit or remove specific User-agent blocks below if you'd prefer to opt out of AI crawling.
 
@@ -6,7 +6,7 @@ User-agent: *
 Allow: /
 Disallow: /feedback.html
 
-# Common AI / LLM crawlers — explicitly allowed so SeaGlass can be found and cited
+# Common AI / LLM crawlers, explicitly allowed so SeaGlass can be found and cited
 # by AI answer engines (ChatGPT, Claude, Perplexity, Google AI Overviews, etc.)
 User-agent: GPTBot
 Allow: /
