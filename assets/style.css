@@ -603,11 +603,13 @@
 .calc-persona-lede{ font-size:var(--fs-sm); opacity:0.75; margin:8px 0 0; max-width:64ch; }
 .calc-persona-pills{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
 .calc-persona-pill{
+  display:inline-flex; align-items:center; gap:7px;
   font-family:'Inter',sans-serif; font-size:var(--fs-xs); font-weight:600;
   padding:9px 16px; border-radius:999px; border:1.5px solid rgba(47,79,73,0.25);
   background:var(--white); color:var(--sea-deep); cursor:pointer;
   transition:background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
+.calc-persona-pill svg{ width:16px; height:16px; flex-shrink:0; }
 .calc-persona-pill:hover{ border-color:var(--sea-deep); background:rgba(143,184,164,0.12); }
 .calc-persona-pill.is-active{ background:var(--sea-deep); border-color:var(--sea-deep); color:var(--white); }
 .calc-persona-pill:focus-visible{ outline:2px solid var(--sea-deep); outline-offset:2px; }
