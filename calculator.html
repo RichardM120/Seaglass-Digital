@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2JRQ0N7KGT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2JRQ0N7KGT');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Drag Calculator - SeaGlass Digital</title>
+<meta name="description" content="Drag the sliders to see what quoting, rotas, invoicing and enquiries are really costing your business each year, and how much of that time is recoverable.">
+<meta name="keywords" content="admin cost calculator, business admin calculator, AI automation savings calculator, admin drag, recoverable margin calculator">
+<link rel="canonical" href="https://www.seaglassdigital.co.uk/calculator.html">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Admin Drag Calculator - SeaGlass Digital">
+<meta property="og:description" content="Drag the sliders to see what quoting, rotas, invoicing and enquiries are really costing your business each year, and how much of that time is recoverable.">
+<meta property="og:url" content="https://www.seaglassdigital.co.uk/calculator.html">
+<meta property="og:image" content="https://www.seaglassdigital.co.uk/assets/social-share.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.seaglassdigital.co.uk/" },
+    { "@type": "ListItem", "position": 2, "name": "Admin Drag Calculator" }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpolygon points='20,3 34,14 29,33 11,33 6,14' fill='%238FB8A4'/%3E%3Cpolygon points='20,10 29,17 26,30 14,30 11,17' fill='%23AFD0C9'/%3E%3Cpolygon points='20,16 25,20 23,27 17,27 15,20' fill='%23C9A268'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="page-bg" aria-hidden="true"></div>
+
+<a href="#top" class="skip-link">Skip to main content</a>
+
+<header class="site">
+  <nav>
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false">
+        <polygon points="20,3 34,14 29,33 11,33 6,14" fill="#8FB8A4" opacity="0.9"/>
+        <polygon points="20,10 29,17 26,30 14,30 11,17" fill="#AFD0C9" opacity="0.85"/>
+        <polygon points="20,16 25,20 23,27 17,27 15,20" fill="#C9A268"/>
+      </svg>
+      <span class="brand-word">seaglass<span class="brand-word-sub">digital</span></span>
+    </a>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="index.html#pain">The problem</a></li>
+      <li><a href="process.html">How we work</a></li>
+      <li><a href="case-studies/index.html">Case studies</a></li>
+      <li><a href="calculator.html" aria-current="page">Calculator</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="index.html#involve">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:richard@seaglassdigital.co.uk?subject=Let's connect">Connect with us</a>
+    <button type="button" class="nav-toggle-btn" id="nav-toggle-btn" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero cs-hero">
+    <div class="wrap">
+      <a class="cs-back" href="index.html">← Back to home</a>
+      <span class="case-tag">Free diagnostic tool</span>
+      <h1>What is admin actually costing you this year?</h1>
+      <span class="client">Two minutes, no email required — just drag the sliders</span>
+    </div>
+  </section>
+
+  <section class="calc" id="calculator">
+    <div class="wrap">
+      <div class="calc-grid">
+
+        <!-- Inputs -->
+        <div class="calc-panel calc-inputs">
+          <h2 class="calc-subhead">1. Baseline business context</h2>
+          <div class="calc-field-row">
+            <div class="calc-field">
+              <div class="calc-field-top">
+                <div>
+                  <label for="teamSize">Active team headcount</label>
+                  <p>People handling admin/ops</p>
+                </div>
+                <span class="calc-value" id="teamSizeValue">3 people</span>
+              </div>
+              <input type="range" class="calc-slider" id="teamSize" min="1" max="15" step="1" value="3" aria-describedby="teamSizeValue">
+            </div>
+            <div class="calc-field">
+              <div class="calc-field-top">
+                <div>
+                  <label for="hourlyRate">Blended hourly value</label>
+                  <p>Billable rate or owner time</p>
+                </div>
+                <span class="calc-value" id="hourlyRateValue">£45</span>
+              </div>
+              <input type="range" class="calc-slider" id="hourlyRate" min="25" max="120" step="5" value="45" aria-describedby="hourlyRateValue">
+            </div>
+          </div>
+
+          <h2 class="calc-subhead">2. Weekly admin load (per person)</h2>
+
+          <div class="calc-field">
+            <div class="calc-field-top">
+              <div>
+                <label for="quotingHours">Quoting &amp; estimating</label>
+                <p>Specs, supplier costs, custom proposals, follow-ups</p>
+              </div>
+              <span class="calc-value" id="quotingHoursValue">4 hrs/wk</span>
+            </div>
+            <input type="range" class="calc-slider" id="quotingHours" min="0" max="15" step="0.5" value="4" aria-describedby="quotingHoursValue">
+          </div>
+
+          <div class="calc-field">
+            <div class="calc-field-top">
+              <div>
+                <label for="schedulingHours">Scheduling, shifts &amp; rotas</label>
+                <p>WhatsApp phone tag, subcontractor dispatch, calendar sync</p>
+              </div>
+              <span class="calc-value" id="schedulingHoursValue">3 hrs/wk</span>
+            </div>
+            <input type="range" class="calc-slider" id="schedulingHours" min="0" max="15" step="0.5" value="3" aria-describedby="schedulingHoursValue">
+          </div>
+
+          <div class="calc-field">
+            <div class="calc-field-top">
+              <div>
+                <label for="invoicingHours">Invoicing &amp; receipts</label>
+                <p>Reconciling dockets, Xero/QuickBooks entry, chase emails</p>
+              </div>
+              <span class="calc-value" id="invoicingHoursValue">3 hrs/wk</span>
+            </div>
+            <input type="range" class="calc-slider" id="invoicingHours" min="0" max="15" step="0.5" value="3" aria-describedby="invoicingHoursValue">
+          </div>
+
+          <div class="calc-field">
+            <div class="calc-field-top">
+              <div>
+                <label for="enquiriesHours">Customer enquiries &amp; intake</label>
+                <p>Repetitive first-touch messages, lead qualification, triage</p>
+              </div>
+              <span class="calc-value" id="enquiriesHoursValue">4 hrs/wk</span>
+            </div>
+            <input type="range" class="calc-slider" id="enquiriesHours" min="0" max="15" step="0.5" value="4" aria-describedby="enquiriesHoursValue">
+          </div>
+
+          <div class="calc-total-strip">
+            <span>Total estimated admin per person:</span>
+            <strong id="weeklyTotal">14 hrs/week</strong>
+          </div>
+        </div>
+
+        <!-- Outputs -->
+        <div class="calc-panel calc-outputs">
+          <h2 class="calc-subhead">Annual operational impact</h2>
+
+          <div class="calc-stat-cards">
+            <div class="calc-stat-card">
+              <div class="calc-stat-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                Total admin time
+              </div>
+              <div class="calc-stat-value" id="totalHours">2,016<span>hrs/yr</span></div>
+            </div>
+            <div class="calc-stat-card">
+              <div class="calc-stat-label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M9 15.5c.5 1 1.5 1.5 3 1.5 2 0 3-1 3-2.3 0-3-6-1.2-6-4.2C9 9 10.5 8 12.5 8c1.3 0 2.2.4 2.8 1.2M12 6.5v11"/></svg>
+                Annual drag
+              </div>
+              <div class="calc-stat-value calc-stat-value--drag" id="annualDrag">£90,720</div>
+            </div>
+          </div>
+
+          <div class="calc-highlight">
+            <div class="calc-highlight-eyebrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+              Target recoverable capacity (60%)
+            </div>
+            <div class="calc-highlight-value" id="recoverableValue">£54,432</div>
+            <p class="calc-highlight-sub">Value of billable capacity or margin unlocked annually</p>
+            <div class="calc-highlight-days">
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+                Working days saved:
+              </span>
+              <strong id="recoverableDays">~161 days/yr</strong>
+            </div>
+          </div>
+
+          <ul class="calc-proof-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/></svg>
+              <span>Zero complex enterprise software or multi-year vendor lock-in.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/></svg>
+              <span>Human-in-the-loop: your team stays in control of all final decisions.</span>
+            </li>
+          </ul>
+
+          <div class="calc-cta">
+            <a class="btn btn-primary calc-cta-btn" href="mailto:richard@seaglassdigital.co.uk?subject=Book a review call - Admin calculator">
+              <span>Book a review &amp; recommendations call</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <p class="calc-cta-fine">Fixed-fee diagnostic. We pinpoint your #1 friction point with an actionable fix.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false">
+          <polygon points="20,3 34,14 29,33 11,33 6,14" fill="#8FB8A4" opacity="0.9"/>
+          <polygon points="20,10 29,17 26,30 14,30 11,17" fill="#AFD0C9" opacity="0.85"/>
+          <polygon points="20,16 25,20 23,27 17,27 15,20" fill="#C9A268"/>
+        </svg>
+        <span class="fine">SeaGlass Digital · AI for independent businesses · UK</span>
+      </div>
+      <ul class="foot-links" role="list">
+        <li><a href="process.html">How we work</a></li>
+        <li><a href="case-studies/index.html">Case studies</a></li>
+        <li><a href="index.html#involve">Get involved</a></li>
+      </ul>
+    </div>
+      <p class="foot-legal">SeaGlass Digital is a trading name of C W Casting Limited, registered in England and Wales. Company No. 08180278.</p>
+  </div>
+</footer>
+
+<div class="mobile-cta-bar">
+  <a class="btn btn-primary" href="mailto:richard@seaglassdigital.co.uk?subject=Book a review call - Admin calculator">Book a review call</a>
+</div>
+
+<script src="assets/enquiry-modal.js" defer></script>
+<script>
+  var navToggleBtn = document.getElementById('nav-toggle-btn');
+  var navMenu = document.getElementById('nav-menu');
+  if (navToggleBtn && navMenu) {
+    navToggleBtn.addEventListener('click', function(){
+      var isOpen = navToggleBtn.getAttribute('aria-expanded') === 'true';
+      navToggleBtn.setAttribute('aria-expanded', String(!isOpen));
+      navMenu.classList.toggle('nav-open', !isOpen);
+    });
+    navMenu.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navToggleBtn.setAttribute('aria-expanded', 'false');
+        navMenu.classList.remove('nav-open');
+      });
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && navToggleBtn.getAttribute('aria-expanded') === 'true') {
+        navToggleBtn.setAttribute('aria-expanded', 'false');
+        navMenu.classList.remove('nav-open');
+        navToggleBtn.focus();
+      }
+    });
+  }
+</script>
+<script>
+  (function () {
+    var WEEKS_PER_YEAR = 48;
+    var WORKING_DAY_HOURS = 7.5;
+    var AUTOMATION_RECOVERY_RATE = 0.60;
+
+    var gbp = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 });
+
+    var sliders = {
+      teamSize: document.getElementById('teamSize'),
+      hourlyRate: document.getElementById('hourlyRate'),
+      quotingHours: document.getElementById('quotingHours'),
+      schedulingHours: document.getElementById('schedulingHours'),
+      invoicingHours: document.getElementById('invoicingHours'),
+      enquiriesHours: document.getElementById('enquiriesHours')
+    };
+
+    var out = {
+      teamSizeValue: document.getElementById('teamSizeValue'),
+      hourlyRateValue: document.getElementById('hourlyRateValue'),
+      quotingHoursValue: document.getElementById('quotingHoursValue'),
+      schedulingHoursValue: document.getElementById('schedulingHoursValue'),
+      invoicingHoursValue: document.getElementById('invoicingHoursValue'),
+      enquiriesHoursValue: document.getElementById('enquiriesHoursValue'),
+      weeklyTotal: document.getElementById('weeklyTotal'),
+      totalHours: document.getElementById('totalHours'),
+      annualDrag: document.getElementById('annualDrag'),
+      recoverableValue: document.getElementById('recoverableValue'),
+      recoverableDays: document.getElementById('recoverableDays')
+    };
+
+    function num(el) { return Number(el.value); }
+
+    function recalc() {
+      var teamSize = num(sliders.teamSize);
+      var hourlyRate = num(sliders.hourlyRate);
+      var quotingHours = num(sliders.quotingHours);
+      var schedulingHours = num(sliders.schedulingHours);
+      var invoicingHours = num(sliders.invoicingHours);
+      var enquiriesHours = num(sliders.enquiriesHours);
+
+      out.teamSizeValue.textContent = teamSize + ' people';
+      out.hourlyRateValue.textContent = '£' + hourlyRate;
+      out.quotingHoursValue.textContent = quotingHours + ' hrs/wk';
+      out.schedulingHoursValue.textContent = schedulingHours + ' hrs/wk';
+      out.invoicingHoursValue.textContent = invoicingHours + ' hrs/wk';
+      out.enquiriesHoursValue.textContent = enquiriesHours + ' hrs/wk';
+
+      var weeklyHoursPerPerson = quotingHours + schedulingHours + invoicingHours + enquiriesHours;
+      var totalWeeklyHours = weeklyHoursPerPerson * teamSize;
+      var totalAnnualHours = totalWeeklyHours * WEEKS_PER_YEAR;
+      var totalAnnualDragCost = totalAnnualHours * hourlyRate;
+
+      var recoverableHours = Math.round(totalAnnualHours * AUTOMATION_RECOVERY_RATE);
+      var recoverableWorkingDays = Math.round(recoverableHours / WORKING_DAY_HOURS);
+      var recoverableValue = Math.round(recoverableHours * hourlyRate);
+
+      out.weeklyTotal.textContent = weeklyHoursPerPerson + ' hrs/week';
+      out.totalHours.innerHTML = gbp.format(totalAnnualHours) + '<span>hrs/yr</span>';
+      out.annualDrag.textContent = '£' + gbp.format(totalAnnualDragCost);
+      out.recoverableValue.textContent = '£' + gbp.format(recoverableValue);
+      out.recoverableDays.textContent = '~' + gbp.format(recoverableWorkingDays) + ' days/yr';
+    }
+
+    Object.keys(sliders).forEach(function (key) {
+      sliders[key].addEventListener('input', recalc);
+    });
+
+    recalc();
+  })();
+</script>
+</body>
+</html>
