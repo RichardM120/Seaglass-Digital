@@ -87,10 +87,33 @@
 
   <section class="calc" id="calculator">
     <div class="wrap">
+
+      <div class="calc-persona">
+        <div class="calc-persona-intro">
+          <h2 class="calc-subhead calc-subhead-standalone">Choose the closest match, or build your own</h2>
+          <p class="calc-persona-lede">Each example is a conservative, illustrative estimate for that type of business — pick one to see typical numbers, or switch to Custom and use your own.</p>
+        </div>
+        <div class="calc-persona-pills" role="tablist" aria-label="Business type">
+          <button type="button" class="calc-persona-pill" data-persona="shop" role="tab" aria-selected="false">Independent shop</button>
+          <button type="button" class="calc-persona-pill" data-persona="interior" role="tab" aria-selected="false">Interior design studio</button>
+          <button type="button" class="calc-persona-pill" data-persona="garden" role="tab" aria-selected="false">Garden &amp; landscape design</button>
+          <button type="button" class="calc-persona-pill" data-persona="restaurant" role="tab" aria-selected="false">Restaurant</button>
+          <button type="button" class="calc-persona-pill is-active" data-persona="custom" role="tab" aria-selected="true">Custom</button>
+        </div>
+        <div class="calc-persona-note" id="personaNote" hidden>
+          <p id="personaNoteText"></p>
+          <button type="button" class="calc-persona-customize" id="personaCustomizeBtn">Customize these numbers →</button>
+        </div>
+      </div>
+
       <div class="calc-grid">
 
         <!-- Inputs -->
         <div class="calc-panel calc-inputs">
+          <div class="calc-locked-banner" id="lockedBanner" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            <span>Showing an estimate for <strong id="lockedBannerPersona">Independent shop</strong> — not editable</span>
+          </div>
           <h2 class="calc-subhead">1. Baseline business context</h2>
           <div class="calc-field-row">
             <div class="calc-field">
@@ -111,7 +134,7 @@
                 </div>
                 <span class="calc-value" id="hourlyRateValue">£45</span>
               </div>
-              <input type="range" class="calc-slider" id="hourlyRate" min="25" max="120" step="5" value="45" aria-describedby="hourlyRateValue">
+              <input type="range" class="calc-slider" id="hourlyRate" min="15" max="120" step="1" value="45" aria-describedby="hourlyRateValue">
             </div>
           </div>
 
@@ -346,6 +369,71 @@
     Object.keys(sliders).forEach(function (key) {
       sliders[key].addEventListener('input', recalc);
     });
+
+    var personas = {
+      shop: {
+        label: 'Independent shop',
+        note: 'One person running the whole shop — ordering, till reconciliation and social media DMs. A conservative, illustrative estimate.',
+        teamSize: 1, hourlyRate: 18, quotingHours: 0, schedulingHours: 0.5, invoicingHours: 2, enquiriesHours: 2
+      },
+      interior: {
+        label: 'Interior design studio',
+        note: 'A two-person studio: proposals, mood boards and trade coordination. A conservative, illustrative estimate.',
+        teamSize: 2, hourlyRate: 45, quotingHours: 4, schedulingHours: 1.5, invoicingHours: 1.5, enquiriesHours: 1.5
+      },
+      garden: {
+        label: 'Garden & landscape design',
+        note: 'A two-person crew: site surveys, planting plans and weather reschedules. A conservative, illustrative estimate.',
+        teamSize: 2, hourlyRate: 38, quotingHours: 4, schedulingHours: 2, invoicingHours: 1, enquiriesHours: 1.5
+      },
+      restaurant: {
+        label: 'Restaurant',
+        note: 'Owner plus a manager: staff rota, supplier invoices and booking enquiries. A conservative, illustrative estimate.',
+        teamSize: 2, hourlyRate: 20, quotingHours: 0, schedulingHours: 2.5, invoicingHours: 1.5, enquiriesHours: 1.5
+      }
+    };
+
+    var pills = document.querySelectorAll('.calc-persona-pill');
+    var lockedBanner = document.getElementById('lockedBanner');
+    var lockedBannerPersona = document.getElementById('lockedBannerPersona');
+    var personaNote = document.getElementById('personaNote');
+    var personaNoteText = document.getElementById('personaNoteText');
+    var personaCustomizeBtn = document.getElementById('personaCustomizeBtn');
+
+    function applyPersona(key) {
+      pills.forEach(function (p) {
+        var active = p.dataset.persona === key;
+        p.classList.toggle('is-active', active);
+        p.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+
+      if (key === 'custom') {
+        Object.keys(sliders).forEach(function (k) { sliders[k].disabled = false; });
+        lockedBanner.hidden = true;
+        personaNote.hidden = true;
+        return;
+      }
+
+      var p = personas[key];
+      sliders.teamSize.value = p.teamSize;
+      sliders.hourlyRate.value = p.hourlyRate;
+      sliders.quotingHours.value = p.quotingHours;
+      sliders.schedulingHours.value = p.schedulingHours;
+      sliders.invoicingHours.value = p.invoicingHours;
+      sliders.enquiriesHours.value = p.enquiriesHours;
+      recalc();
+
+      Object.keys(sliders).forEach(function (k) { sliders[k].disabled = true; });
+      lockedBanner.hidden = false;
+      lockedBannerPersona.textContent = p.label;
+      personaNote.hidden = false;
+      personaNoteText.textContent = p.note;
+    }
+
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () { applyPersona(pill.dataset.persona); });
+    });
+    personaCustomizeBtn.addEventListener('click', function () { applyPersona('custom'); });
 
     recalc();
   })();
