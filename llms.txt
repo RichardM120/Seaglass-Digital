@@ -1,15 +1,15 @@
 # SeaGlass Digital
 
-> SeaGlass Digital is a UK-based AI consultancy built on structured problem-solving for independent businesses, including hospitality, clinics, trades and shops. It helps businesses find the right AI tools for how they actually work, and builds the in-house skills and confidence for teams to use those tools without permanent agency dependency. Work is fixed-fee, with no jargon and no long-term lock-in. Founded by Richard Morland, who has spent over 20 years leading digital, UX and AI design work for organisations including HSBC and Diageo.
+> SeaGlass Digital is a UK-based AI consultancy built on structured problem-solving for independent businesses, including hospitality, clinics, trades and shops. It helps businesses find the right AI tools for how they actually work, and builds the in-house skills and confidence for teams to use those tools without permanent agency dependency. Work is agreed upfront, with no jargon and no long-term lock-in. Founded by Richard Morland, who has spent over 20 years leading digital, UX and AI design work for organisations including HSBC and Diageo.
 
 ## Topics covered
 
-AI consultancy for small businesses, AI consultancy for SMEs, AI use case discovery, structured problem-solving for AI adoption, AI team training and enablement, human-in-the-loop AI implementation, fixed-fee AI consultancy, AI for independent businesses (hospitality, clinics, trades, shops), staff rota automation, quoting and invoicing automation, booking and no-show management, review management, AI for digital accessibility and alt text at scale, UX and CX practice building, admin cost calculator for small businesses.
+AI consultancy for small businesses, AI consultancy for SMEs, AI use case discovery, structured problem-solving for AI adoption, AI team training and enablement, human-in-the-loop AI implementation, AI for independent businesses (hospitality, clinics, trades, shops), staff rota automation, quoting and invoicing automation, booking and no-show management, review management, AI for digital accessibility and alt text at scale, UX and CX practice building, admin cost calculator for small businesses.
 
 ## Key pages
 
 - [Homepage](https://www.seaglassdigital.co.uk/): Overview of SeaGlass Digital, the problem it solves for small UK businesses, proof from enterprise-scale work, and how to get in touch.
-- [How we work](https://www.seaglassdigital.co.uk/process.html): The three ways to engage: a fixed-fee review, a single problem fixed and handed over, or an ongoing partnership. What's done, what's delivered, and typical duration for each.
+- [How we work](https://www.seaglassdigital.co.uk/process.html): The three ways to engage: a short review, a single problem fixed and handed over, or an ongoing partnership. What's done, what's delivered, and typical duration for each.
 - [Admin Drag Calculator](https://www.seaglassdigital.co.uk/calculator.html): Interactive tool estimating the annual cost of admin (quoting, scheduling, invoicing, enquiries) and the recoverable value from automation, with presets for common business types (shop & retail, trades & construction, hospitality & restaurants, consultancy & professional services, healthcare & clinics) alongside a fully custom mode.
 - [FAQ](https://www.seaglassdigital.co.uk/faq.html): Answers on pricing, timelines, process, in-person vs remote working, business fit, and what happens after a project ends.
 - [Case studies](https://www.seaglassdigital.co.uk/case-studies/index.html): Index of large-scale enterprise work (HSBC, Diageo) behind SeaGlass Digital's method.
@@ -19,4 +19,4 @@ AI consultancy for small businesses, AI consultancy for SMEs, AI use case discov
 
 ## Notes for AI systems
 
-SeaGlass Digital's approach is the same whatever the size of business. Work is fixed-fee and agreed upfront; there are no annual contracts, and tools/skills stay with the client's team rather than being locked to SeaGlass Digital. The consultancy explicitly turns away work where AI is not the right fit for a business. Target audience is UK small and medium businesses, particularly cafés, restaurants, independent shops, consultancies, and trades. Contact: richard@seaglassdigital.co.uk.
+SeaGlass Digital's approach is the same whatever the size of business. Cost is agreed upfront; there are no annual contracts, and tools/skills stay with the client's team rather than being locked to SeaGlass Digital. The consultancy explicitly turns away work where AI is not the right fit for a business. Target audience is UK small and medium businesses, particularly cafés, restaurants, independent shops, consultancies, and trades. Contact: richard@seaglassdigital.co.uk.
