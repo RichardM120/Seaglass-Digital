@@ -393,7 +393,7 @@
     sections.forEach(function(section){ observer.observe(section); });
   })();
 
-  // Auto-rotating hero panel: 4 full-height slides, on every device.
+  // Hero panel: 4 full-height slides, on every device.
   // The site-wide reduced-motion rule (top of stylesheet) still swaps
   // the transition to an instant cut for anyone with that OS setting on.
   (function(){
@@ -418,6 +418,15 @@
     var timer = null;
     var playing = true;
     var DURATION = 6000;
+
+    // Auto-rotation runs one full pass, then settles instead of looping.
+    // Carousels that cycle forever tend to get tuned out, and a panel that
+    // is about to slide away discourages reading it. After every panel has
+    // had a turn the rotator returns to the first one and stops, leaving
+    // the main message on screen. The controls still work, and the play
+    // button restarts rotation for anyone who wants it.
+    var autoAdvances = 0;
+    var cycleComplete = false;
 
     // Pin the container to the tallest slide's natural content height so
     // rotating between shorter/longer copy never resizes the panel. Each
@@ -457,9 +466,19 @@
     function next(){ show(current + 1); }
     function prev(){ show(current - 1); }
 
+    function autoNext(){
+      next();
+      autoAdvances += 1;
+      if (autoAdvances >= slides.length){
+        cycleComplete = true;
+        pause();
+      }
+    }
+
     function start(){
       stop();
-      timer = window.setInterval(next, DURATION);
+      if (cycleComplete) return;
+      timer = window.setInterval(autoNext, DURATION);
       playing = true;
       toggleBtn.setAttribute('aria-pressed', 'false');
       toggleBtn.setAttribute('aria-label', 'Pause automatic rotation');
@@ -480,7 +499,14 @@
       dot.addEventListener('click', function(){ show(i); start(); });
     });
     toggleBtn.addEventListener('click', function(){
-      if (playing){ pause(); } else { start(); }
+      if (playing){
+        pause();
+      } else {
+        // Pressing play after the first pass starts a fresh cycle.
+        cycleComplete = false;
+        autoAdvances = 0;
+        start();
+      }
     });
 
     section.addEventListener('mouseenter', stop);
