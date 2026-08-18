@@ -94,21 +94,25 @@
           <p class="calc-persona-lede">Each one is a conservative estimate. Pick the closest match, or switch to Custom for your own numbers.</p>
         </div>
         <div class="calc-persona-pills" role="tablist" aria-label="Business type">
-          <button type="button" class="calc-persona-pill" data-persona="shop" role="tab" aria-selected="false">
+          <button type="button" class="calc-persona-pill" data-persona="retail" role="tab" aria-selected="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9l1.2-5h13.6L20 9"/><path d="M4 9a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-6h4v6"/></svg>
-            <span>Independent shop</span>
+            <span>Shop &amp; retail</span>
           </button>
-          <button type="button" class="calc-persona-pill" data-persona="interior" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="11" height="5" rx="1.5"/><path d="M8.5 9v4.5H13a2 2 0 0 1 2 2V20"/><rect x="12" y="18" width="5" height="5" rx="1.5"/></svg>
-            <span>Interior design studio</span>
+          <button type="button" class="calc-persona-pill" data-persona="trades" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 18h16"/><path d="M6 18a6 6 0 0 1 12 0"/><path d="M12 8v2"/></svg>
+            <span>Trades &amp; construction</span>
           </button>
-          <button type="button" class="calc-persona-pill" data-persona="garden" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19c8 0 14-6 14-14-8 0-14 6-14 14z"/><path d="M5 19c2-4.5 5.5-8 9-10"/></svg>
-            <span>Garden &amp; landscape design</span>
-          </button>
-          <button type="button" class="calc-persona-pill" data-persona="restaurant" role="tab" aria-selected="false">
+          <button type="button" class="calc-persona-pill" data-persona="hospitality" role="tab" aria-selected="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 2v6a2 2 0 0 0 4 0V2M9 2v18"/><path d="M17 2c-1.8 0-3 2-3 5s1.2 4 3 4v11"/></svg>
-            <span>Restaurant</span>
+            <span>Hospitality &amp; restaurants</span>
+          </button>
+          <button type="button" class="calc-persona-pill" data-persona="professional" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="8" width="18" height="11" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg>
+            <span>Consultancy &amp; professional services</span>
+          </button>
+          <button type="button" class="calc-persona-pill" data-persona="healthcare" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            <span>Healthcare &amp; clinics</span>
           </button>
           <button type="button" class="calc-persona-pill is-active" data-persona="custom" role="tab" aria-selected="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h4M14 6h6M4 12h8M18 12h2M4 18h2M12 18h8"/><circle cx="10" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/></svg>
@@ -386,25 +390,30 @@
     });
 
     var personas = {
-      shop: {
-        label: 'Independent shop',
+      retail: {
+        label: 'Shop & retail',
         note: 'One person running the whole shop: ordering, till reconciliation, social media DMs.',
         teamSize: 1, hourlyRate: 18, quotingHours: 0, schedulingHours: 0.5, invoicingHours: 2, enquiriesHours: 2
       },
-      interior: {
-        label: 'Interior design studio',
-        note: 'A two-person studio, or any small service/consultative practice: proposals, mood boards, staying on top of client comms.',
-        teamSize: 2, hourlyRate: 45, quotingHours: 4, schedulingHours: 1.5, invoicingHours: 1.5, enquiriesHours: 1.5
-      },
-      garden: {
-        label: 'Garden & landscape design',
-        note: 'A two-person crew, or any hands-on service business: site visits, planning, weather reschedules.',
+      trades: {
+        label: 'Trades & construction',
+        note: 'A two-person crew, or any hands-on trade: estimating, site visits, weather reschedules.',
         teamSize: 2, hourlyRate: 38, quotingHours: 4, schedulingHours: 2, invoicingHours: 1, enquiriesHours: 1.5
       },
-      restaurant: {
-        label: 'Restaurant',
+      hospitality: {
+        label: 'Hospitality & restaurants',
         note: 'Owner plus a manager: staff rota, supplier invoices, booking enquiries.',
         teamSize: 2, hourlyRate: 20, quotingHours: 0, schedulingHours: 2.5, invoicingHours: 1.5, enquiriesHours: 1.5
+      },
+      professional: {
+        label: 'Consultancy & professional services',
+        note: 'A two-person practice, or any small service/consultative business: proposals, client comms, admin.',
+        teamSize: 2, hourlyRate: 45, quotingHours: 4, schedulingHours: 1.5, invoicingHours: 1.5, enquiriesHours: 1.5
+      },
+      healthcare: {
+        label: 'Healthcare & clinics',
+        note: 'Practitioner plus reception: patient bookings, treatment estimates, insurance billing.',
+        teamSize: 2, hourlyRate: 35, quotingHours: 1, schedulingHours: 3, invoicingHours: 1.5, enquiriesHours: 2
       }
     };
 
