@@ -598,6 +598,30 @@
 }
 
 /* ---------- ADMIN DRAG CALCULATOR ---------- */
+/* How-to steps: deliberately normal body copy, not the mono/uppercase
+   eyebrow treatment used for the section labels further down the page.
+   Numbered because this genuinely is a sequence: each step depends on
+   the one before it. */
+.calc-howto{ margin-bottom:32px; max-width:78ch; }
+.calc-howto h2{ font-size:var(--fs-lg); margin-bottom:14px; }
+.calc-howto-steps{
+  margin:0; padding:0 0 0 1.3em;
+  display:flex; flex-direction:column; gap:12px;
+}
+.calc-howto-steps li{
+  font-size:var(--fs-base); line-height:var(--lh-body);
+  color:var(--ink); opacity:0.88; padding-left:4px;
+}
+.calc-howto-steps li::marker{ color:var(--glass-amber-text); font-weight:700; }
+.calc-howto-steps strong{ font-weight:600; opacity:1; }
+.calc-howto-note{
+  margin:16px 0 0; font-size:var(--fs-xs); opacity:0.7;
+}
+@media (max-width:640px){
+  .calc-howto{ margin-bottom:26px; }
+  .calc-howto-steps li{ font-size:var(--fs-sm); }
+}
+
 .calc-persona{ margin-bottom:28px; }
 .calc-subhead-standalone{ border-bottom:none; padding-bottom:0; margin-bottom:0; }
 .calc-persona-lede{ font-size:var(--fs-sm); opacity:0.75; margin:8px 0 0; max-width:64ch; }
@@ -626,8 +650,10 @@
   display:inline-flex; align-items:center; gap:7px;
   font-family:'Inter',sans-serif; font-size:var(--fs-xs); font-weight:600;
   padding:9px 16px; border-radius:999px;
-  border:1.5px dashed rgba(47,79,73,0.28);
-  background:var(--sand-deep); color:rgba(30,43,39,0.6);
+  border:1.5px dashed rgba(47,79,73,0.35);
+  /* Muted, but kept at 4.5:1+ against the sand background: this is real text,
+     not decoration, so it has to stay readable. */
+  background:var(--sand-deep); color:#4A5652;
 }
 .calc-customized-badge[hidden]{ display:none; }
 .calc-customized-badge svg{ width:16px; height:16px; flex-shrink:0; }
