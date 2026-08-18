@@ -406,9 +406,32 @@
     font-family:'Fraunces', serif; font-weight:500; color:var(--sea-deep);
     font-size:clamp(var(--fs-xl), 2.6vw, var(--fs-2xl)); line-height:1.4; max-width:38ch; margin:0;
   }
+  /* The recognisable-jobs list. Deliberately generic: these are the shapes
+     admin takes in almost any small business, so a reader identifies with
+     the job rather than needing their trade named. */
+  .pain-list-intro{
+    font-size:var(--fs-base); color:var(--ink); opacity:0.8;
+    margin:26px 0 14px; max-width:52ch;
+  }
+  .pain-list{
+    list-style:none; margin:0; padding:0;
+    display:grid; grid-template-columns:1fr 1fr; gap:10px 30px;
+    max-width:76ch;
+  }
+  @media (max-width:760px){ .pain-list{ grid-template-columns:1fr; } }
+  .pain-list li{
+    position:relative; padding-left:20px;
+    font-size:var(--fs-sm); line-height:1.5; color:var(--ink); opacity:0.85;
+  }
+  .pain-list li::before{
+    content:""; position:absolute; left:0; top:0.62em;
+    width:8px; height:2px; border-radius:1px;
+    background:var(--glass-amber-text); opacity:0.75;
+  }
+
   .pain-resolve{
     font-size:var(--fs-md); line-height:1.55; max-width:52ch;
-    color:var(--ink); opacity:0.85; margin:20px 0 0;
+    color:var(--ink); opacity:0.85; margin:26px 0 0;
   }
   .pain .btn-row{ margin-top:22px; }
 
