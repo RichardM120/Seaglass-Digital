@@ -91,7 +91,7 @@
       <div class="calc-persona">
         <div class="calc-persona-intro">
           <h2 class="calc-subhead calc-subhead-standalone">Choose the closest match, or build your own</h2>
-          <p class="calc-persona-lede">Each one is a conservative estimate. Pick the closest match, or switch to Custom for your own numbers.</p>
+          <p class="calc-persona-lede">Each one is a conservative estimate to start from. Pick the closest match, then adjust any slider to fit your own numbers.</p>
         </div>
         <div class="calc-persona-pills" role="tablist" aria-label="Business type">
           <button type="button" class="calc-persona-pill" data-persona="retail" role="tab" aria-selected="false">
@@ -114,14 +114,13 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
             <span>Healthcare &amp; clinics</span>
           </button>
-          <button type="button" class="calc-persona-pill is-active" data-persona="custom" role="tab" aria-selected="true">
+          <span class="calc-customized-badge" id="customizedBadge" hidden>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h4M14 6h6M4 12h8M18 12h2M4 18h2M12 18h8"/><circle cx="10" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/></svg>
-            <span>Custom</span>
-          </button>
+            <span>Customized</span>
+          </span>
         </div>
         <div class="calc-persona-note" id="personaNote" hidden>
           <p id="personaNoteText"></p>
-          <button type="button" class="calc-persona-customize" id="personaCustomizeBtn">Customize these numbers →</button>
         </div>
       </div>
 
@@ -129,9 +128,10 @@
 
         <!-- Inputs -->
         <div class="calc-panel calc-inputs">
-          <div class="calc-locked-banner" id="lockedBanner" hidden>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-            <span>Showing an estimate for <strong id="lockedBannerPersona">Independent shop</strong>, not editable</span>
+          <div class="calc-source-banner" id="sourceBanner" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v18M5 8l7-5 7 5"/><path d="M5 8v8l7 5 7-5V8"/></svg>
+            <span id="sourceBannerText">Showing our standard estimate for <strong id="sourceBannerPersona">Shop &amp; retail</strong>. Drag any slider to adjust it.</span>
+            <button type="button" class="calc-reset-btn" id="personaResetBtn" hidden>Reset to standard</button>
           </div>
           <h2 class="calc-subhead">1. Baseline business context</h2>
           <div class="calc-field-row">
@@ -418,46 +418,83 @@
     };
 
     var pills = document.querySelectorAll('.calc-persona-pill');
-    var lockedBanner = document.getElementById('lockedBanner');
-    var lockedBannerPersona = document.getElementById('lockedBannerPersona');
+    var sourceBanner = document.getElementById('sourceBanner');
+    var sourceBannerText = document.getElementById('sourceBannerText');
+    var sourceBannerPersona = document.getElementById('sourceBannerPersona');
     var personaNote = document.getElementById('personaNote');
     var personaNoteText = document.getElementById('personaNoteText');
-    var personaCustomizeBtn = document.getElementById('personaCustomizeBtn');
+    var customizedBadge = document.getElementById('customizedBadge');
+    var resetBtn = document.getElementById('personaResetBtn');
 
-    function applyPersona(key) {
-      pills.forEach(function (p) {
-        var active = p.dataset.persona === key;
-        p.classList.toggle('is-active', active);
-        p.setAttribute('aria-selected', active ? 'true' : 'false');
+    var activePersona = null;
+    var isCustomized = false;
+
+    var SLIDER_KEYS = ['teamSize', 'hourlyRate', 'quotingHours', 'schedulingHours', 'invoicingHours', 'enquiriesHours'];
+
+    function matchesPersona(p) {
+      return SLIDER_KEYS.every(function (k) { return Number(sliders[k].value) === p[k]; });
+    }
+
+    function renderPersonaState() {
+      pills.forEach(function (pill) {
+        var isThis = pill.dataset.persona === activePersona;
+        pill.classList.toggle('is-active', isThis && !isCustomized);
+        pill.classList.toggle('is-customized', isThis && isCustomized);
+        pill.setAttribute('aria-selected', isThis ? 'true' : 'false');
       });
 
-      if (key === 'custom') {
-        Object.keys(sliders).forEach(function (k) { sliders[k].disabled = false; });
-        lockedBanner.hidden = true;
+      customizedBadge.hidden = !isCustomized;
+      resetBtn.hidden = !isCustomized;
+
+      if (!activePersona) {
+        sourceBanner.hidden = true;
         personaNote.hidden = true;
         return;
       }
 
-      var p = personas[key];
-      sliders.teamSize.value = p.teamSize;
-      sliders.hourlyRate.value = p.hourlyRate;
-      sliders.quotingHours.value = p.quotingHours;
-      sliders.schedulingHours.value = p.schedulingHours;
-      sliders.invoicingHours.value = p.invoicingHours;
-      sliders.enquiriesHours.value = p.enquiriesHours;
-      recalc();
-
-      Object.keys(sliders).forEach(function (k) { sliders[k].disabled = true; });
-      lockedBanner.hidden = false;
-      lockedBannerPersona.textContent = p.label;
+      var p = personas[activePersona];
+      sourceBanner.hidden = false;
+      sourceBanner.classList.toggle('is-customized', isCustomized);
       personaNote.hidden = false;
       personaNoteText.textContent = p.note;
+
+      if (isCustomized) {
+        sourceBannerText.innerHTML = 'Your own numbers, started from our <strong>' + p.label + '</strong> estimate.';
+      } else {
+        sourceBannerText.innerHTML = 'Showing our standard estimate for <strong>' + p.label + '</strong>. Drag any slider to adjust it.';
+      }
     }
+
+    function applyPersona(key) {
+      var p = personas[key];
+      SLIDER_KEYS.forEach(function (k) { sliders[k].value = p[k]; });
+      activePersona = key;
+      isCustomized = false;
+      recalc();
+      renderPersonaState();
+    }
+
+    // Any slider move away from the preset flips the selected persona into a
+    // "customized" state: the pill stays visible (so you can still see which
+    // estimate these numbers came from) but greys out, since the figures are
+    // no longer ours. Dragging back to the exact preset values restores it.
+    Object.keys(sliders).forEach(function (key) {
+      sliders[key].addEventListener('input', function () {
+        if (!activePersona) return;
+        var nowCustom = !matchesPersona(personas[activePersona]);
+        if (nowCustom !== isCustomized) {
+          isCustomized = nowCustom;
+          renderPersonaState();
+        }
+      });
+    });
 
     pills.forEach(function (pill) {
       pill.addEventListener('click', function () { applyPersona(pill.dataset.persona); });
     });
-    personaCustomizeBtn.addEventListener('click', function () { applyPersona('custom'); });
+    resetBtn.addEventListener('click', function () {
+      if (activePersona) applyPersona(activePersona);
+    });
 
     recalc();
   })();
