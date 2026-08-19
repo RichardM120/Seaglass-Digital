@@ -400,6 +400,22 @@
   .work-card h3{ margin:0 0 8px; font-size:1.6rem; }
   .work-card-link{ margin-top:auto; padding-top:14px; font-weight:600; font-size:var(--fs-sm); color:var(--sea-deep); }
 
+  /* Below 640px, cards go from a tall stack (full-width image, then
+     centred text underneath) to a compact row: a small square thumbnail
+     with the text wrapped beside it, so three cards fit in far less
+     scroll height on a phone. */
+  @media (max-width:640px){
+    .work-card{ flex-direction:row; align-items:center; gap:14px; }
+    .work-card-image{ width:88px; height:88px; flex-shrink:0; object-fit:cover; }
+    .work-card-body{
+      align-items:flex-start; text-align:left;
+      padding:14px 16px 14px 0;
+    }
+    .work-card-icon{ width:24px; height:24px; margin-bottom:6px; }
+    .work-card h3{ font-size:1.2rem; margin:0 0 4px; }
+    .work-card-link{ padding-top:6px; }
+  }
+
   /* ---------- PAIN + OUTCOME, MERGED ----------
      One section carries both the recognisable-jobs list and the
      savings/growth payoff, so a reader gets problem and outcome in a
