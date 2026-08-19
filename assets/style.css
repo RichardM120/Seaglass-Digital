@@ -400,49 +400,33 @@
   .work-card h3{ margin:0 0 8px; font-size:1.6rem; }
   .work-card-link{ margin-top:auto; padding-top:14px; font-weight:600; font-size:var(--fs-sm); color:var(--sea-deep); }
 
-  /* ---------- PAIN, IN THEIR WORDS ---------- */
+  /* ---------- PAIN + OUTCOME, MERGED ----------
+     One section carries both the recognisable-jobs list and the
+     savings/growth payoff, so a reader gets problem and outcome in a
+     single scan instead of two separate text blocks. The pain items are
+     deliberately generic: these are the shapes admin takes in almost any
+     small business, so a reader identifies with the job rather than
+     needing their trade named. */
   .pain{ background:var(--sand-deep); }
   .pain-line{
     font-family:'Fraunces', serif; font-weight:500; color:var(--sea-deep);
     font-size:clamp(var(--fs-xl), 2.6vw, var(--fs-2xl)); line-height:1.4; max-width:38ch; margin:0;
   }
-  /* The recognisable-jobs list. Deliberately generic: these are the shapes
-     admin takes in almost any small business, so a reader identifies with
-     the job rather than needing their trade named. */
-  .pain-list-intro{
-    font-size:var(--fs-base); color:var(--ink); opacity:0.8;
-    margin:26px 0 14px; max-width:52ch;
+  .pain-tags{
+    list-style:none; margin:26px 0 0; padding:0;
+    display:flex; flex-wrap:wrap; gap:10px 12px; max-width:76ch;
   }
-  .pain-list{
-    list-style:none; margin:0; padding:0;
-    display:grid; grid-template-columns:1fr 1fr; gap:10px 30px;
-    max-width:76ch;
+  .pain-tags li{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.7); border:1px solid rgba(47,79,73,0.25);
+    border-radius:999px; padding:8px 14px 8px 10px;
+    font-size:var(--fs-sm); color:var(--ink); opacity:0.9;
   }
-  @media (max-width:760px){ .pain-list{ grid-template-columns:1fr; } }
-  .pain-list li{
-    position:relative; padding-left:20px;
-    font-size:var(--fs-sm); line-height:1.5; color:var(--ink); opacity:0.85;
-  }
-  .pain-list li::before{
-    content:""; position:absolute; left:0; top:0.62em;
-    width:8px; height:2px; border-radius:1px;
-    background:var(--glass-amber-text); opacity:0.75;
-  }
+  .pain-tag-icon{ width:16px; height:16px; flex-shrink:0; color:var(--sea-deep); }
 
-  .pain-resolve{
-    font-size:var(--fs-md); line-height:1.55; max-width:52ch;
-    color:var(--ink); opacity:0.85; margin:26px 0 0;
-  }
-  .pain .btn-row{ margin-top:22px; }
-
-  /* ---------- SECTION HEADING (promoted from the small eyebrow label to a
-     full heading, used where a section has no separate, bigger headline) ---------- */
-  .section-heading{
-    font-weight:700; font-size:clamp(var(--fs-xl), 2.6vw, var(--fs-2xl)); margin-bottom:8px;
-  }
-
-  /* ---------- SAVINGS / GROWTH ---------- */
-  .pillars{ display:grid; grid-template-columns:1fr 1fr; gap:var(--gap); margin-top:44px; }
+  .pillars-compact{ margin-top:40px; padding-top:32px; border-top:1px solid rgba(47,79,73,0.15); }
+  .pillars-compact-heading{ font-weight:700; font-size:var(--fs-lg); margin:0 0 18px; color:var(--sea-deep); }
+  .pillars{ display:grid; grid-template-columns:1fr 1fr; gap:var(--gap); }
   @media (max-width:700px){ .pillars{ grid-template-columns:1fr; } }
   .pillar{
     display:flex; align-items:flex-start; gap:16px;
@@ -450,8 +434,16 @@
     border-radius:var(--radius-soft); padding:20px 22px;
   }
   .pillar-icon{ width:34px; height:34px; flex-shrink:0; margin-top:2px; color:var(--sea-deep); }
-  .pillar-body h3{ font-weight:700; margin:0 0 8px; }
-  .pillar-body p{ font-size:var(--fs-md); line-height:1.55; opacity:0.85; margin:0; }
+  .pillar-body h4{ font-weight:700; margin:0 0 8px; font-size:var(--fs-md); }
+  .pillar-body p{ font-size:var(--fs-sm); line-height:1.55; opacity:0.85; margin:0; }
+
+  .pain .btn-row{ margin-top:28px; }
+
+  /* ---------- SECTION HEADING (promoted from the small eyebrow label to a
+     full heading, used where a section has no separate, bigger headline) ---------- */
+  .section-heading{
+    font-weight:700; font-size:clamp(var(--fs-xl), 2.6vw, var(--fs-2xl)); margin-bottom:8px;
+  }
 
   /* ---------- CASE STUDY / PROOF ---------- */
   .case{ }
