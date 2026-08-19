@@ -401,24 +401,28 @@
   .work-card-link{ margin-top:auto; padding-top:14px; font-weight:600; font-size:var(--fs-sm); color:var(--sea-deep); }
 
   /* Below 640px, cards go from a tall stack (full-width image, then
-     centred text underneath) to a compact row: a small thumbnail beside
-     the heading, with the link underneath, so three cards fit in far
-     less scroll height on a phone. The icon is dropped at this size,
-     it's redundant next to the heading once space is this tight.
-     min-width:0 on the body is load-bearing: without it a flex child
-     refuses to shrink below its text's natural width and the heading
-     pushes the card wider than the screen instead of wrapping. */
+     centred text underneath) to a compact centred layout: a small
+     thumbnail and heading centred together, with the link as its own
+     full-width row underneath, set off by a divider. The icon is
+     dropped at this size, it's redundant next to the heading once space
+     is this tight. min-width:0 on the body is load-bearing: without it
+     a flex child refuses to shrink below its text's natural width and
+     the heading pushes the card wider than the screen instead of
+     wrapping. */
   @media (max-width:640px){
-    .work-card{ flex-direction:row; align-items:flex-start; gap:12px; }
-    .work-card-image{ width:64px; height:64px; flex-shrink:0; object-fit:cover; border-radius:4px; }
+    .work-card{ flex-direction:column; align-items:center; text-align:center; }
+    .work-card-image{ width:64px; height:64px; margin-top:20px; object-fit:cover; border-radius:4px; }
     .work-card-icon{ display:none; }
     .work-card-body{
-      flex:1; min-width:0;
-      align-items:flex-start; text-align:left;
-      padding:14px 16px 14px 0;
+      width:100%; flex:1; min-width:0;
+      align-items:center; text-align:center;
+      padding:12px 20px 0;
     }
     .work-card h3{ font-size:1.15rem; margin:0 0 4px; }
-    .work-card-link{ padding-top:6px; }
+    .work-card-link{
+      display:block; width:100%; margin-top:14px; padding:14px 20px;
+      border-top:1px solid rgba(47,79,73,0.15);
+    }
   }
 
   /* ---------- PAIN + OUTCOME, MERGED ----------
