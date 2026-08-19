@@ -18,19 +18,19 @@
     --shadow-soft-hover: 0 20px 36px -18px rgba(47,79,73,0.42);
 
     /* Type scale: ratio 1.2 ("minor third"), rounded to practical values.
-       Every font-size in this file resolves to one of these steps —
+       Every font-size in this file resolves to one of these steps,
        no ad hoc sizes. Base is 1rem = 17px (see html{} below), so the
        scale still honours a user's browser/OS text-size preference
        instead of being pinned to a hard pixel value. */
-    --fs-2xs:  0.7rem;    /* ~12px — mono labels, eyebrows, tags */
-    --fs-xs:   0.85rem;   /* ~14px — captions, secondary/meta text */
-    --fs-sm:   0.95rem;   /* ~16px — dense UI text, nav links */
-    --fs-base: 1rem;      /* 17px  — body copy */
-    --fs-md:   1.2rem;    /* ~20px — lead paragraphs, sub-heads */
-    --fs-lg:   1.45rem;   /* ~25px — card/component headings (h3) */
-    --fs-xl:   1.75rem;   /* ~30px — section headings (h2) */
-    --fs-2xl:  2.1rem;    /* ~36px — display h1 / hard numbers */
-    --fs-3xl:  2.5rem;    /* ~42px — large page-hero h1 */
+    --fs-2xs:  0.7rem;    /* ~12px: mono labels, eyebrows, tags */
+    --fs-xs:   0.85rem;   /* ~14px: captions, secondary/meta text */
+    --fs-sm:   0.95rem;   /* ~16px: dense UI text, nav links */
+    --fs-base: 1rem;      /* 17px:  body copy */
+    --fs-md:   1.2rem;    /* ~20px: lead paragraphs, sub-heads */
+    --fs-lg:   1.45rem;   /* ~25px: card/component headings (h3) */
+    --fs-xl:   1.75rem;   /* ~30px: section headings (h2) */
+    --fs-2xl:  2.1rem;    /* ~36px: display h1 / hard numbers */
+    --fs-3xl:  2.5rem;    /* ~42px: large page-hero h1 */
 
     --lh-tight: 1.1;      /* large display type only */
     --lh-heading: 1.25;   /* headings under --fs-xl: room to wrap */
@@ -136,7 +136,7 @@
   }
   /* On pages with a hero (home): float the nav over the hero panel itself
      instead of stacking a separate bar above it, so the nav no longer adds
-     its own row of height before the hero — a standard overlaid-nav pattern.
+     its own row of height before the hero, a standard overlaid-nav pattern.
      The translucent, blurred background keeps text legible over any image
      behind it without needing separate light/dark nav variants. */
   body.has-hero header.site{
@@ -273,7 +273,7 @@
   }
 
 
-  /* Only the active slide ever renders — true regardless of whether JS
+  /* Only the active slide ever renders, true regardless of whether JS
      has run yet, so panels always rotate in place via the nav controls
      and never stack on top of each other (e.g. on first paint, or if
      the enhancement script is slow/blocked). JS's job is just to move
@@ -406,9 +406,32 @@
     font-family:'Fraunces', serif; font-weight:500; color:var(--sea-deep);
     font-size:clamp(var(--fs-xl), 2.6vw, var(--fs-2xl)); line-height:1.4; max-width:38ch; margin:0;
   }
+  /* The recognisable-jobs list. Deliberately generic: these are the shapes
+     admin takes in almost any small business, so a reader identifies with
+     the job rather than needing their trade named. */
+  .pain-list-intro{
+    font-size:var(--fs-base); color:var(--ink); opacity:0.8;
+    margin:26px 0 14px; max-width:52ch;
+  }
+  .pain-list{
+    list-style:none; margin:0; padding:0;
+    display:grid; grid-template-columns:1fr 1fr; gap:10px 30px;
+    max-width:76ch;
+  }
+  @media (max-width:760px){ .pain-list{ grid-template-columns:1fr; } }
+  .pain-list li{
+    position:relative; padding-left:20px;
+    font-size:var(--fs-sm); line-height:1.5; color:var(--ink); opacity:0.85;
+  }
+  .pain-list li::before{
+    content:""; position:absolute; left:0; top:0.62em;
+    width:8px; height:2px; border-radius:1px;
+    background:var(--glass-amber-text); opacity:0.75;
+  }
+
   .pain-resolve{
     font-size:var(--fs-md); line-height:1.55; max-width:52ch;
-    color:var(--ink); opacity:0.85; margin:20px 0 0;
+    color:var(--ink); opacity:0.85; margin:26px 0 0;
   }
   .pain .btn-row{ margin-top:22px; }
 
@@ -439,6 +462,15 @@
   }
   .proof-stats div strong{ display:block; font-family:'Fraunces',serif; font-size:var(--fs-3xl); line-height:var(--lh-tight); color:var(--glass-amber-text); }
   .proof-stats div span{ font-size:var(--fs-sm); opacity:0.75; }
+
+  /* Reads the enterprise numbers back down to size, so they land as
+     reassurance rather than as a business the reader can't afford. */
+  .proof-stats:has(+ .proof-bridge){ margin-bottom:18px; }
+  .proof-bridge{
+    font-family:'Fraunces', serif; font-weight:500;
+    font-size:var(--fs-md); line-height:1.4; color:var(--sea-deep);
+    margin:0 0 34px;
+  }
   .case-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); }
   @media (max-width:900px){ .case-grid{ grid-template-columns:1fr; } }
   .case-mini{
@@ -598,6 +630,30 @@
 }
 
 /* ---------- ADMIN DRAG CALCULATOR ---------- */
+/* How-to steps: deliberately normal body copy, not the mono/uppercase
+   eyebrow treatment used for the section labels further down the page.
+   Numbered because this genuinely is a sequence: each step depends on
+   the one before it. */
+.calc-howto{ margin-bottom:32px; max-width:78ch; }
+.calc-howto h2{ font-size:var(--fs-lg); margin-bottom:14px; }
+.calc-howto-steps{
+  margin:0; padding:0 0 0 1.3em;
+  display:flex; flex-direction:column; gap:12px;
+}
+.calc-howto-steps li{
+  font-size:var(--fs-base); line-height:var(--lh-body);
+  color:var(--ink); opacity:0.88; padding-left:4px;
+}
+.calc-howto-steps li::marker{ color:var(--glass-amber-text); font-weight:700; }
+.calc-howto-steps strong{ font-weight:600; opacity:1; }
+.calc-howto-note{
+  margin:16px 0 0; font-size:var(--fs-xs); opacity:0.7;
+}
+@media (max-width:640px){
+  .calc-howto{ margin-bottom:26px; }
+  .calc-howto-steps li{ font-size:var(--fs-sm); }
+}
+
 .calc-persona{ margin-bottom:28px; }
 .calc-subhead-standalone{ border-bottom:none; padding-bottom:0; margin-bottom:0; }
 .calc-persona-lede{ font-size:var(--fs-sm); opacity:0.75; margin:8px 0 0; max-width:64ch; }
@@ -612,7 +668,27 @@
 .calc-persona-pill svg{ width:16px; height:16px; flex-shrink:0; }
 .calc-persona-pill:hover{ border-color:var(--sea-deep); background:rgba(143,184,164,0.12); }
 .calc-persona-pill.is-active{ background:var(--sea-deep); border-color:var(--sea-deep); color:var(--white); }
+/* Selected, but the numbers have been changed: keep the pill legible so you can
+   still see which estimate they started from, while making clear these figures
+   are no longer the standard ones we set. */
+.calc-persona-pill.is-customized{
+  background:var(--sand-deep); border-color:rgba(47,79,73,0.2);
+  border-style:dashed; color:rgba(30,43,39,0.55);
+}
+.calc-persona-pill.is-customized:hover{ background:rgba(143,184,164,0.18); color:var(--sea-deep); }
 .calc-persona-pill:focus-visible{ outline:2px solid var(--sea-deep); outline-offset:2px; }
+
+.calc-customized-badge{
+  display:inline-flex; align-items:center; gap:7px;
+  font-family:'Inter',sans-serif; font-size:var(--fs-xs); font-weight:600;
+  padding:9px 16px; border-radius:999px;
+  border:1.5px dashed rgba(47,79,73,0.35);
+  /* Muted, but kept at 4.5:1+ against the sand background: this is real text,
+     not decoration, so it has to stay readable. */
+  background:var(--sand-deep); color:#4A5652;
+}
+.calc-customized-badge[hidden]{ display:none; }
+.calc-customized-badge svg{ width:16px; height:16px; flex-shrink:0; }
 
 .calc-persona-note{
   margin-top:16px; padding:14px 18px; background:var(--sand-deep); border-radius:var(--radius-soft);
@@ -620,24 +696,27 @@
 }
 .calc-persona-note[hidden]{ display:none; }
 .calc-persona-note p{ margin:0; font-size:var(--fs-xs); opacity:0.85; max-width:60ch; }
-.calc-persona-customize{
-  flex-shrink:0; background:none; border:none; padding:0; cursor:pointer;
-  font-family:'Inter',sans-serif; font-weight:600; font-size:var(--fs-xs);
-  color:var(--glass-amber-text); text-decoration:underline; text-underline-offset:3px;
-}
-.calc-persona-customize:hover{ color:#5c4322; }
 
-.calc-locked-banner{
+.calc-source-banner{
   display:flex; align-items:center; gap:8px; margin-bottom:20px; padding:10px 14px;
-  background:rgba(201,162,104,0.15); border:1px solid rgba(201,162,104,0.4);
-  border-radius:6px; font-size:var(--fs-2xs); color:var(--glass-amber-text); font-weight:600;
+  background:rgba(175,208,201,0.3); border:1px solid rgba(47,79,73,0.18);
+  border-radius:6px; font-size:var(--fs-2xs); color:var(--sea-deep); font-weight:600;
+  flex-wrap:wrap;
 }
-.calc-locked-banner[hidden]{ display:none; }
-.calc-locked-banner svg{ width:15px; height:15px; flex-shrink:0; }
-
-.calc-slider:disabled{ opacity:0.5; cursor:not-allowed; }
-.calc-slider:disabled::-webkit-slider-thumb{ cursor:not-allowed; }
-.calc-slider:disabled::-moz-range-thumb{ cursor:not-allowed; }
+.calc-source-banner[hidden]{ display:none; }
+.calc-source-banner svg{ width:15px; height:15px; flex-shrink:0; }
+.calc-source-banner span{ flex:1; min-width:0; }
+.calc-source-banner.is-customized{
+  background:rgba(201,162,104,0.15); border-color:rgba(201,162,104,0.4);
+  color:var(--glass-amber-text);
+}
+.calc-reset-btn{
+  flex-shrink:0; background:none; border:none; padding:0; cursor:pointer;
+  font-family:'Inter',sans-serif; font-weight:600; font-size:var(--fs-2xs);
+  color:inherit; text-decoration:underline; text-underline-offset:3px;
+}
+.calc-reset-btn[hidden]{ display:none; }
+.calc-reset-btn:hover{ opacity:0.75; }
 
 @media (max-width:640px){
   .calc-persona-pill{ padding:8px 13px; font-size:var(--fs-2xs); }

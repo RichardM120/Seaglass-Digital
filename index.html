@@ -13,8 +13,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SeaGlass Digital - AI for Independent Businesses</title>
-<meta name="description" content="SeaGlass Digital helps independent businesses cut the hours lost to rotas, quoting and admin with the right AI tools, taught to your team. Fixed fee.">
-<meta name="keywords" content="AI consultancy for small businesses UK, AI consultancy for SMEs, design thinking AI adoption, AI use case discovery, AI training for teams, fixed fee AI consultancy, AI for high street businesses, human-in-the-loop AI, UK small business AI advisor, AI for cafes shops and trades">
+<meta name="description" content="SeaGlass Digital helps independent businesses cut the hours lost to rotas, quoting and admin with the right AI tools, taught to your team. No lock-in.">
+<meta name="keywords" content="AI consultancy for small businesses UK, AI consultancy for SMEs, design thinking AI adoption, AI use case discovery, AI training for teams, AI for high street businesses, human-in-the-loop AI, UK small business AI advisor, AI for cafes shops and trades">
 <link rel="canonical" href="https://www.seaglassdigital.co.uk/">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="GB">
@@ -63,7 +63,7 @@
   },
   "audience": {"@type": "Audience", "audienceType": "Independent business owners and small and medium businesses"},
   "serviceType": ["AI consultancy", "AI use case discovery", "AI team training", "Design thinking consultancy"],
-  "keywords": "AI consultancy for small businesses, AI for independent businesses, AI use case discovery, AI training for teams, fixed fee AI consultancy",
+  "keywords": "AI consultancy for small businesses, AI for independent businesses, AI use case discovery, AI training for teams",
   "founder": {
     "@type": "Person",
     "name": "Richard Morland"
@@ -249,6 +249,19 @@
     <div class="wrap">
       <span class="eyebrow">Sound familiar?</span>
       <h2 class="pain-line">Setting up and running a business takes time: the team, the accounts, the logistics. AI and digital tools bought, only one ever used.</h2>
+
+      <p class="pain-list-intro">Most of it shows up as the same handful of jobs. See how many you recognise:</p>
+      <ul class="pain-list" role="list">
+        <li>Quotes and estimates written up in the evening, after the actual work is done</li>
+        <li>A rota or schedule rebuilt from scratch every week</li>
+        <li>Invoices raised late, then chased twice</li>
+        <li>The same customer question answered for the hundredth time</li>
+        <li>Numbers re-typed from one app into another, because the two don't talk</li>
+        <li>Bookings, cancellations and no-shows all handled by hand</li>
+        <li>Records kept straight in case someone asks to see them</li>
+        <li>A pile of receipts and paperwork that only ever gets bigger</li>
+      </ul>
+
       <p class="pain-resolve">You didn't start this business to work every hour it sends you. Use the right tools, in the right way, and get those hours back. Talk to SeaGlass Digital about where to start.</p>
       <div class="btn-row">
         <a class="btn btn-primary" href="process.html">See how we work</a>
@@ -266,23 +279,24 @@
         <div><strong>120+</strong><span>brands, AI applied across 180 markets</span></div>
         <div><strong>40+</strong><span>agencies, one standard method</span></div>
       </div>
+      <p class="proof-bridge">The scale changes. The method doesn't.</p>
       <div class="case-grid">
         <a class="case-mini" href="case-studies/hsbc-genai.html">
           <span class="case-tag">AI &amp; Innovation</span>
-          <h3>Bringing safe GenAI training to 14,000+ bank staff</h3>
-          <p>The same structured, human-in-the-loop approach now applied to a five-person shop.</p>
+          <h3>Training 14,000+ bank staff to use AI safely</h3>
+          <p>The same approach, where a person always checks the AI's work, now applied to a five-person shop.</p>
           <span class="case-link">Read the case study →</span>
         </a>
         <a class="case-mini" href="case-studies/diageo-bedrock.html">
           <span class="case-tag">Using AI for Accessibility</span>
           <h3>An accessibility pilot, scaled to 120 brands</h3>
-          <p>Founded and grew a global system that needed a simple solution to create thousands of image ’Alt Text’ descriptions for 120+ brands across 180 markets into multiple languages.</p>
+          <p>Built a system that wrote descriptions for thousands of images, so blind visitors could use the sites, across 120+ brands and 180 markets in multiple languages.</p>
           <span class="case-link">Read the case study →</span>
         </a>
         <a class="case-mini" href="case-studies/diageo-cx-practice.html">
-          <span class="case-tag">CX &amp; UX Practice</span>
+          <span class="case-tag">Customer experience</span>
           <h3>Turning a 4-person team into a global practice</h3>
-          <p>Built a global CX/UX practice from scratch, standardising structured problem-solving across 40+ agencies. The same structured method now applied to single-site small businesses.</p>
+          <p>Built a global design and customer experience team from scratch, with one shared way of working across 40+ agencies. The same method now applied to single-site small businesses.</p>
           <span class="case-link">Read the case study →</span>
         </a>
       </div>
@@ -380,7 +394,7 @@
     sections.forEach(function(section){ observer.observe(section); });
   })();
 
-  // Auto-rotating hero panel: 4 full-height slides, on every device.
+  // Hero panel: 4 full-height slides, on every device.
   // The site-wide reduced-motion rule (top of stylesheet) still swaps
   // the transition to an instant cut for anyone with that OS setting on.
   (function(){
@@ -405,6 +419,15 @@
     var timer = null;
     var playing = true;
     var DURATION = 6000;
+
+    // Auto-rotation runs one full pass, then settles instead of looping.
+    // Carousels that cycle forever tend to get tuned out, and a panel that
+    // is about to slide away discourages reading it. After every panel has
+    // had a turn the rotator returns to the first one and stops, leaving
+    // the main message on screen. The controls still work, and the play
+    // button restarts rotation for anyone who wants it.
+    var autoAdvances = 0;
+    var cycleComplete = false;
 
     // Pin the container to the tallest slide's natural content height so
     // rotating between shorter/longer copy never resizes the panel. Each
@@ -444,9 +467,19 @@
     function next(){ show(current + 1); }
     function prev(){ show(current - 1); }
 
+    function autoNext(){
+      next();
+      autoAdvances += 1;
+      if (autoAdvances >= slides.length){
+        cycleComplete = true;
+        pause();
+      }
+    }
+
     function start(){
       stop();
-      timer = window.setInterval(next, DURATION);
+      if (cycleComplete) return;
+      timer = window.setInterval(autoNext, DURATION);
       playing = true;
       toggleBtn.setAttribute('aria-pressed', 'false');
       toggleBtn.setAttribute('aria-label', 'Pause automatic rotation');
@@ -467,7 +500,14 @@
       dot.addEventListener('click', function(){ show(i); start(); });
     });
     toggleBtn.addEventListener('click', function(){
-      if (playing){ pause(); } else { start(); }
+      if (playing){
+        pause();
+      } else {
+        // Pressing play after the first pass starts a fresh cycle.
+        cycleComplete = false;
+        autoAdvances = 0;
+        start();
+      }
     });
 
     section.addEventListener('mouseenter', stop);

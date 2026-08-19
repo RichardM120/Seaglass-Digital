@@ -88,36 +88,50 @@
   <section class="calc" id="calculator">
     <div class="wrap">
 
+      <div class="calc-howto">
+        <h2>How to use this calculator</h2>
+        <ol class="calc-howto-steps">
+          <li><strong>Pick the business type closest to yours.</strong> Each one loads a conservative estimate we've put together for that kind of business, so you've got a sensible starting point rather than a blank form.</li>
+          <li><strong>Adjust the sliders to match your business.</strong> Change the number of people, what an hour of their time is worth, and roughly how many hours a week go on quoting, scheduling, invoicing and enquiries. Once you change anything, the numbers become yours, not ours.</li>
+          <li><strong>Read what it adds up to.</strong> You'll see the total hours and cost that admin takes out of your year, and what's realistically recoverable if the repetitive parts were automated.</li>
+          <li><strong>Decide if it's worth a conversation.</strong> If the recoverable figure looks big enough to care about, book a review and we'll pinpoint where to start.</li>
+        </ol>
+        <p class="calc-howto-note">Nothing you enter is sent anywhere or saved. It all stays in your browser.</p>
+      </div>
+
       <div class="calc-persona">
         <div class="calc-persona-intro">
           <h2 class="calc-subhead calc-subhead-standalone">Choose the closest match, or build your own</h2>
-          <p class="calc-persona-lede">Each one is a conservative estimate. Pick the closest match, or switch to Custom for your own numbers.</p>
+          <p class="calc-persona-lede">Each one is a conservative estimate to start from. Pick the closest match, then adjust any slider to fit your own numbers.</p>
         </div>
-        <div class="calc-persona-pills" role="tablist" aria-label="Business type">
-          <button type="button" class="calc-persona-pill" data-persona="shop" role="tab" aria-selected="false">
+        <div class="calc-persona-pills" role="group" aria-label="Business type: pick the closest match to load a starting estimate">
+          <button type="button" class="calc-persona-pill" data-persona="retail" aria-pressed="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9l1.2-5h13.6L20 9"/><path d="M4 9a2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0 2 2 0 0 0 4 0"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-6h4v6"/></svg>
-            <span>Independent shop</span>
+            <span>Shop &amp; retail</span>
           </button>
-          <button type="button" class="calc-persona-pill" data-persona="interior" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="11" height="5" rx="1.5"/><path d="M8.5 9v4.5H13a2 2 0 0 1 2 2V20"/><rect x="12" y="18" width="5" height="5" rx="1.5"/></svg>
-            <span>Interior design studio</span>
+          <button type="button" class="calc-persona-pill" data-persona="trades" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 18h16"/><path d="M6 18a6 6 0 0 1 12 0"/><path d="M12 8v2"/></svg>
+            <span>Trades &amp; construction</span>
           </button>
-          <button type="button" class="calc-persona-pill" data-persona="garden" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19c8 0 14-6 14-14-8 0-14 6-14 14z"/><path d="M5 19c2-4.5 5.5-8 9-10"/></svg>
-            <span>Garden &amp; landscape design</span>
-          </button>
-          <button type="button" class="calc-persona-pill" data-persona="restaurant" role="tab" aria-selected="false">
+          <button type="button" class="calc-persona-pill" data-persona="hospitality" aria-pressed="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 2v6a2 2 0 0 0 4 0V2M9 2v18"/><path d="M17 2c-1.8 0-3 2-3 5s1.2 4 3 4v11"/></svg>
-            <span>Restaurant</span>
+            <span>Hospitality &amp; restaurants</span>
           </button>
-          <button type="button" class="calc-persona-pill is-active" data-persona="custom" role="tab" aria-selected="true">
+          <button type="button" class="calc-persona-pill" data-persona="professional" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="8" width="18" height="11" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg>
+            <span>Consultancy &amp; professional services</span>
+          </button>
+          <button type="button" class="calc-persona-pill" data-persona="healthcare" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+            <span>Healthcare &amp; clinics</span>
+          </button>
+          <span class="calc-customized-badge" id="customizedBadge" hidden>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h4M14 6h6M4 12h8M18 12h2M4 18h2M12 18h8"/><circle cx="10" cy="6" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/></svg>
-            <span>Custom</span>
-          </button>
+            <span>Customized</span>
+          </span>
         </div>
         <div class="calc-persona-note" id="personaNote" hidden>
           <p id="personaNoteText"></p>
-          <button type="button" class="calc-persona-customize" id="personaCustomizeBtn">Customize these numbers →</button>
         </div>
       </div>
 
@@ -125,9 +139,10 @@
 
         <!-- Inputs -->
         <div class="calc-panel calc-inputs">
-          <div class="calc-locked-banner" id="lockedBanner" hidden>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-            <span>Showing an estimate for <strong id="lockedBannerPersona">Independent shop</strong>, not editable</span>
+          <div class="calc-source-banner" id="sourceBanner" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v18M5 8l7-5 7 5"/><path d="M5 8v8l7 5 7-5V8"/></svg>
+            <span id="sourceBannerText">Showing our standard estimate for <strong id="sourceBannerPersona">Shop &amp; retail</strong>. Drag any slider to adjust it.</span>
+            <button type="button" class="calc-reset-btn" id="personaResetBtn" hidden>Reset to standard</button>
           </div>
           <h2 class="calc-subhead">1. Baseline business context</h2>
           <div class="calc-field-row">
@@ -208,6 +223,7 @@
         <!-- Outputs -->
         <div class="calc-panel calc-outputs">
           <h2 class="calc-subhead">Annual operational impact</h2>
+          <p class="visually-hidden" id="resultsLive" aria-live="polite"></p>
 
           <div class="calc-stat-cards">
             <div class="calc-stat-card">
@@ -249,7 +265,7 @@
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/></svg>
-              <span>Human-in-the-loop: your team stays in control of all final decisions.</span>
+              <span>A person always checks: your team stays in control of every final decision.</span>
             </li>
           </ul>
 
@@ -258,7 +274,7 @@
               <span>Book a review &amp; recommendations call</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
-            <p class="calc-cta-fine">Fixed-fee diagnostic. We pinpoint your #1 friction point with an actionable fix.</p>
+            <p class="calc-cta-fine">A short review that pinpoints your #1 friction point, with an actionable fix.</p>
           </div>
         </div>
 
@@ -365,6 +381,16 @@
       out.invoicingHoursValue.textContent = invoicingHours + ' hrs/wk';
       out.enquiriesHoursValue.textContent = enquiriesHours + ' hrs/wk';
 
+      // Screen readers read a range input's raw number ("45"), which loses the
+      // unit. aria-valuetext replaces that with the human version.
+      sliders.teamSize.setAttribute('aria-valuetext', teamSize + (teamSize === 1 ? ' person' : ' people'));
+      sliders.hourlyRate.setAttribute('aria-valuetext', '£' + hourlyRate + ' per hour');
+      function hrsText(h) { return h + (h === 1 ? ' hour' : ' hours') + ' per week'; }
+      sliders.quotingHours.setAttribute('aria-valuetext', hrsText(quotingHours));
+      sliders.schedulingHours.setAttribute('aria-valuetext', hrsText(schedulingHours));
+      sliders.invoicingHours.setAttribute('aria-valuetext', hrsText(invoicingHours));
+      sliders.enquiriesHours.setAttribute('aria-valuetext', hrsText(enquiriesHours));
+
       var weeklyHoursPerPerson = quotingHours + schedulingHours + invoicingHours + enquiriesHours;
       var totalWeeklyHours = weeklyHoursPerPerson * teamSize;
       var totalAnnualHours = totalWeeklyHours * WEEKS_PER_YEAR;
@@ -379,6 +405,23 @@
       out.annualDrag.textContent = '£' + gbp.format(totalAnnualDragCost);
       out.recoverableValue.textContent = '£' + gbp.format(recoverableValue);
       out.recoverableDays.textContent = '~' + gbp.format(recoverableWorkingDays) + ' days/yr';
+
+      announceResults(totalAnnualHours, totalAnnualDragCost, recoverableValue, recoverableWorkingDays);
+    }
+
+    // Announce the headline figures once the user stops moving a slider, rather
+    // than on every input event, so a drag isn't read out dozens of times.
+    var resultsLive = document.getElementById('resultsLive');
+    var announceTimer = null;
+    function announceResults(hours, drag, recoverable, days) {
+      if (!resultsLive) return;
+      window.clearTimeout(announceTimer);
+      announceTimer = window.setTimeout(function () {
+        resultsLive.textContent =
+          gbp.format(hours) + ' hours of admin a year, costing £' + gbp.format(drag) +
+          '. Around £' + gbp.format(recoverable) + ', or ' + gbp.format(days) +
+          ' working days, is realistically recoverable.';
+      }, 700);
     }
 
     Object.keys(sliders).forEach(function (key) {
@@ -386,69 +429,111 @@
     });
 
     var personas = {
-      shop: {
-        label: 'Independent shop',
+      retail: {
+        label: 'Shop & retail',
         note: 'One person running the whole shop: ordering, till reconciliation, social media DMs.',
         teamSize: 1, hourlyRate: 18, quotingHours: 0, schedulingHours: 0.5, invoicingHours: 2, enquiriesHours: 2
       },
-      interior: {
-        label: 'Interior design studio',
-        note: 'A two-person studio, or any small service/consultative practice: proposals, mood boards, staying on top of client comms.',
-        teamSize: 2, hourlyRate: 45, quotingHours: 4, schedulingHours: 1.5, invoicingHours: 1.5, enquiriesHours: 1.5
-      },
-      garden: {
-        label: 'Garden & landscape design',
-        note: 'A two-person crew, or any hands-on service business: site visits, planning, weather reschedules.',
+      trades: {
+        label: 'Trades & construction',
+        note: 'A two-person crew, or any hands-on trade: estimating, site visits, weather reschedules.',
         teamSize: 2, hourlyRate: 38, quotingHours: 4, schedulingHours: 2, invoicingHours: 1, enquiriesHours: 1.5
       },
-      restaurant: {
-        label: 'Restaurant',
+      hospitality: {
+        label: 'Hospitality & restaurants',
         note: 'Owner plus a manager: staff rota, supplier invoices, booking enquiries.',
         teamSize: 2, hourlyRate: 20, quotingHours: 0, schedulingHours: 2.5, invoicingHours: 1.5, enquiriesHours: 1.5
+      },
+      professional: {
+        label: 'Consultancy & professional services',
+        note: 'A two-person practice, or any small service/consultative business: proposals, client comms, admin.',
+        teamSize: 2, hourlyRate: 45, quotingHours: 4, schedulingHours: 1.5, invoicingHours: 1.5, enquiriesHours: 1.5
+      },
+      healthcare: {
+        label: 'Healthcare & clinics',
+        note: 'Practitioner plus reception: patient bookings, treatment estimates, insurance billing.',
+        teamSize: 2, hourlyRate: 35, quotingHours: 1, schedulingHours: 3, invoicingHours: 1.5, enquiriesHours: 2
       }
     };
 
     var pills = document.querySelectorAll('.calc-persona-pill');
-    var lockedBanner = document.getElementById('lockedBanner');
-    var lockedBannerPersona = document.getElementById('lockedBannerPersona');
+    var sourceBanner = document.getElementById('sourceBanner');
+    var sourceBannerText = document.getElementById('sourceBannerText');
+    var sourceBannerPersona = document.getElementById('sourceBannerPersona');
     var personaNote = document.getElementById('personaNote');
     var personaNoteText = document.getElementById('personaNoteText');
-    var personaCustomizeBtn = document.getElementById('personaCustomizeBtn');
+    var customizedBadge = document.getElementById('customizedBadge');
+    var resetBtn = document.getElementById('personaResetBtn');
 
-    function applyPersona(key) {
-      pills.forEach(function (p) {
-        var active = p.dataset.persona === key;
-        p.classList.toggle('is-active', active);
-        p.setAttribute('aria-selected', active ? 'true' : 'false');
+    var activePersona = null;
+    var isCustomized = false;
+
+    var SLIDER_KEYS = ['teamSize', 'hourlyRate', 'quotingHours', 'schedulingHours', 'invoicingHours', 'enquiriesHours'];
+
+    function matchesPersona(p) {
+      return SLIDER_KEYS.every(function (k) { return Number(sliders[k].value) === p[k]; });
+    }
+
+    function renderPersonaState() {
+      pills.forEach(function (pill) {
+        var isThis = pill.dataset.persona === activePersona;
+        pill.classList.toggle('is-active', isThis && !isCustomized);
+        pill.classList.toggle('is-customized', isThis && isCustomized);
+        pill.setAttribute('aria-pressed', isThis ? 'true' : 'false');
       });
 
-      if (key === 'custom') {
-        Object.keys(sliders).forEach(function (k) { sliders[k].disabled = false; });
-        lockedBanner.hidden = true;
+      customizedBadge.hidden = !isCustomized;
+      resetBtn.hidden = !isCustomized;
+
+      if (!activePersona) {
+        sourceBanner.hidden = true;
         personaNote.hidden = true;
         return;
       }
 
-      var p = personas[key];
-      sliders.teamSize.value = p.teamSize;
-      sliders.hourlyRate.value = p.hourlyRate;
-      sliders.quotingHours.value = p.quotingHours;
-      sliders.schedulingHours.value = p.schedulingHours;
-      sliders.invoicingHours.value = p.invoicingHours;
-      sliders.enquiriesHours.value = p.enquiriesHours;
-      recalc();
-
-      Object.keys(sliders).forEach(function (k) { sliders[k].disabled = true; });
-      lockedBanner.hidden = false;
-      lockedBannerPersona.textContent = p.label;
+      var p = personas[activePersona];
+      sourceBanner.hidden = false;
+      sourceBanner.classList.toggle('is-customized', isCustomized);
       personaNote.hidden = false;
       personaNoteText.textContent = p.note;
+
+      if (isCustomized) {
+        sourceBannerText.innerHTML = 'Your own numbers, started from our <strong>' + p.label + '</strong> estimate.';
+      } else {
+        sourceBannerText.innerHTML = 'Showing our standard estimate for <strong>' + p.label + '</strong>. Drag any slider to adjust it.';
+      }
     }
+
+    function applyPersona(key) {
+      var p = personas[key];
+      SLIDER_KEYS.forEach(function (k) { sliders[k].value = p[k]; });
+      activePersona = key;
+      isCustomized = false;
+      recalc();
+      renderPersonaState();
+    }
+
+    // Any slider move away from the preset flips the selected persona into a
+    // "customized" state: the pill stays visible (so you can still see which
+    // estimate these numbers came from) but greys out, since the figures are
+    // no longer ours. Dragging back to the exact preset values restores it.
+    Object.keys(sliders).forEach(function (key) {
+      sliders[key].addEventListener('input', function () {
+        if (!activePersona) return;
+        var nowCustom = !matchesPersona(personas[activePersona]);
+        if (nowCustom !== isCustomized) {
+          isCustomized = nowCustom;
+          renderPersonaState();
+        }
+      });
+    });
 
     pills.forEach(function (pill) {
       pill.addEventListener('click', function () { applyPersona(pill.dataset.persona); });
     });
-    personaCustomizeBtn.addEventListener('click', function () { applyPersona('custom'); });
+    resetBtn.addEventListener('click', function () {
+      if (activePersona) applyPersona(activePersona);
+    });
 
     recalc();
   })();
