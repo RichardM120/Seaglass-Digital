@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lato:wght@400;700;900&display=swap">
+<style>
+  /* Single light theme on purpose: this sits inside a Wix page that has one
+     look, so following the visitor's OS dark mode would make the embed
+     disagree with everything around it. */
+  :root {
+    --peach:      #F9CBAD;
+    --cream:      #FFF7F1;
+    --surface:    #FFFFFF;
+    --ink:        #46403E;
+    --ink-soft:   #6E6461;
+    --ink-faint:  #9C8F8A;
+    --violet:     #5B47D6;
+    --blush:      #DD7CBE;
+    --rule:       #E8D3C4;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+  h1, h2 { text-wrap: balance; margin: 0; }
+  p { margin: 0 0 18px; }
+  p:last-child { margin-bottom: 0; }
+  .prose { max-width: 62ch; }
+
+  .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--ink-soft);
+  }
+
+  /* Hero */
+  .hero { background: var(--peach); padding: 52px 0 58px; border-bottom: 1px solid var(--rule); }
+  .hero-inner { display: flex; flex-direction: column; gap: 26px; align-items: center; text-align: center; }
+
+  .wordmark {
+    font-family: "Archivo Black", Impact, "Arial Black", sans-serif;
+    font-size: clamp(64px, 16vw, 140px);
+    line-height: .9; letter-spacing: .08em; text-indent: .08em;
+    font-weight: 400; color: var(--ink); margin: 0;
+  }
+
+  .calling {
+    font-family: "Archivo Black", Impact, "Arial Black", sans-serif;
+    font-size: clamp(23px, 5vw, 38px);
+    line-height: 1.15; text-transform: uppercase; font-weight: 400;
+    max-width: 14ch; margin: 0;
+    background: linear-gradient(100deg, var(--violet), var(--blush));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .hero-lede { font-size: clamp(18px, 2.4vw, 21px); max-width: 30ch; margin: 0; }
+
+  .deadline {
+    font-size: 15px; font-weight: 700; letter-spacing: .04em;
+    text-transform: uppercase; margin: -8px 0 0;
+  }
+
+  /* Button — target="_top" on the links so mailto escapes the iframe */
+  .btn {
+    display: inline-block;
+    font-size: 16px; font-weight: 900; letter-spacing: .05em;
+    text-transform: uppercase; text-decoration: none;
+    color: var(--cream); background: var(--ink);
+    border-radius: 2px; padding: 16px 34px;
+    transition: background .12s ease, transform .12s ease;
+  }
+  .btn:hover { background: var(--violet); transform: translateY(-1px); }
+  .btn:focus-visible { outline: 3px solid var(--violet); outline-offset: 3px; }
+
+  /* Sections */
+  section { padding: 52px 0; }
+  section + section { border-top: 1px solid var(--rule); }
+  .sec-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+  h2 {
+    font-family: "Archivo Black", Impact, "Arial Black", sans-serif;
+    font-size: clamp(25px, 4vw, 33px); line-height: 1.15; font-weight: 400;
+  }
+
+  /* Eligibility */
+  .criteria {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px; background: var(--rule); border: 1px solid var(--rule); margin: 0;
+  }
+  .crit { background: var(--surface); padding: 21px; display: flex; flex-direction: column; gap: 6px; }
+  .crit dt { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); }
+  .crit dd { margin: 0; font-size: 19px; font-weight: 700; line-height: 1.3; }
+
+  /* Checklist */
+  .checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .checklist li {
+    background: var(--surface); border-left: 3px solid var(--blush);
+    padding: 16px 20px; display: grid; grid-template-columns: auto 1fr;
+    gap: 14px; align-items: baseline;
+  }
+  .checklist .mark { color: var(--blush); font-weight: 900; font-size: 15px; }
+  .checklist strong { display: block; }
+  .checklist .note { color: var(--ink-soft); font-size: 15px; }
+
+  /* Apply */
+  .apply-panel {
+    background: var(--surface); border: 1px solid var(--rule);
+    box-shadow: 0 1px 2px rgba(70,64,62,.06), 0 8px 24px -12px rgba(70,64,62,.18);
+    padding: 32px; display: flex; flex-direction: column; gap: 20px; align-items: flex-start;
+  }
+  @media (max-width: 560px) { .apply-panel { padding: 23px 21px; } }
+  .apply-panel .lede { font-size: 19px; max-width: 44ch; margin: 0; }
+  .fine-print { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+
+  /* Footer */
+  footer { background: var(--peach); padding: 40px 0; border-top: 1px solid var(--rule); }
+  footer .wrap { display: flex; flex-direction: column; gap: 12px; }
+  footer p { font-size: 15px; color: var(--ink-soft); }
+  a { color: var(--ink); }
+  a:hover { color: var(--violet); }
+  .sig { font-size: 12px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--ink); }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Catherine Willis Casting &middot; CDG CSA</p>
+    <h1 class="wordmark">PUSH</h1>
+    <p class="calling">Calling all West Yorkshire actors</p>
+    <p class="hero-lede">We're looking for actors from West Yorkshire for a new BBC comedy series produced by VAL.</p>
+    <a class="btn" target="_top" href="mailto:push@cwcasting.co.uk?subject=PUSH%20open%20casting%20application">Email your application</a>
+    <p class="deadline">Applications close <strong>Friday 28 August</strong></p>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">The opportunity</p>
+        <h2>An open casting, and you don't need experience</h2>
+      </div>
+      <div class="prose">
+        <p><strong>PUSH</strong> is a new comedy series for the BBC, produced by Various Artists Limited. We're casting from across West Yorkshire, and we want to hear from people who have never acted before as well as those who have.</p>
+        <p>This is a paid opportunity. You don't need training, an agent, a showreel, or a single credit to your name &mdash; just send us the few things listed below and we'll take it from there.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Who we're looking for</p>
+        <h2>Eligibility</h2>
+      </div>
+      <dl class="criteria">
+        <div class="crit"><dt>Age</dt><dd>20 to 50 years old</dd></div>
+        <div class="crit"><dt>Based in</dt><dd>West Yorkshire</dd></div>
+        <div class="crit"><dt>Open to</dt><dd>All genders and races</dd></div>
+        <div class="crit"><dt>Experience</dt><dd>None required</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Before you start</p>
+        <h2>What to send</h2>
+      </div>
+      <ul class="checklist">
+        <li><span class="mark">&#10003;</span><span><strong>Your full name</strong></span></li>
+        <li><span class="mark">&#10003;</span><span><strong>Where you're currently based</strong><span class="note">Town or city is plenty.</span></span></li>
+        <li><span class="mark">&#10003;</span><span><strong>A selfie</strong><span class="note">Taken recently, on your phone, in daylight. It doesn't need to be a professional headshot &mdash; we just want to see you as you are.</span></span></li>
+        <li><span class="mark">&#10003;</span><span><strong>A short introduction</strong><span class="note">A few sentences about you, and any acting experience you have. "None" is a perfectly good answer.</span></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Timing</p>
+        <h2>Applications close Friday 28 August</h2>
+      </div>
+      <div class="prose">
+        <p>Send yours before then. We're reading everything as it arrives, so there's no advantage in leaving it to the last day.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Apply</p>
+        <h2>Send us your details</h2>
+      </div>
+      <div class="apply-panel">
+        <p class="lede">Send us the four things above in an email. Attach the selfie straight from your phone &mdash; that's the easiest way to do it.</p>
+        <a class="btn" target="_top" href="mailto:push@cwcasting.co.uk?subject=PUSH%20open%20casting%20application">Email push@cwcasting.co.uk</a>
+        <p class="fine-print">If your email app doesn't open, just write to <strong>push@cwcasting.co.uk</strong> yourself. If you have an agent, they're welcome to write on your behalf.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="sig">Catherine Willis Casting &middot; CDG CSA</p>
+    <p>Applications go to <a target="_top" href="mailto:push@cwcasting.co.uk?subject=PUSH%20open%20casting%20application">push@cwcasting.co.uk</a>. We read everything that comes in.</p>
+  </div>
+</footer>
+
+<script>
+  // Report our height to the Wix page so the HTML component can be resized to
+  // fit. Without this the embed keeps whatever fixed height it was given in the
+  // editor and the content scrolls inside its own little box.
+  (function () {
+    var last = 0;
+
+    function report() {
+      var h = Math.ceil(document.documentElement.getBoundingClientRect().height);
+      if (h && Math.abs(h - last) > 2) {
+        last = h;
+        try { window.parent.postMessage({ type: 'pushCastingHeight', height: h }, '*'); } catch (e) {}
+      }
+    }
+
+    if (window.ResizeObserver) {
+      new ResizeObserver(report).observe(document.documentElement);
+    }
+    window.addEventListener('load', report);
+    window.addEventListener('resize', report);
+    // Webfonts land after first paint and change the height.
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(report); }
+    setTimeout(report, 400);
+    setTimeout(report, 1500);
+    report();
+  })();
+</script>
+
+</body>
+</html>
